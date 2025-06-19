@@ -130,6 +130,140 @@ body.dark-mode {
                 }
             }
         }
+
+        // Apps menu button
+        .o_navbar_apps_menu {
+            .o-dropdown {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+        }
+
+        // Menu brand link
+        .o_menu_brand {
+            color: $dark-text-primary !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+
+        // Menu sections
+        .o_menu_sections {
+            .o_nav_entry {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+
+            .o-dropdown {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+        }
+
+        // Menu sections more button
+        .o_menu_sections_more {
+            .o-dropdown {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+        }
+
+        // System tray items
+        .o_menu_systray {
+            .o-dropdown {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+
+            .o-mail-DiscussSystray-class {
+                .o-dropdown {
+                    color: $dark-text-primary !important;
+                    
+                    &:hover {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+
+            .o_switch_company_menu {
+                .o-dropdown {
+                    color: $dark-text-primary !important;
+                    
+                    &:hover {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+
+            .o_user_menu {
+                .o-dropdown {
+                    color: $dark-text-primary !important;
+                    
+                    &:hover {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+        }
+
+        // Mobile menu toggle
+        .o_mobile_menu_toggle {
+            color: $dark-text-primary !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+
+        // All dropdown toggles in navbar
+        .o-dropdown.dropdown-toggle {
+            color: $dark-text-primary !important;
+            background: none !important;
+            border: none !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+            
+            &:focus {
+                background-color: $dark-bg-tertiary !important;
+                box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+            }
+        }
+
+        // Navigation entries
+        .o_nav_entry {
+            color: $dark-text-primary !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+
+        // Dropdown items in navbar
+        .o-dropdown-item {
+            color: $dark-text-primary !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
     }
 
     // Fix dropdown positioning and z-index issues
