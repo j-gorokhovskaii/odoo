@@ -1,0 +1,5 @@
+-r requirements.txt
+
+# Windows-specific dependencies
+pypiwin32
+# Add any other Windows-specific packages here 
