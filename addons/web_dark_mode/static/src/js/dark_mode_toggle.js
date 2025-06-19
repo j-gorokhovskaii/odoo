@@ -1,4 +1,4 @@
-odoo.define('web_dark_mode.dark_mode_toggle', function (require) {
+odoo.define('web_dark_mode.dark_mode_toggle', [], function (require) {
     'use strict';
 
     console.log('Dark Mode Toggle Module: Loading...');
