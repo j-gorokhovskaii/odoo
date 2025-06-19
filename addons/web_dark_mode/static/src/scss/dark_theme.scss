@@ -539,11 +539,286 @@ body.dark-mode {
             background-color: $dark-bg-tertiary !important;
             border-color: $dark-accent !important;
             color: $dark-text-primary !important;
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
         }
 
         &::placeholder {
             color: $dark-text-muted !important;
+        }
+    }
+
+    // Form labels and field labels
+    .o_form_label, .o_required_modifier, label {
+        color: $dark-text-primary !important;
+        font-weight: 500 !important;
+        
+        &.o_required_modifier::after {
+            color: $dark-danger !important;
+        }
+    }
+
+    // Form field containers
+    .o_field_widget {
+        color: $dark-text-primary !important;
+        
+        .o_input {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+    }
+
+    // Specific form fields for contact information
+    .o_form_view {
+        // Job Position field
+        .o_field_char[name="function"], 
+        .o_field_char[data-field-name="function"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+
+        // Phone field
+        .o_field_phone[name="phone"], 
+        .o_field_phone[data-field-name="phone"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+
+        // Mobile field
+        .o_field_phone[name="mobile"], 
+        .o_field_phone[data-field-name="mobile"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+
+        // Email field
+        .o_field_email[name="email"], 
+        .o_field_email[data-field-name="email"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+
+        // Website field
+        .o_field_url[name="website"], 
+        .o_field_url[data-field-name="website"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+
+        // Title field (e.g., Mister)
+        .o_field_selection[name="title"], 
+        .o_field_selection[data-field-name="title"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+
+        // Tags field
+        .o_field_many2many_tags[name="category_id"], 
+        .o_field_many2many_tags[data-field-name="category_id"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+    }
+
+    // Form sheet styling
+    .o_form_sheet {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+        
+        .o_form_sheet_bg {
+            background-color: $dark-bg-secondary !important;
+        }
+    }
+
+    // Form groups and rows
+    .o_form_group, .o_row {
+        .o_form_label {
+            color: $dark-text-primary !important;
+            font-weight: 500 !important;
+        }
+    }
+
+    // Required field indicators
+    .o_required_modifier::after {
+        color: $dark-danger !important;
+        content: " *" !important;
+    }
+
+    // Form field help text
+    .o_form_text {
+        color: $dark-text-secondary !important;
+    }
+
+    // Form field descriptions
+    .o_form_text_help {
+        color: $dark-text-muted !important;
+        font-size: 0.875em !important;
+    }
+
+    // Dropdown and select fields
+    select, .o_field_selection {
+        background-color: $dark-bg-tertiary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+        
+        &:focus {
+            border-color: $dark-accent !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+        }
+        
+        option {
+            background-color: $dark-bg-secondary !important;
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Many2one fields (dropdown with search)
+    .o_field_many2one {
+        .o_input_dropdown {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+        
+        .o_dropdown_button {
+            color: $dark-text-primary !important;
+            background-color: transparent !important;
+            border-left: 1px solid $dark-border !important;
+        }
+    }
+
+    // Many2many tags fields
+    .o_field_many2many_tags {
+        .o_field_many2many_tags_selection {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+        
+        .o_tag {
+            background-color: $dark-accent !important;
+            color: white !important;
+            border: 1px solid $dark-accent !important;
+            
+            .o_tag_badge_text {
+                color: white !important;
+            }
+        }
+    }
+
+    // Textarea fields
+    textarea, .o_field_text {
+        background-color: $dark-bg-tertiary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+        
+        &:focus {
+            border-color: $dark-accent !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+        }
+    }
+
+    // Checkbox and radio fields
+    input[type="checkbox"], input[type="radio"] {
+        accent-color: $dark-accent !important;
+    }
+
+    // Date and datetime fields
+    .o_field_date, .o_field_datetime {
+        .o_input {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+    }
+
+    // Form field groups and sections
+    .o_form_group, .o_row {
+        .o_form_label {
+            color: $dark-text-primary !important;
+            font-weight: 500 !important;
+        }
+        
+        .o_form_text {
+            color: $dark-text-secondary !important;
+        }
+    }
+
+    // Form field validation states
+    .o_field_widget.o_invalid_modifier {
+        .o_input {
+            border-color: $dark-danger !important;
+            box-shadow: 0 0 0 0.2rem rgba(248, 81, 73, 0.25) !important;
+        }
+    }
+
+    .o_field_widget.o_valid_modifier {
+        .o_input {
+            border-color: $dark-success !important;
+            box-shadow: 0 0 0 0.2rem rgba(63, 185, 80, 0.25) !important;
         }
     }
 
