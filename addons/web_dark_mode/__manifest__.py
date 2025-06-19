@@ -21,10 +21,6 @@
             'web_dark_mode/static/src/scss/dark_theme.scss',
             'web_dark_mode/static/src/js/dark_mode_toggle.js',
         ],
-        'web.assets_common': [
-            'web_dark_mode/static/src/scss/dark_theme.scss',
-            'web_dark_mode/static/src/js/dark_mode_toggle.js',
-        ],
     },
     'installable': True,
     'application': False,
