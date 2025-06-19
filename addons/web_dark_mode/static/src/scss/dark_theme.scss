@@ -170,6 +170,90 @@ body.dark-mode {
             }
         }
 
+        // Menu sections container with flex classes
+        .o_menu_sections.d-flex.flex-grow-1.flex-shrink-1.w-0 {
+            background-color: transparent !important;
+            color: $dark-text-primary !important;
+            
+            // All direct children
+            > * {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+            
+            // Navigation entries within this container
+            .o_nav_entry {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+            
+            // Dropdown toggles within this container
+            .o-dropdown.dropdown-toggle {
+                color: $dark-text-primary !important;
+                background: none !important;
+                border: none !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                &:focus {
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+                }
+            }
+            
+            // Dropdown items within this container
+            .o-dropdown-item {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+
+            // All buttons within this container
+            button {
+                color: $dark-text-primary !important;
+                background: none !important;
+                border: none !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                &:focus {
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+                }
+            }
+
+            // All links within this container
+            a {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+
+            // All spans within this container
+            span {
+                color: $dark-text-primary !important;
+            }
+
+            // All icons within this container
+            i, .fa, .oi {
+                color: $dark-text-primary !important;
+            }
+        }
+
         // Menu sections more button
         .o_menu_sections_more {
             .o-dropdown {
