@@ -17,20 +17,5 @@
                 <span class="sr-only">Toggle Dark Mode</span>
             </button>
         </template>
-
-        <!-- Include SCSS and JS files -->
-        <template id="assets_backend" inherit_id="web.assets_backend">
-            <xpath expr="." position="inside">
-                <link rel="stylesheet" type="text/scss" href="/web_dark_mode/static/src/scss/dark_theme.scss"/>
-                <script type="text/javascript" src="/web_dark_mode/static/src/js/dark_mode_toggle.js"/>
-            </xpath>
-        </template>
-
-        <template id="assets_common" inherit_id="web.assets_common">
-            <xpath expr="." position="inside">
-                <link rel="stylesheet" type="text/scss" href="/web_dark_mode/static/src/scss/dark_theme.scss"/>
-                <script type="text/javascript" src="/web_dark_mode/static/src/js/dark_mode_toggle.js"/>
-            </xpath>
-        </template>
     </data>
 </odoo> 

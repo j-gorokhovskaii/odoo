@@ -16,9 +16,6 @@
     'author': 'Your Company',
     'website': 'https://www.yourcompany.com',
     'depends': ['web'],
-    'data': [
-        'views/assets.xml',
-    ],
     'assets': {
         'web.assets_backend': [
             'web_dark_mode/static/src/scss/dark_theme.scss',
