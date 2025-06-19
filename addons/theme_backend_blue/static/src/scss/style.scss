@@ -1,0 +1,206 @@
+// Define our custom color variables
+$o-enterprise-primary-color: #29abe2;
+$o-enterprise-color: #29abe2;
+
+// Override Odoo's default colors
+$o-brand-primary: $o-enterprise-primary-color;
+$o-brand-secondary: darken($o-enterprise-primary-color, 10%);
+$o-brand-odoo: $o-enterprise-primary-color;
+
+// Navigation bar styling
+.o_main_navbar {
+    background-color: $o-enterprise-primary-color;
+    border-bottom: 1px solid darken($o-enterprise-primary-color, 10%);
+
+    .dropdown-toggle::after {
+        color: white;
+    }
+
+    > .o_menu_brand {
+        color: white;
+    }
+
+    // Target menu sections with exact classes
+    div.o_menu_sections.d-flex.flex-grow-1.flex-shrink-1.w-0 {
+        background-color: #29abe2 !important;
+        
+        // Target all buttons within this section
+        button, 
+        .btn,
+        .dropdown-toggle,
+        .nav-link,
+        [type="button"],
+        .dropdown > button,
+        .btn-group > button {
+            background-color: #29abe2 !important;
+            border-color: #29abe2 !important;
+            color: white !important;
+
+            &:hover, &:focus, &:active, &.active, &[aria-expanded="true"] {
+                background-color: darken(#29abe2, 10%) !important;
+                border-color: darken(#29abe2, 10%) !important;
+            }
+        }
+
+        > li {
+            background-color: #29abe2 !important;
+            
+            > a, > label, > span, > button, > .btn {
+                color: white !important;
+                background-color: #29abe2 !important;
+                
+                &:hover, &:focus, &:active {
+                    background-color: darken(#29abe2, 10%) !important;
+                }
+            }
+            
+            &.show {
+                background-color: #29abe2 !important;
+                > a, > label, > span, > button, > .btn {
+                    background-color: darken(#29abe2, 10%) !important;
+                }
+            }
+
+            // Style dropdown menus
+            .dropdown-menu {
+                button, 
+                .btn,
+                .dropdown-item,
+                [type="button"] {
+                    background-color: white !important;
+                    color: #333 !important;
+
+                    &:hover, &:focus, &:active {
+                        background-color: #29abe2 !important;
+                        color: white !important;
+                    }
+                }
+            }
+        }
+
+        // Target any nested dropdowns or button groups
+        .dropdown, .btn-group {
+            background-color: #29abe2 !important;
+            
+            > button {
+                background-color: #29abe2 !important;
+                border-color: #29abe2 !important;
+                
+                &:hover, &:focus, &:active {
+                    background-color: darken(#29abe2, 10%) !important;
+                }
+            }
+        }
+    }
+
+    .o_menu_systray {
+        > li {
+            > a, > button {
+                color: white;
+                &:hover {
+                    background-color: darken($o-enterprise-primary-color, 10%);
+                }
+            }
+        }
+    }
+}
+
+// Target General Settings and all similar navigation dropdown items
+.o-dropdown-item.dropdown-item.o-navigable.o_nav_entry,
+a.o-dropdown-item.dropdown-item.o-navigable.o_nav_entry,
+.o_menu_systray .o-dropdown-item.dropdown-item.o-navigable.o_nav_entry,
+.o_main_navbar .o-dropdown-item.dropdown-item.o-navigable.o_nav_entry {
+    background-color: #29abe2 !important;
+    color: white !important;
+    border-color: #29abe2 !important;
+
+    &:hover, &:focus, &:active {
+        background-color: darken(#29abe2, 10%) !important;
+        color: white !important;
+    }
+}
+
+// Target all dropdown items in the header navigation
+.o_main_navbar .dropdown-menu .dropdown-item,
+.o_main_navbar .dropdown-menu a,
+.o_menu_systray .dropdown-menu .dropdown-item,
+.o_menu_systray .dropdown-menu a {
+    background-color: #29abe2 !important;
+    color: white !important;
+
+    &:hover, &:focus, &:active {
+        background-color: darken(#29abe2, 10%) !important;
+        color: white !important;
+    }
+}
+
+// Target specific General Settings button
+a[data-menu-xmlid="base_setup.menu_config"],
+a[href="/odoo/settings"],
+a.o-dropdown-item[href*="settings"] {
+    background-color: #29abe2 !important;
+    color: white !important;
+
+    &:hover, &:focus, &:active {
+        background-color: darken(#29abe2, 10%) !important;
+        color: white !important;
+    }
+}
+
+// Action buttons styling
+.btn-primary, .btn-fill-primary {
+    background-color: $o-enterprise-primary-color;
+    border-color: darken($o-enterprise-primary-color, 5%);
+    color: white;
+
+    &:hover, &:focus, &:active {
+        background-color: darken($o-enterprise-primary-color, 10%);
+        border-color: darken($o-enterprise-primary-color, 15%);
+    }
+}
+
+// List view header styling
+.o_list_view thead {
+    background-color: lighten($o-enterprise-primary-color, 45%);
+    > tr > th {
+        &.o_column_sortable:hover {
+            background-color: lighten($o-enterprise-primary-color, 40%);
+        }
+    }
+}
+
+// Form view styling
+.o_form_view {
+    .o_form_statusbar {
+        > .o_statusbar_status {
+            > .o_arrow_button {
+                &.btn-primary {
+                    background-color: $o-enterprise-primary-color;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+// Kanban view styling
+.o_kanban_view {
+    .oe_kanban_card_primary {
+        background-color: $o-enterprise-primary-color;
+        color: white;
+    }
+}
+
+// Control panel buttons
+.o_control_panel {
+    .btn-primary {
+        background-color: $o-enterprise-primary-color;
+        border-color: darken($o-enterprise-primary-color, 5%);
+        color: white;
+
+        &:hover, &:focus, &:active {
+            background-color: darken($o-enterprise-primary-color, 10%);
+            border-color: darken($o-enterprise-primary-color, 15%);
+        }
+    }
+} 
