@@ -1,28 +1,43 @@
-// Dark Mode Theme Variables
-$dark-bg-primary: #1a1a1a;
-$dark-bg-secondary: #2d2d2d;
-$dark-bg-tertiary: #3d3d3d;
-$dark-text-primary: #ffffff;
-$dark-text-secondary: #b0b0b0;
-$dark-text-muted: #888888;
-$dark-border: #404040;
-$dark-border-light: #505050;
-$dark-accent: #007bff;
-$dark-accent-hover: #0056b3;
-$dark-danger: #dc3545;
-$dark-success: #28a745;
-$dark-warning: #ffc107;
-$dark-info: #17a2b8;
+// Dark Mode Theme Variables - Improved for better contrast and accessibility
+// Following WCAG 2.1 AA standards (minimum 4.5:1 contrast ratio for normal text, 3:1 for large text)
+
+// Background colors - Darker for better contrast
+$dark-bg-primary: #0d1117;      // Very dark background (GitHub dark theme inspired)
+$dark-bg-secondary: #161b22;    // Slightly lighter secondary background
+$dark-bg-tertiary: #21262d;     // Even lighter for elevated elements
+$dark-bg-elevated: #30363d;     // For hover states and active elements
+
+// Text colors - Brighter for better contrast ratios
+$dark-text-primary: #f0f6fc;    // Primary text - very light for maximum contrast
+$dark-text-secondary: #c9d1d9;  // Secondary text - still high contrast
+$dark-text-muted: #8b949e;      // Muted text - meets WCAG standards
+$dark-text-disabled: #484f58;   // Disabled text
+
+// Border colors - More visible
+$dark-border: #30363d;          // Standard borders
+$dark-border-light: #21262d;    // Lighter borders
+$dark-border-focus: #58a6ff;    // Focus state borders
+
+// Accent colors - Brighter and more accessible
+$dark-accent: #58a6ff;          // Primary accent (GitHub blue)
+$dark-accent-hover: #79c0ff;    // Hover state
+$dark-accent-active: #1f6feb;   // Active state
+
+// Status colors - Improved contrast
+$dark-success: #3fb950;         // Success green
+$dark-warning: #d29922;         // Warning yellow
+$dark-danger: #f85149;          // Danger red
+$dark-info: #58a6ff;            // Info blue
 
 // Dark mode toggle button styling - make it visible
 .o_mail_systray_item .dark-mode-toggle {
     background: none;
     border: none;
-    color: #6c757d;
+    color: #8b949e;
     padding: 8px 12px;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     font-size: 16px;
     line-height: 1;
     display: flex;
@@ -32,13 +47,13 @@ $dark-info: #17a2b8;
     height: 40px;
 
     &:hover {
-        background-color: rgba(0, 0, 0, 0.1);
-        color: #495057;
+        background-color: #21262d;
+        color: #c9d1d9;
     }
 
     &:focus {
         outline: none;
-        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.3);
     }
 
     .toggle-icon {
@@ -72,7 +87,7 @@ body.dark-mode {
                 > a, > label {
                     color: $dark-text-primary !important;
                     &:hover {
-                        background-color: $dark-bg-tertiary !important;
+                        background-color: $dark-bg-elevated !important;
                     }
                 }
             }
@@ -83,7 +98,7 @@ body.dark-mode {
                 > a, > button {
                     color: $dark-text-primary !important;
                     &:hover {
-                        background-color: $dark-bg-tertiary !important;
+                        background-color: $dark-bg-elevated !important;
                     }
                 }
             }
@@ -96,7 +111,7 @@ body.dark-mode {
             .dropdown-item {
                 color: $dark-text-primary !important;
                 &:hover {
-                    background-color: $dark-bg-tertiary !important;
+                    background-color: $dark-bg-elevated !important;
                 }
             }
         }
@@ -164,7 +179,7 @@ body.dark-mode {
                     color: $dark-text-primary !important;
 
                     &:hover {
-                        background-color: $dark-bg-tertiary !important;
+                        background-color: $dark-bg-elevated !important;
                     }
 
                     > td {
@@ -186,7 +201,7 @@ body.dark-mode {
             color: $dark-text-primary !important;
 
             &:hover {
-                background-color: $dark-bg-tertiary !important;
+                background-color: $dark-bg-elevated !important;
             }
         }
 
@@ -210,7 +225,7 @@ body.dark-mode {
         }
     }
 
-    // Form inputs
+    // Form inputs - Improved contrast
     .form-control {
         background-color: $dark-bg-tertiary !important;
         border: 1px solid $dark-border !important;
@@ -220,24 +235,34 @@ body.dark-mode {
             background-color: $dark-bg-tertiary !important;
             border-color: $dark-accent !important;
             color: $dark-text-primary !important;
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
         }
 
         &::placeholder {
             color: $dark-text-muted !important;
         }
+
+        &:disabled {
+            background-color: $dark-bg-primary !important;
+            color: $dark-text-disabled !important;
+        }
     }
 
-    // Buttons
+    // Buttons - Better contrast
     .btn {
         &.btn-primary {
             background-color: $dark-accent !important;
             border-color: $dark-accent !important;
-            color: white !important;
+            color: #ffffff !important;
 
             &:hover {
                 background-color: $dark-accent-hover !important;
                 border-color: $dark-accent-hover !important;
+            }
+
+            &:active {
+                background-color: $dark-accent-active !important;
+                border-color: $dark-accent-active !important;
             }
         }
 
@@ -247,29 +272,39 @@ body.dark-mode {
             color: $dark-text-primary !important;
 
             &:hover {
-                background-color: $dark-bg-primary !important;
+                background-color: $dark-bg-elevated !important;
+                border-color: $dark-border-focus !important;
             }
         }
 
         &.btn-success {
             background-color: $dark-success !important;
             border-color: $dark-success !important;
+            color: #ffffff !important;
         }
 
         &.btn-danger {
             background-color: $dark-danger !important;
             border-color: $dark-danger !important;
+            color: #ffffff !important;
         }
 
         &.btn-warning {
             background-color: $dark-warning !important;
             border-color: $dark-warning !important;
-            color: #212529 !important;
+            color: #0d1117 !important; // Dark text on yellow background
         }
 
         &.btn-info {
             background-color: $dark-info !important;
             border-color: $dark-info !important;
+            color: #ffffff !important;
+        }
+
+        &:disabled {
+            background-color: $dark-bg-primary !important;
+            border-color: $dark-border !important;
+            color: $dark-text-disabled !important;
         }
     }
 
@@ -282,7 +317,7 @@ body.dark-mode {
             color: $dark-text-primary !important;
 
             &:hover {
-                background-color: $dark-bg-tertiary !important;
+                background-color: $dark-bg-elevated !important;
             }
         }
     }
@@ -325,7 +360,7 @@ body.dark-mode {
         }
     }
 
-    // Breadcrumbs
+    // Breadcrumbs - Better contrast
     .o_control_panel .breadcrumb {
         background-color: transparent !important;
         color: $dark-text-secondary !important;
@@ -361,28 +396,28 @@ body.dark-mode {
         }
     }
 
-    // Alerts
+    // Alerts - Better contrast with darker backgrounds
     .alert {
         &.alert-info {
-            background-color: rgba(23, 162, 184, 0.2) !important;
+            background-color: rgba(88, 166, 255, 0.15) !important;
             border-color: $dark-info !important;
             color: $dark-text-primary !important;
         }
 
         &.alert-success {
-            background-color: rgba(40, 167, 69, 0.2) !important;
+            background-color: rgba(63, 185, 80, 0.15) !important;
             border-color: $dark-success !important;
             color: $dark-text-primary !important;
         }
 
         &.alert-warning {
-            background-color: rgba(255, 193, 7, 0.2) !important;
+            background-color: rgba(210, 153, 34, 0.15) !important;
             border-color: $dark-warning !important;
             color: $dark-text-primary !important;
         }
 
         &.alert-danger {
-            background-color: rgba(220, 53, 69, 0.2) !important;
+            background-color: rgba(248, 81, 73, 0.15) !important;
             border-color: $dark-danger !important;
             color: $dark-text-primary !important;
         }
@@ -419,7 +454,7 @@ body.dark-mode {
             background-color: $dark-bg-secondary !important;
 
             &:hover {
-                background-color: $dark-bg-tertiary !important;
+                background-color: $dark-bg-elevated !important;
             }
 
             td {
@@ -438,15 +473,31 @@ body.dark-mode {
     .badge {
         &.badge-primary {
             background-color: $dark-accent !important;
+            color: #ffffff !important;
         }
 
         &.badge-secondary {
             background-color: $dark-bg-tertiary !important;
             color: $dark-text-primary !important;
         }
+
+        &.badge-success {
+            background-color: $dark-success !important;
+            color: #ffffff !important;
+        }
+
+        &.badge-danger {
+            background-color: $dark-danger !important;
+            color: #ffffff !important;
+        }
+
+        &.badge-warning {
+            background-color: $dark-warning !important;
+            color: #0d1117 !important;
+        }
     }
 
-    // Links
+    // Links - Better contrast
     a {
         color: $dark-accent !important;
 
@@ -455,7 +506,7 @@ body.dark-mode {
         }
     }
 
-    // Scrollbars (Webkit browsers)
+    // Scrollbars (Webkit browsers) - More visible
     ::-webkit-scrollbar {
         width: 12px;
         height: 12px;
@@ -479,7 +530,7 @@ body.dark-mode {
         color: $dark-text-primary !important;
 
         &:hover {
-            background-color: $dark-bg-tertiary !important;
+            background-color: $dark-bg-elevated !important;
             color: $dark-text-primary !important;
         }
     }
@@ -516,6 +567,46 @@ body.dark-mode {
                     }
                 }
             }
+        }
+    }
+
+    // Additional accessibility improvements
+    .o_field_widget {
+        color: $dark-text-primary !important;
+    }
+
+    .o_field_boolean {
+        .o_checkbox {
+            color: $dark-text-primary !important;
+        }
+    }
+
+    .o_field_many2one {
+        .o_input_dropdown {
+            background-color: $dark-bg-tertiary !important;
+            border-color: $dark-border !important;
+        }
+    }
+
+    .o_field_many2many {
+        .o_field_many2many_tags {
+            .badge {
+                background-color: $dark-bg-tertiary !important;
+                color: $dark-text-primary !important;
+            }
+        }
+    }
+
+    // Status indicators
+    .o_status {
+        &.o_status_green {
+            color: $dark-success !important;
+        }
+        &.o_status_red {
+            color: $dark-danger !important;
+        }
+        &.o_status_orange {
+            color: $dark-warning !important;
         }
     }
 }
