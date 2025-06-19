@@ -1271,6 +1271,205 @@ body.dark-mode {
             }
         }
     }
+
+    // Chatter (Communication) Section Styling
+    .o-mail-Chatter-top {
+        background-color: $dark-bg-secondary !important;
+        border-bottom: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+        
+        .o-mail-Chatter-topbar {
+            background-color: $dark-bg-secondary !important;
+            border-bottom: 1px solid $dark-border !important;
+            
+            // Send Message Button
+            .o-mail-Chatter-sendMessage {
+                background-color: $dark-accent !important;
+                border-color: $dark-accent !important;
+                color: white !important;
+                
+                &:hover {
+                    background-color: $dark-accent-hover !important;
+                    border-color: $dark-accent-hover !important;
+                }
+                
+                &:focus {
+                    background-color: $dark-accent-hover !important;
+                    border-color: $dark-accent-hover !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+            }
+            
+            // Log Note Button
+            .o-mail-Chatter-logNote {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-border !important;
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-primary !important;
+                    border-color: $dark-border-light !important;
+                }
+                
+                &:focus {
+                    background-color: $dark-bg-primary !important;
+                    border-color: $dark-accent !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+            }
+            
+            // Activities Button
+            .o-mail-Chatter-activity {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-border !important;
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-primary !important;
+                    border-color: $dark-border-light !important;
+                }
+                
+                &:focus {
+                    background-color: $dark-bg-primary !important;
+                    border-color: $dark-accent !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+                
+                span {
+                    color: $dark-text-primary !important;
+                }
+            }
+            
+            // Search Button
+            .btn.btn-link.text-action {
+                color: $dark-text-secondary !important;
+                background: none !important;
+                border: none !important;
+                
+                &:hover {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                &:focus {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+                
+                i.oi.oi-search {
+                    color: $dark-text-secondary !important;
+                }
+            }
+            
+            // Attach Files Button
+            .o-mail-Chatter-attachFiles {
+                color: $dark-text-secondary !important;
+                background: none !important;
+                border: none !important;
+                
+                &:hover {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                &:focus {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+                
+                i.fa.fa-paperclip {
+                    color: $dark-text-secondary !important;
+                }
+            }
+            
+            // File Upload Input
+            .o-mail-Chatter-fileUploader {
+                background-color: $dark-bg-tertiary !important;
+                border: 1px solid $dark-border !important;
+                color: $dark-text-primary !important;
+                
+                &:focus {
+                    border-color: $dark-accent !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+            }
+            
+            // Followers Section
+            .o-mail-Followers {
+                .o-mail-Followers-button {
+                    color: $dark-text-secondary !important;
+                    background: none !important;
+                    border: none !important;
+                    
+                    &:hover {
+                        color: $dark-text-primary !important;
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                    
+                    &:focus {
+                        color: $dark-text-primary !important;
+                        background-color: $dark-bg-tertiary !important;
+                        box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                    }
+                    
+                    i.fa.fa-user-o {
+                        color: $dark-text-secondary !important;
+                    }
+                    
+                    .o-mail-Followers-counter {
+                        color: $dark-text-secondary !important;
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+            
+            // Follow Button
+            .o-mail-Chatter-follow {
+                color: $dark-text-secondary !important;
+                background: none !important;
+                border: none !important;
+                
+                &:hover {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                &:focus {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+                
+                .position-relative {
+                    .d-flex.invisible {
+                        color: $dark-text-secondary !important;
+                    }
+                    
+                    .position-absolute {
+                        color: $dark-text-secondary !important;
+                    }
+                }
+            }
+            
+            // Grow spacer
+            .o-mail-Chatter-topbarGrow {
+                background-color: transparent !important;
+            }
+        }
+    }
+
+    // Chatter content area
+    .o-mail-Chatter {
+        background-color: $dark-bg-secondary !important;
+        color: $dark-text-primary !important;
+        
+        .o-mail-Chatter-content {
+            background-color: $dark-bg-secondary !important;
+            color: $dark-text-primary !important;
+        }
+    }
 }
 
 // Smooth transition for theme switching
