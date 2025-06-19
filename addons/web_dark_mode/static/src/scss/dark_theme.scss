@@ -29,33 +29,38 @@ $dark-warning: #d29922;         // Warning yellow
 $dark-danger: #f85149;          // Danger red
 $dark-info: #58a6ff;            // Info blue
 
-// Dark mode toggle button styling - restrict to only the toggle
-.dark-mode-toggle {
-    background: none;
-    border: none;
-    color: #8b949e;
-    padding: 8px;
-    cursor: pointer;
-    transition: color 0.2s ease;
-    font-size: 16px;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
+// Dark mode toggle button styling - extremely specific to avoid conflicts
+// Target only our specific dark mode toggle within the systray
+.o_menu_systray_item button.dark-mode-toggle {
+    background: none !important;
+    border: none !important;
+    color: #8b949e !important;
+    padding: 8px !important;
+    cursor: pointer !important;
+    transition: color 0.2s ease !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    height: 32px !important;
 
     &:hover {
-        color: #c9d1d9;
+        color: #c9d1d9 !important;
+        background: none !important;
+        border: none !important;
     }
 
     &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.3);
+        outline: none !important;
+        box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.3) !important;
+        background: none !important;
+        border: none !important;
     }
 
     i {
-        font-size: 16px;
+        font-size: 16px !important;
     }
 }
 
@@ -597,11 +602,13 @@ body.dark-mode {
         }
     }
 
-    // Restrict dark mode toggle styling in dark mode
-    .dark-mode-toggle {
+    // Restrict dark mode toggle styling in dark mode - extremely specific
+    .o_menu_systray_item button.dark-mode-toggle {
         color: $dark-text-primary !important;
         &:hover {
             color: $dark-text-primary !important;
+            background: none !important;
+            border: none !important;
         }
     }
 }
