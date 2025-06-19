@@ -14,6 +14,39 @@ $dark-success: #28a745;
 $dark-warning: #ffc107;
 $dark-info: #17a2b8;
 
+// Dark mode toggle button styling - make it visible
+.o_mail_systray_item .dark-mode-toggle {
+    background: none;
+    border: none;
+    color: #6c757d;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        color: #495057;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    }
+
+    .toggle-icon {
+        font-size: 18px;
+        margin: 0;
+    }
+}
+
 // Dark mode class that gets applied to body
 body.dark-mode {
     background-color: $dark-bg-primary !important;
@@ -441,23 +474,13 @@ body.dark-mode {
         }
     }
 
-    // Dark mode toggle button styling
-    .dark-mode-toggle {
-        background: none;
-        border: none;
-        color: $dark-text-primary;
-        padding: 8px 12px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
+    // Dark mode toggle button styling in dark mode
+    .o_mail_systray_item .dark-mode-toggle {
+        color: $dark-text-primary !important;
 
         &:hover {
-            background-color: $dark-bg-tertiary;
-        }
-
-        .toggle-icon {
-            font-size: 16px;
-            margin-right: 4px;
+            background-color: $dark-bg-tertiary !important;
+            color: $dark-text-primary !important;
         }
     }
 

@@ -3,8 +3,8 @@
     <data>
         <!-- QWeb Templates for Dark Mode Toggle -->
         <template id="DarkModeToggleMenuItem" name="Dark Mode Toggle Menu Item">
-            <li class="o_mail_systray_item dropdown">
-                <button class="dark-mode-toggle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="o_mail_systray_item">
+                <button class="dark-mode-toggle" type="button" title="Toggle Dark Mode">
                     <i class="toggle-icon fa fa-moon-o"></i>
                     <span class="sr-only">Toggle Dark Mode</span>
                 </button>
