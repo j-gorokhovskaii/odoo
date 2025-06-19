@@ -29,8 +29,8 @@ $dark-warning: #d29922;         // Warning yellow
 $dark-danger: #f85149;          // Danger red
 $dark-info: #58a6ff;            // Info blue
 
-// Dark mode toggle button styling - simplified to avoid conflicts
-.o_mail_systray_item .dark-mode-toggle {
+// Dark mode toggle button styling - restrict to only the toggle
+.dark-mode-toggle {
     background: none;
     border: none;
     color: #8b949e;
@@ -522,15 +522,6 @@ body.dark-mode {
         }
     }
 
-    // Dark mode toggle button styling in dark mode - simplified
-    .o_mail_systray_item .dark-mode-toggle {
-        color: $dark-text-primary !important;
-
-        &:hover {
-            color: $dark-text-primary !important;
-        }
-    }
-
     // Login page specific styling
     .o_web_client:not(.o_logged_in) {
         background-color: $dark-bg-primary !important;
@@ -603,6 +594,14 @@ body.dark-mode {
         }
         &.o_status_orange {
             color: $dark-warning !important;
+        }
+    }
+
+    // Restrict dark mode toggle styling in dark mode
+    .dark-mode-toggle {
+        color: $dark-text-primary !important;
+        &:hover {
+            color: $dark-text-primary !important;
         }
     }
 }
