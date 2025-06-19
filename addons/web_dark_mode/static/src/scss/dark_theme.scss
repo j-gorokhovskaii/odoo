@@ -936,22 +936,181 @@ body.dark-mode {
     // Tabs
     .nav-tabs {
         border-bottom: 1px solid $dark-border !important;
+        background-color: $dark-bg-secondary !important;
 
-        .nav-link {
-            color: $dark-text-secondary !important;
+        .nav-item {
             background-color: transparent !important;
-            border: 1px solid transparent !important;
+            
+            .nav-link {
+                color: $dark-text-secondary !important;
+                background-color: transparent !important;
+                border: 1px solid transparent !important;
+                border-bottom: 2px solid transparent !important;
+                padding: 0.75rem 1rem !important;
+                transition: all 0.3s ease !important;
 
-            &:hover {
-                color: $dark-text-primary !important;
-                border-color: $dark-border !important;
+                &:hover {
+                    color: $dark-text-primary !important;
+                    border-color: $dark-border !important;
+                    background-color: $dark-bg-tertiary !important;
+                }
+
+                &:focus {
+                    color: $dark-text-primary !important;
+                    border-color: $dark-accent !important;
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+
+                &.active {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-secondary !important;
+                    border-color: $dark-accent $dark-border transparent !important;
+                    border-bottom: 2px solid $dark-accent !important;
+                    font-weight: 500 !important;
+                }
             }
 
-            &.active {
-                color: $dark-text-primary !important;
+            &.flex-nowrap {
+                .nav-link {
+                    white-space: nowrap !important;
+                }
+            }
+
+            &.cursor-pointer {
+                cursor: pointer !important;
+            }
+        }
+    }
+
+    // Specific tab styling for contact forms
+    .nav-tabs.flex-row.flex-nowrap {
+        background-color: $dark-bg-secondary !important;
+        border-bottom: 1px solid $dark-border !important;
+        
+        .nav-item {
+            .nav-link {
+                color: $dark-text-secondary !important;
+                background-color: transparent !important;
+                border: 1px solid transparent !important;
+                border-bottom: 2px solid transparent !important;
+                
+                &:hover {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                    border-color: $dark-border !important;
+                }
+                
+                &:focus {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                    border-color: $dark-accent !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+                
+                &.active {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-secondary !important;
+                    border-color: $dark-accent $dark-border transparent !important;
+                    border-bottom: 2px solid $dark-accent !important;
+                    font-weight: 500 !important;
+                }
+            }
+        }
+    }
+
+    // Tab content areas
+    .tab-content {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+        border-top: none !important;
+        
+        .tab-pane {
+            background-color: $dark-bg-secondary !important;
+            color: $dark-text-primary !important;
+            padding: 1rem !important;
+        }
+    }
+
+    // Tab navigation containers
+    .o_form_view {
+        .nav-tabs {
+            background-color: $dark-bg-secondary !important;
+            border-bottom: 1px solid $dark-border !important;
+            
+            .nav-item {
+                .nav-link {
+                    color: $dark-text-secondary !important;
+                    background-color: transparent !important;
+                    border: 1px solid transparent !important;
+                    border-bottom: 2px solid transparent !important;
+                    
+                    &:hover {
+                        color: $dark-text-primary !important;
+                        background-color: $dark-bg-tertiary !important;
+                        border-color: $dark-border !important;
+                    }
+                    
+                    &:focus {
+                        color: $dark-text-primary !important;
+                        background-color: $dark-bg-tertiary !important;
+                        border-color: $dark-accent !important;
+                        box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                    }
+                    
+                    &.active {
+                        color: $dark-text-primary !important;
+                        background-color: $dark-bg-secondary !important;
+                        border-color: $dark-accent $dark-border transparent !important;
+                        border-bottom: 2px solid $dark-accent !important;
+                        font-weight: 500 !important;
+                    }
+                }
+            }
+        }
+    }
+
+    // Tab content within forms
+    .o_form_view {
+        .tab-content {
+            background-color: $dark-bg-secondary !important;
+            border: 1px solid $dark-border !important;
+            border-top: none !important;
+            
+            .tab-pane {
                 background-color: $dark-bg-secondary !important;
-                border-color: $dark-border $dark-border transparent !important;
+                color: $dark-text-primary !important;
+                
+                .o_form_sheet {
+                    background-color: $dark-bg-secondary !important;
+                    border: none !important;
+                }
             }
+        }
+    }
+
+    // Specific tab names styling
+    .nav-link[name="contact_addresses"],
+    .nav-link[name="sales_purchases"],
+    .nav-link[name="internal_notes"] {
+        color: $dark-text-secondary !important;
+        
+        &:hover {
+            color: $dark-text-primary !important;
+            background-color: $dark-bg-tertiary !important;
+        }
+        
+        &:focus {
+            color: $dark-text-primary !important;
+            background-color: $dark-bg-tertiary !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+        }
+        
+        &.active {
+            color: $dark-text-primary !important;
+            background-color: $dark-bg-secondary !important;
+            border-bottom: 2px solid $dark-accent !important;
+            font-weight: 500 !important;
         }
     }
 
