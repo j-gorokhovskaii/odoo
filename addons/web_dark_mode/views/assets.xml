@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Templates for Dark Mode Toggle -->
+        <template id="DarkModeToggleMenuItem" name="Dark Mode Toggle Menu Item">
+            <li class="o_mail_systray_item dropdown">
+                <button class="dark-mode-toggle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="toggle-icon fa fa-moon-o"></i>
+                    <span class="sr-only">Toggle Dark Mode</span>
+                </button>
+            </li>
+        </template>
+
+        <template id="DarkModeToggle" name="Dark Mode Toggle">
+            <button class="dark-mode-toggle" type="button">
+                <i class="toggle-icon fa fa-moon-o"></i>
+                <span class="sr-only">Toggle Dark Mode</span>
+            </button>
+        </template>
+
+        <!-- Include SCSS and JS files -->
+        <template id="assets_backend" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/scss" href="/web_dark_mode/static/src/scss/dark_theme.scss"/>
+                <script type="text/javascript" src="/web_dark_mode/static/src/js/dark_mode_toggle.js"/>
+            </xpath>
+        </template>
+
+        <template id="assets_common" inherit_id="web.assets_common">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/scss" href="/web_dark_mode/static/src/scss/dark_theme.scss"/>
+                <script type="text/javascript" src="/web_dark_mode/static/src/js/dark_mode_toggle.js"/>
+            </xpath>
+        </template>
+    </data>
+</odoo> 

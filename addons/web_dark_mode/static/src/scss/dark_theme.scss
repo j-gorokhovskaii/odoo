@@ -1,0 +1,507 @@
+// Dark Mode Theme Variables
+$dark-bg-primary: #1a1a1a;
+$dark-bg-secondary: #2d2d2d;
+$dark-bg-tertiary: #3d3d3d;
+$dark-text-primary: #ffffff;
+$dark-text-secondary: #b0b0b0;
+$dark-text-muted: #888888;
+$dark-border: #404040;
+$dark-border-light: #505050;
+$dark-accent: #007bff;
+$dark-accent-hover: #0056b3;
+$dark-danger: #dc3545;
+$dark-success: #28a745;
+$dark-warning: #ffc107;
+$dark-info: #17a2b8;
+
+// Dark mode class that gets applied to body
+body.dark-mode {
+    background-color: $dark-bg-primary !important;
+    color: $dark-text-primary !important;
+
+    // Main layout
+    .o_web_client {
+        background-color: $dark-bg-primary !important;
+    }
+
+    // Navigation bar
+    .o_main_navbar {
+        background-color: $dark-bg-secondary !important;
+        border-bottom: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+
+        .o_menu_brand {
+            color: $dark-text-primary !important;
+        }
+
+        .o_menu_sections {
+            > li {
+                > a, > label {
+                    color: $dark-text-primary !important;
+                    &:hover {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+        }
+
+        .o_menu_systray {
+            > li {
+                > a, > button {
+                    color: $dark-text-primary !important;
+                    &:hover {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+        }
+
+        .dropdown-menu {
+            background-color: $dark-bg-secondary !important;
+            border: 1px solid $dark-border !important;
+
+            .dropdown-item {
+                color: $dark-text-primary !important;
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+        }
+    }
+
+    // Content area
+    .o_content {
+        background-color: $dark-bg-primary !important;
+    }
+
+    // Control panel
+    .o_control_panel {
+        background-color: $dark-bg-secondary !important;
+        border-bottom: 1px solid $dark-border !important;
+
+        .o_cp_top {
+            .o_cp_top_left {
+                color: $dark-text-primary !important;
+            }
+        }
+
+        .o_cp_bottom {
+            background-color: $dark-bg-secondary !important;
+        }
+    }
+
+    // Forms
+    .o_form_view {
+        background-color: $dark-bg-primary !important;
+
+        .o_form_sheet {
+            background-color: $dark-bg-secondary !important;
+            border: 1px solid $dark-border !important;
+        }
+
+        .o_form_statusbar {
+            background-color: $dark-bg-tertiary !important;
+            border-bottom: 1px solid $dark-border !important;
+        }
+
+        .o_form_field {
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // List views
+    .o_list_view {
+        background-color: $dark-bg-primary !important;
+
+        .o_list_table {
+            background-color: $dark-bg-secondary !important;
+
+            thead {
+                background-color: $dark-bg-tertiary !important;
+                > tr > th {
+                    background-color: $dark-bg-tertiary !important;
+                    color: $dark-text-primary !important;
+                    border-bottom: 1px solid $dark-border !important;
+                }
+            }
+
+            tbody {
+                > tr {
+                    background-color: $dark-bg-secondary !important;
+                    color: $dark-text-primary !important;
+
+                    &:hover {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+
+                    > td {
+                        border-bottom: 1px solid $dark-border-light !important;
+                        color: $dark-text-primary !important;
+                    }
+                }
+            }
+        }
+    }
+
+    // Kanban views
+    .o_kanban_view {
+        background-color: $dark-bg-primary !important;
+
+        .o_kanban_record {
+            background-color: $dark-bg-secondary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+
+        .o_kanban_group {
+            background-color: $dark-bg-secondary !important;
+            border: 1px solid $dark-border !important;
+        }
+    }
+
+    // Calendar views
+    .o_calendar_view {
+        background-color: $dark-bg-primary !important;
+
+        .o_calendar_widget {
+            background-color: $dark-bg-secondary !important;
+        }
+
+        .o_calendar_sidebar {
+            background-color: $dark-bg-secondary !important;
+            border-left: 1px solid $dark-border !important;
+        }
+    }
+
+    // Form inputs
+    .form-control {
+        background-color: $dark-bg-tertiary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+
+        &:focus {
+            background-color: $dark-bg-tertiary !important;
+            border-color: $dark-accent !important;
+            color: $dark-text-primary !important;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+        }
+
+        &::placeholder {
+            color: $dark-text-muted !important;
+        }
+    }
+
+    // Buttons
+    .btn {
+        &.btn-primary {
+            background-color: $dark-accent !important;
+            border-color: $dark-accent !important;
+            color: white !important;
+
+            &:hover {
+                background-color: $dark-accent-hover !important;
+                border-color: $dark-accent-hover !important;
+            }
+        }
+
+        &.btn-secondary {
+            background-color: $dark-bg-tertiary !important;
+            border-color: $dark-border !important;
+            color: $dark-text-primary !important;
+
+            &:hover {
+                background-color: $dark-bg-primary !important;
+            }
+        }
+
+        &.btn-success {
+            background-color: $dark-success !important;
+            border-color: $dark-success !important;
+        }
+
+        &.btn-danger {
+            background-color: $dark-danger !important;
+            border-color: $dark-danger !important;
+        }
+
+        &.btn-warning {
+            background-color: $dark-warning !important;
+            border-color: $dark-warning !important;
+            color: #212529 !important;
+        }
+
+        &.btn-info {
+            background-color: $dark-info !important;
+            border-color: $dark-info !important;
+        }
+    }
+
+    // Dropdowns
+    .dropdown-menu {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+
+        .dropdown-item {
+            color: $dark-text-primary !important;
+
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+    }
+
+    // Modals
+    .modal-content {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+
+        .modal-header {
+            background-color: $dark-bg-tertiary !important;
+            border-bottom: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+        }
+
+        .modal-body {
+            background-color: $dark-bg-secondary !important;
+            color: $dark-text-primary !important;
+        }
+
+        .modal-footer {
+            background-color: $dark-bg-tertiary !important;
+            border-top: 1px solid $dark-border !important;
+        }
+    }
+
+    // Sidebar
+    .o_sidebar {
+        background-color: $dark-bg-secondary !important;
+        border-right: 1px solid $dark-border !important;
+    }
+
+    // Search panel
+    .o_search_panel {
+        background-color: $dark-bg-secondary !important;
+        border-right: 1px solid $dark-border !important;
+
+        .o_search_panel_section {
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Breadcrumbs
+    .o_control_panel .breadcrumb {
+        background-color: transparent !important;
+        color: $dark-text-secondary !important;
+
+        .breadcrumb-item {
+            color: $dark-text-secondary !important;
+
+            &.active {
+                color: $dark-text-primary !important;
+            }
+        }
+    }
+
+    // Tabs
+    .nav-tabs {
+        border-bottom: 1px solid $dark-border !important;
+
+        .nav-link {
+            color: $dark-text-secondary !important;
+            background-color: transparent !important;
+            border: 1px solid transparent !important;
+
+            &:hover {
+                color: $dark-text-primary !important;
+                border-color: $dark-border !important;
+            }
+
+            &.active {
+                color: $dark-text-primary !important;
+                background-color: $dark-bg-secondary !important;
+                border-color: $dark-border $dark-border transparent !important;
+            }
+        }
+    }
+
+    // Alerts
+    .alert {
+        &.alert-info {
+            background-color: rgba(23, 162, 184, 0.2) !important;
+            border-color: $dark-info !important;
+            color: $dark-text-primary !important;
+        }
+
+        &.alert-success {
+            background-color: rgba(40, 167, 69, 0.2) !important;
+            border-color: $dark-success !important;
+            color: $dark-text-primary !important;
+        }
+
+        &.alert-warning {
+            background-color: rgba(255, 193, 7, 0.2) !important;
+            border-color: $dark-warning !important;
+            color: $dark-text-primary !important;
+        }
+
+        &.alert-danger {
+            background-color: rgba(220, 53, 69, 0.2) !important;
+            border-color: $dark-danger !important;
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Cards
+    .card {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+
+        .card-header {
+            background-color: $dark-bg-tertiary !important;
+            border-bottom: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+        }
+
+        .card-body {
+            background-color: $dark-bg-secondary !important;
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Tables
+    .table {
+        color: $dark-text-primary !important;
+
+        thead th {
+            background-color: $dark-bg-tertiary !important;
+            border-bottom: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+        }
+
+        tbody tr {
+            background-color: $dark-bg-secondary !important;
+
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+
+            td {
+                border-top: 1px solid $dark-border-light !important;
+                color: $dark-text-primary !important;
+            }
+        }
+    }
+
+    // Progress bars
+    .progress {
+        background-color: $dark-bg-tertiary !important;
+    }
+
+    // Badges
+    .badge {
+        &.badge-primary {
+            background-color: $dark-accent !important;
+        }
+
+        &.badge-secondary {
+            background-color: $dark-bg-tertiary !important;
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Links
+    a {
+        color: $dark-accent !important;
+
+        &:hover {
+            color: $dark-accent-hover !important;
+        }
+    }
+
+    // Scrollbars (Webkit browsers)
+    ::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: $dark-bg-primary;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $dark-bg-tertiary;
+        border-radius: 6px;
+
+        &:hover {
+            background: $dark-border;
+        }
+    }
+
+    // Dark mode toggle button styling
+    .dark-mode-toggle {
+        background: none;
+        border: none;
+        color: $dark-text-primary;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: $dark-bg-tertiary;
+        }
+
+        .toggle-icon {
+            font-size: 16px;
+            margin-right: 4px;
+        }
+    }
+
+    // Login page specific styling
+    .o_web_client:not(.o_logged_in) {
+        background-color: $dark-bg-primary !important;
+
+        .o_login_container {
+            .o_login_box {
+                background-color: $dark-bg-secondary !important;
+                border: 1px solid $dark-border !important;
+
+                .o_login_header {
+                    .o_login_logo {
+                        color: $dark-text-primary !important;
+                    }
+                }
+
+                .o_login_form {
+                    .form-control {
+                        background-color: $dark-bg-tertiary !important;
+                        border: 1px solid $dark-border !important;
+                        color: $dark-text-primary !important;
+
+                        &:focus {
+                            border-color: $dark-accent !important;
+                        }
+                    }
+
+                    .btn-primary {
+                        background-color: $dark-accent !important;
+                        border-color: $dark-accent !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Smooth transition for theme switching
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+} 
