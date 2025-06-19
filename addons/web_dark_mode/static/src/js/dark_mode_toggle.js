@@ -41,8 +41,7 @@ odoo.define('web_dark_mode.dark_mode_toggle', [], function (require) {
                 var toggleHtml = `
                     <li class="o_mail_systray_item">
                         <button class="dark-mode-toggle" type="button" title="Toggle Dark Mode">
-                            <i class="toggle-icon fa ${isDarkMode ? 'fa-sun-o' : 'fa-moon-o'}"></i>
-                            <span class="sr-only">Toggle Dark Mode</span>
+                            <i class="fa ${isDarkMode ? 'fa-sun-o' : 'fa-moon-o'}"></i>
                         </button>
                     </li>
                 `;
@@ -71,17 +70,15 @@ odoo.define('web_dark_mode.dark_mode_toggle', [], function (require) {
                         document.body.classList.remove('dark-mode');
                     }
                     
-                    // Update button
-                    var icon = this.querySelector('.toggle-icon');
+                    // Update button icon
+                    var icon = this.querySelector('i');
                     var btn = this;
                     
                     if (isDarkMode) {
-                        icon.classList.remove('fa-moon-o');
-                        icon.classList.add('fa-sun-o');
+                        icon.className = 'fa fa-sun-o';
                         btn.setAttribute('title', 'Switch to Light Mode');
                     } else {
-                        icon.classList.remove('fa-sun-o');
-                        icon.classList.add('fa-moon-o');
+                        icon.className = 'fa fa-moon-o';
                         btn.setAttribute('title', 'Switch to Dark Mode');
                     }
                 });
