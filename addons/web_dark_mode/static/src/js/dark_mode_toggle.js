@@ -3,8 +3,17 @@ odoo.define('web_dark_mode.dark_mode_toggle', [], function (require) {
 
     console.log('Dark Mode Toggle Module: Loading...');
 
-    // Simple approach without complex dependencies
-    $(document).ready(function () {
+    // Wait for DOM to be ready
+    function ready(fn) {
+        if (document.readyState !== 'loading') {
+            fn();
+        } else {
+            document.addEventListener('DOMContentLoaded', fn);
+        }
+    }
+
+    // Simple approach using vanilla JavaScript
+    ready(function () {
         console.log('Dark Mode Toggle: Document ready, initializing...');
         
         // Initialize dark mode on page load
@@ -24,10 +33,10 @@ odoo.define('web_dark_mode.dark_mode_toggle', [], function (require) {
 
         // Function to add toggle button
         function addToggleButton() {
-            var navbar = $('.o_main_navbar .o_menu_systray');
-            console.log('Dark Mode Toggle: Looking for navbar, found:', navbar.length);
+            var navbar = document.querySelector('.o_main_navbar .o_menu_systray');
+            console.log('Dark Mode Toggle: Looking for navbar, found:', navbar ? 1 : 0);
             
-            if (navbar.length && !navbar.find('.dark-mode-toggle').length) {
+            if (navbar && !navbar.querySelector('.dark-mode-toggle')) {
                 console.log('Dark Mode Toggle: Adding toggle button to navbar');
                 var toggleHtml = `
                     <li class="o_mail_systray_item">
@@ -37,10 +46,11 @@ odoo.define('web_dark_mode.dark_mode_toggle', [], function (require) {
                         </button>
                     </li>
                 `;
-                navbar.append(toggleHtml);
+                navbar.insertAdjacentHTML('beforeend', toggleHtml);
 
                 // Add click handler
-                navbar.find('.dark-mode-toggle').on('click', function(e) {
+                var toggleBtn = navbar.querySelector('.dark-mode-toggle');
+                toggleBtn.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     
@@ -62,15 +72,17 @@ odoo.define('web_dark_mode.dark_mode_toggle', [], function (require) {
                     }
                     
                     // Update button
-                    var icon = $(this).find('.toggle-icon');
-                    var btn = $(this);
+                    var icon = this.querySelector('.toggle-icon');
+                    var btn = this;
                     
                     if (isDarkMode) {
-                        icon.removeClass('fa-moon-o').addClass('fa-sun-o');
-                        btn.attr('title', 'Switch to Light Mode');
+                        icon.classList.remove('fa-moon-o');
+                        icon.classList.add('fa-sun-o');
+                        btn.setAttribute('title', 'Switch to Light Mode');
                     } else {
-                        icon.removeClass('fa-sun-o').addClass('fa-moon-o');
-                        btn.attr('title', 'Switch to Dark Mode');
+                        icon.classList.remove('fa-sun-o');
+                        icon.classList.add('fa-moon-o');
+                        btn.setAttribute('title', 'Switch to Dark Mode');
                     }
                 });
                 
@@ -100,8 +112,9 @@ odoo.define('web_dark_mode.dark_mode_toggle', [], function (require) {
             });
 
             // Start observing
-            if ($('.o_main_navbar').length) {
-                observer.observe($('.o_main_navbar')[0], {
+            var navbar = document.querySelector('.o_main_navbar');
+            if (navbar) {
+                observer.observe(navbar, {
                     childList: true,
                     subtree: true
                 });
@@ -111,7 +124,9 @@ odoo.define('web_dark_mode.dark_mode_toggle', [], function (require) {
 
         // Alternative: Check periodically for navbar
         var checkInterval = setInterval(function() {
-            if ($('.o_main_navbar .o_menu_systray').length && !$('.dark-mode-toggle').length) {
+            var navbar = document.querySelector('.o_main_navbar .o_menu_systray');
+            var toggle = document.querySelector('.dark-mode-toggle');
+            if (navbar && !toggle) {
                 addToggleButton();
             }
         }, 2000);
