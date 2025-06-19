@@ -30,6 +30,8 @@ $dark-info: #17a2b8;
     justify-content: center;
     min-width: 40px;
     height: 40px;
+    list-style: none;
+    text-decoration: none;
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);
@@ -44,6 +46,46 @@ $dark-info: #17a2b8;
     .toggle-icon {
         font-size: 18px;
         margin: 0;
+        display: inline-block;
+    }
+
+    .sr-only {
+        display: none;
+    }
+}
+
+// Ensure the list item containing the toggle has no bullets
+.o_mail_systray_item:has(.dark-mode-toggle) {
+    list-style: none;
+    
+    &::before {
+        display: none;
+    }
+    
+    &::after {
+        display: none;
+    }
+}
+
+// Additional fixes for any potential dots or bullets
+.o_mail_systray_item .dark-mode-toggle {
+    &::before,
+    &::after {
+        display: none !important;
+        content: none !important;
+    }
+}
+
+// Target the specific list item structure
+.o_menu_systray .o_mail_systray_item {
+    list-style: none !important;
+    
+    &:has(.dark-mode-toggle) {
+        &::before,
+        &::after {
+            display: none !important;
+            content: none !important;
+        }
     }
 }
 
