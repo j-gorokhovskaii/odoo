@@ -7,6 +7,183 @@ $o-brand-primary: $o-enterprise-primary-color;
 $o-brand-secondary: darken($o-enterprise-primary-color, 10%);
 $o-brand-odoo: $o-enterprise-primary-color;
 
+// Maximum specificity for login button - highest priority
+body .oe_login_buttons .btn.btn-primary,
+body .oe_login_buttons button.btn.btn-primary,
+body .oe_login_buttons button[type="submit"].btn.btn-primary,
+body .o_web_client .oe_login_buttons .btn.btn-primary,
+body .o_web_client .oe_login_buttons button.btn.btn-primary,
+body .o_web_client .oe_login_buttons button[type="submit"].btn.btn-primary,
+body .o_web_client:not(.o_logged_in) .oe_login_buttons .btn.btn-primary,
+body .o_web_client:not(.o_logged_in) .oe_login_buttons button.btn.btn-primary,
+body .o_web_client:not(.o_logged_in) .oe_login_buttons button[type="submit"].btn.btn-primary {
+    background-color: #29abe2 !important;
+    border-color: #29abe2 !important;
+    color: white !important;
+    
+    &:hover, &:focus, &:active {
+        background-color: darken(#29abe2, 10%) !important;
+        border-color: darken(#29abe2, 15%) !important;
+        color: white !important;
+    }
+    
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(41, 171, 226, 0.25) !important;
+    }
+}
+
+// Override CSS custom properties for buttons to use #29abe2
+.btn-fill-primary, 
+.btn-primary {
+    --btn-color: #FFFFFF !important;
+    --btn-bg: #29abe2 !important;
+    --btn-border-color: #29abe2 !important;
+    --btn-hover-color: #FFFFFF !important;
+    --btn-hover-bg: darken(#29abe2, 10%) !important;
+    --btn-hover-border-color: darken(#29abe2, 15%) !important;
+    --btn-focus-shadow-rgb: 41, 171, 226 !important;
+    --btn-active-color: #FFFFFF !important;
+    --btn-active-bg: darken(#29abe2, 15%) !important;
+    --btn-active-border-color: darken(#29abe2, 20%) !important;
+    --btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+    --btn-disabled-color: #FFFFFF !important;
+    --btn-disabled-bg: #29abe2 !important;
+    --btn-disabled-border-color: #29abe2 !important;
+}
+
+// Specific styling for login button container and button
+.oe_login_buttons {
+    .btn.btn-primary,
+    button.btn.btn-primary,
+    button[type="submit"].btn.btn-primary {
+        background-color: #29abe2 !important;
+        border-color: #29abe2 !important;
+        color: white !important;
+        
+        &:hover, &:focus, &:active {
+            background-color: darken(#29abe2, 10%) !important;
+            border-color: darken(#29abe2, 15%) !important;
+            color: white !important;
+        }
+        
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba(41, 171, 226, 0.25) !important;
+        }
+    }
+}
+
+// Login page styling
+.o_web_client.o_logged_in {
+    .o_main_navbar {
+        background-color: $o-enterprise-primary-color;
+    }
+}
+
+// Login page specific styling
+.o_web_client:not(.o_logged_in) {
+    background-color: #f8f9fa;
+    
+    // Override button CSS custom properties for login page
+    .btn-fill-primary, 
+    .btn-primary {
+        --btn-color: #FFFFFF !important;
+        --btn-bg: #29abe2 !important;
+        --btn-border-color: #29abe2 !important;
+        --btn-hover-color: #FFFFFF !important;
+        --btn-hover-bg: darken(#29abe2, 10%) !important;
+        --btn-hover-border-color: darken(#29abe2, 15%) !important;
+        --btn-focus-shadow-rgb: 41, 171, 226 !important;
+        --btn-active-color: #FFFFFF !important;
+        --btn-active-bg: darken(#29abe2, 15%) !important;
+        --btn-active-border-color: darken(#29abe2, 20%) !important;
+        --btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+        --btn-disabled-color: #FFFFFF !important;
+        --btn-disabled-bg: #29abe2 !important;
+        --btn-disabled-border-color: #29abe2 !important;
+    }
+    
+    // Specific styling for the login button container
+    .oe_login_buttons {
+        .btn.btn-primary,
+        button.btn.btn-primary,
+        button[type="submit"].btn.btn-primary {
+            background-color: #29abe2 !important;
+            border-color: #29abe2 !important;
+            color: white !important;
+            
+            &:hover, &:focus, &:active {
+                background-color: darken(#29abe2, 10%) !important;
+                border-color: darken(#29abe2, 15%) !important;
+                color: white !important;
+            }
+            
+            &:focus {
+                box-shadow: 0 0 0 0.2rem rgba(41, 171, 226, 0.25) !important;
+            }
+        }
+    }
+    
+    .o_login_container {
+        .o_login_box {
+            .o_login_header {
+                .o_login_logo {
+                    color: $o-enterprise-primary-color;
+                }
+            }
+            
+            .o_login_form {
+                .btn-primary {
+                    background-color: $o-enterprise-primary-color !important;
+                    border-color: darken($o-enterprise-primary-color, 5%) !important;
+                    color: white !important;
+                    
+                    &:hover, &:focus, &:active {
+                        background-color: darken($o-enterprise-primary-color, 10%) !important;
+                        border-color: darken($o-enterprise-primary-color, 15%) !important;
+                    }
+                }
+                
+                .form-control:focus {
+                    border-color: $o-enterprise-primary-color !important;
+                    box-shadow: 0 0 0 0.2rem rgba(41, 171, 226, 0.25) !important;
+                }
+            }
+        }
+    }
+}
+
+// Alternative login page selectors
+body.o_web_client {
+    .o_login_container,
+    .o_login_box,
+    .o_login_form {
+        .btn-primary,
+        .btn.btn-primary {
+            background-color: #29abe2 !important;
+            border-color: darken(#29abe2, 5%) !important;
+            color: white !important;
+            
+            &:hover, &:focus, &:active {
+                background-color: darken(#29abe2, 10%) !important;
+                border-color: darken(#29abe2, 15%) !important;
+            }
+        }
+        
+        .form-control:focus,
+        input:focus {
+            border-color: #29abe2 !important;
+            box-shadow: 0 0 0 0.2rem rgba(41, 171, 226, 0.25) !important;
+        }
+        
+        .o_login_header {
+            .o_login_logo,
+            .o_login_title {
+                color: #29abe2 !important;
+            }
+        }
+    }
+}
+
 // Navigation bar styling
 .o_main_navbar {
     background-color: $o-enterprise-primary-color;
