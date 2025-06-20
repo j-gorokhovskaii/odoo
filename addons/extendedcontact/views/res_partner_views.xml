@@ -7,9 +7,9 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <!-- Add all extended fields after the function field for individual contacts -->
+                <!-- Add basic extended fields after the function field for individual contacts -->
                 <xpath expr="//field[@name='function']" position="after">
-                    <!-- Basic Information Section -->
+                    <!-- Basic Information Section - Keep only essential fields in main form -->
                     <group string="Basic Information" invisible="is_company">
                         <field name="birthdate" 
                                widget="date"
@@ -19,70 +19,6 @@
                                readonly="1"/>
                         <field name="gender"/>
                         <field name="marital_status"/>
-                    </group>
-
-                    <!-- Physical Characteristics Section -->
-                    <group string="Physical Characteristics" invisible="is_company">
-                        <field name="height" 
-                               widget="float"
-                               placeholder="e.g. 175.5"/>
-                        <field name="weight" 
-                               widget="float"
-                               placeholder="e.g. 70.5"/>
-                        <field name="build"/>
-                        <field name="complexion"/>
-                        <field name="eye_color"/>
-                        <field name="hair_color"/>
-                        <field name="hair_style"/>
-                        <field name="blood_type"/>
-                        <field name="distinguishing_features" 
-                               placeholder="e.g. Scar on left cheek, tattoo on right arm"/>
-                    </group>
-
-                    <!-- Demographics Section -->
-                    <group string="Demographics" invisible="is_company">
-                        <field name="ethnicity"/>
-                        <field name="race"/>
-                        <field name="primary_language"/>
-                        <field name="country_of_birth"/>
-                        <field name="citizenship_status"/>
-                    </group>
-
-                    <!-- Identification Section -->
-                    <group string="Identification" invisible="is_company">
-                        <field name="ssn" 
-                               placeholder="XXX-XX-XXXX"/>
-                        <field name="driver_license_number"/>
-                        <field name="driver_license_state"/>
-                        <field name="passport_number"/>
-                        <field name="passport_country"/>
-                    </group>
-
-                    <!-- Employment &amp; Education Section -->
-                    <group string="Employment &amp; Education" invisible="is_company">
-                        <field name="occupation"/>
-                        <field name="employer"/>
-                        <field name="education_level"/>
-                    </group>
-
-                    <!-- Military Service Section -->
-                    <group string="Military Service" invisible="is_company">
-                        <field name="military_service"/>
-                        <field name="military_branch" 
-                               invisible="not military_service"/>
-                    </group>
-
-                    <!-- Medical Information Section -->
-                    <group string="Medical Information" invisible="is_company">
-                        <field name="medical_conditions" 
-                               placeholder="e.g. Diabetes, allergies to penicillin"/>
-                    </group>
-
-                    <!-- Emergency Contact Section -->
-                    <group string="Emergency Contact" invisible="is_company">
-                        <field name="emergency_contact_name"/>
-                        <field name="emergency_contact_phone"/>
-                        <field name="emergency_contact_relationship"/>
                     </group>
                 </xpath>
             </field>
@@ -94,9 +30,9 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_simple_form"/>
             <field name="arch" type="xml">
-                <!-- Add all extended fields after the function field -->
+                <!-- Add basic extended fields after the function field -->
                 <xpath expr="//field[@name='function']" position="after">
-                    <!-- Basic Information Section -->
+                    <!-- Basic Information Section - Keep only essential fields in simple form -->
                     <group string="Basic Information" invisible="is_company">
                         <field name="birthdate" 
                                widget="date"
@@ -106,70 +42,6 @@
                                readonly="1"/>
                         <field name="gender"/>
                         <field name="marital_status"/>
-                    </group>
-
-                    <!-- Physical Characteristics Section -->
-                    <group string="Physical Characteristics" invisible="is_company">
-                        <field name="height" 
-                               widget="float"
-                               placeholder="e.g. 175.5"/>
-                        <field name="weight" 
-                               widget="float"
-                               placeholder="e.g. 70.5"/>
-                        <field name="build"/>
-                        <field name="complexion"/>
-                        <field name="eye_color"/>
-                        <field name="hair_color"/>
-                        <field name="hair_style"/>
-                        <field name="blood_type"/>
-                        <field name="distinguishing_features" 
-                               placeholder="e.g. Scar on left cheek, tattoo on right arm"/>
-                    </group>
-
-                    <!-- Demographics Section -->
-                    <group string="Demographics" invisible="is_company">
-                        <field name="ethnicity"/>
-                        <field name="race"/>
-                        <field name="primary_language"/>
-                        <field name="country_of_birth"/>
-                        <field name="citizenship_status"/>
-                    </group>
-
-                    <!-- Identification Section -->
-                    <group string="Identification" invisible="is_company">
-                        <field name="ssn" 
-                               placeholder="XXX-XX-XXXX"/>
-                        <field name="driver_license_number"/>
-                        <field name="driver_license_state"/>
-                        <field name="passport_number"/>
-                        <field name="passport_country"/>
-                    </group>
-
-                    <!-- Employment &amp; Education Section -->
-                    <group string="Employment &amp; Education" invisible="is_company">
-                        <field name="occupation"/>
-                        <field name="employer"/>
-                        <field name="education_level"/>
-                    </group>
-
-                    <!-- Military Service Section -->
-                    <group string="Military Service" invisible="is_company">
-                        <field name="military_service"/>
-                        <field name="military_branch" 
-                               invisible="not military_service"/>
-                    </group>
-
-                    <!-- Medical Information Section -->
-                    <group string="Medical Information" invisible="is_company">
-                        <field name="medical_conditions" 
-                               placeholder="e.g. Diabetes, allergies to penicillin"/>
-                    </group>
-
-                    <!-- Emergency Contact Section -->
-                    <group string="Emergency Contact" invisible="is_company">
-                        <field name="emergency_contact_name"/>
-                        <field name="emergency_contact_phone"/>
-                        <field name="emergency_contact_relationship"/>
                     </group>
                 </xpath>
             </field>
@@ -362,6 +234,95 @@
                     <filter string="Military Service" 
                             name="military_service" 
                             domain="[('military_service', '=', True)]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Add new tab to the main partner form view -->
+        <record id="view_partner_form_inherit_extended_tab" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.extended.tab</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- Add new tab after Internal Notes tab -->
+                <xpath expr="//page[@name='internal_notes']" position="after">
+                    <page string="Extended Information" name="extended_information" invisible="is_company">
+                        <!-- Basic Information Section -->
+                        <group string="Basic Information">
+                            <field name="birthdate" 
+                                   widget="date"
+                                   options="{'format': 'dd/mm/yyyy'}"
+                                   placeholder="e.g. 15/03/1990"/>
+                            <field name="age" 
+                                   readonly="1"/>
+                            <field name="gender"/>
+                            <field name="marital_status"/>
+                        </group>
+
+                        <!-- Physical Characteristics Section -->
+                        <group string="Physical Characteristics">
+                            <field name="height" 
+                                   widget="float"
+                                   placeholder="e.g. 175.5"/>
+                            <field name="weight" 
+                                   widget="float"
+                                   placeholder="e.g. 70.5"/>
+                            <field name="build"/>
+                            <field name="complexion"/>
+                            <field name="eye_color"/>
+                            <field name="hair_color"/>
+                            <field name="hair_style"/>
+                            <field name="blood_type"/>
+                            <field name="distinguishing_features" 
+                                   placeholder="e.g. Scar on left cheek, tattoo on right arm"/>
+                        </group>
+
+                        <!-- Demographics Section -->
+                        <group string="Demographics">
+                            <field name="ethnicity"/>
+                            <field name="race"/>
+                            <field name="primary_language"/>
+                            <field name="country_of_birth"/>
+                            <field name="citizenship_status"/>
+                        </group>
+
+                        <!-- Identification Section -->
+                        <group string="Identification">
+                            <field name="ssn" 
+                                   placeholder="XXX-XX-XXXX"/>
+                            <field name="driver_license_number"/>
+                            <field name="driver_license_state"/>
+                            <field name="passport_number"/>
+                            <field name="passport_country"/>
+                        </group>
+
+                        <!-- Employment &amp; Education Section -->
+                        <group string="Employment &amp; Education">
+                            <field name="occupation"/>
+                            <field name="employer"/>
+                            <field name="education_level"/>
+                        </group>
+
+                        <!-- Military Service Section -->
+                        <group string="Military Service">
+                            <field name="military_service"/>
+                            <field name="military_branch" 
+                                   invisible="not military_service"/>
+                        </group>
+
+                        <!-- Medical Information Section -->
+                        <group string="Medical Information">
+                            <field name="medical_conditions" 
+                                   placeholder="e.g. Diabetes, allergies to penicillin"/>
+                        </group>
+
+                        <!-- Emergency Contact Section -->
+                        <group string="Emergency Contact">
+                            <field name="emergency_contact_name"/>
+                            <field name="emergency_contact_phone"/>
+                            <field name="emergency_contact_relationship"/>
+                        </group>
+                    </page>
                 </xpath>
             </field>
         </record>
