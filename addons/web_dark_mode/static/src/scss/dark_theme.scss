@@ -1277,21 +1277,259 @@ body.dark-mode {
     .modal-content {
         background-color: $dark-bg-secondary !important;
         border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
 
         .modal-header {
-            background-color: $dark-bg-tertiary !important;
+            background-color: $dark-bg-secondary !important;
             border-bottom: 1px solid $dark-border !important;
             color: $dark-text-primary !important;
+
+            .modal-title {
+                color: $dark-text-primary !important;
+            }
+
+            .btn-close {
+                background-color: transparent !important;
+                border: none !important;
+                color: $dark-text-secondary !important;
+                filter: invert(1) grayscale(100%) brightness(200%) !important;
+
+                &:hover {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                }
+
+                &:focus {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+            }
         }
 
         .modal-body {
             background-color: $dark-bg-secondary !important;
             color: $dark-text-primary !important;
+
+            // Form view within modal
+            .o_form_view {
+                background-color: $dark-bg-secondary !important;
+                color: $dark-text-primary !important;
+
+                .o_form_renderer {
+                    background-color: $dark-bg-secondary !important;
+                    color: $dark-text-primary !important;
+                }
+
+                // Title section
+                .oe_title {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+
+                    .o_form_label {
+                        color: $dark-text-primary !important;
+                        font-weight: 500 !important;
+                    }
+
+                    h1 {
+                        color: $dark-text-primary !important;
+                    }
+
+                    // Project name input
+                    .o_field_widget.o_field_char.o_project_name {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .o_input {
+                            background-color: $dark-bg-tertiary !important;
+                            border: 1px solid $dark-border !important;
+                            color: $dark-text-primary !important;
+
+                            &::placeholder {
+                                color: $dark-text-muted !important;
+                            }
+
+                            &:focus {
+                                background-color: $dark-bg-tertiary !important;
+                                border-color: $dark-accent !important;
+                                color: $dark-text-primary !important;
+                                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                            }
+                        }
+                    }
+                }
+
+                // Settings container
+                .o_settings_container {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+                }
+
+                // Alias section
+                [name="alias_def"] {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+
+                    .o_form_label {
+                        color: $dark-text-primary !important;
+                        font-weight: 500 !important;
+                    }
+
+                    // Alias name input
+                    .o_field_widget.o_field_char {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .o_input {
+                            background-color: $dark-bg-tertiary !important;
+                            border: 1px solid $dark-border !important;
+                            color: $dark-text-primary !important;
+
+                            &::placeholder {
+                                color: $dark-text-muted !important;
+                            }
+
+                            &:focus {
+                                background-color: $dark-bg-tertiary !important;
+                                border-color: $dark-accent !important;
+                                color: $dark-text-primary !important;
+                                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                            }
+                        }
+                    }
+
+                    // Many2one field (domain selection)
+                    .o_field_widget.o_field_many2one {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .o_field_many2one_selection {
+                            background-color: transparent !important;
+                            color: $dark-text-primary !important;
+
+                            .o_input_dropdown {
+                                background-color: transparent !important;
+                                color: $dark-text-primary !important;
+
+                                .o-autocomplete {
+                                    background-color: transparent !important;
+                                    color: $dark-text-primary !important;
+
+                                    .o-autocomplete--input {
+                                        background-color: $dark-bg-tertiary !important;
+                                        border: 1px solid $dark-border !important;
+                                        color: $dark-text-primary !important;
+
+                                        &::placeholder {
+                                            color: $dark-text-muted !important;
+                                        }
+
+                                        &:focus {
+                                            background-color: $dark-bg-tertiary !important;
+                                            border-color: $dark-accent !important;
+                                            color: $dark-text-primary !important;
+                                            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                                        }
+                                    }
+                                }
+
+                                .o_dropdown_button {
+                                    background-color: $dark-bg-tertiary !important;
+                                    border: 1px solid $dark-border !important;
+                                    color: $dark-text-secondary !important;
+
+                                    &:hover {
+                                        background-color: $dark-bg-primary !important;
+                                        color: $dark-text-primary !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // Text info tooltip
+                    .text-info {
+                        color: $dark-info !important;
+                        background-color: transparent !important;
+                    }
+                }
+            }
         }
 
         .modal-footer {
-            background-color: $dark-bg-tertiary !important;
+            background-color: $dark-bg-secondary !important;
             border-top: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+
+            // Primary buttons
+            .btn-primary {
+                background-color: $dark-accent !important;
+                border-color: $dark-accent !important;
+                color: white !important;
+
+                &:hover {
+                    background-color: $dark-accent-hover !important;
+                    border-color: $dark-accent-hover !important;
+                }
+
+                &:focus {
+                    background-color: $dark-accent-hover !important;
+                    border-color: $dark-accent-hover !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+
+                span {
+                    color: white !important;
+                }
+            }
+
+            // Secondary buttons
+            .btn-secondary {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-border !important;
+                color: $dark-text-primary !important;
+
+                &:hover {
+                    background-color: $dark-bg-primary !important;
+                    border-color: $dark-border-light !important;
+                }
+
+                &:focus {
+                    background-color: $dark-bg-primary !important;
+                    border-color: $dark-accent !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+
+                span {
+                    color: $dark-text-primary !important;
+                }
+            }
+        }
+    }
+
+    // Modal backdrop
+    .modal-backdrop {
+        background-color: rgba(0, 0, 0, 0.5) !important;
+    }
+
+    // Dropdown menus in modals
+    .modal-content .dropdown-menu {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+
+        .dropdown-item {
+            color: $dark-text-primary !important;
+            background-color: transparent !important;
+
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+
+            &:focus {
+                background-color: $dark-bg-tertiary !important;
+                color: $dark-text-primary !important;
+            }
         }
     }
 
@@ -1860,6 +2098,362 @@ body.dark-mode {
         .o-mail-Chatter-content {
             background-color: $dark-bg-secondary !important;
             color: $dark-text-primary !important;
+        }
+    }
+
+    // Search view styling for dark mode
+    .o_searchview {
+        background-color: $dark-bg-tertiary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+
+        &:focus-within {
+            border-color: $dark-accent !important;
+            color: $dark-text-primary !important;
+
+            + .o_searchview_dropdown_toggler {
+                border-top-color: $dark-accent !important;
+                border-right-color: $dark-accent !important;
+                border-bottom-color: $dark-accent !important;
+            }
+        }
+
+        .o_searchview_input {
+            background-color: transparent !important;
+            border: none !important;
+            color: $dark-text-primary !important;
+            appearance: none !important;
+
+            &::placeholder {
+                color: $dark-text-muted !important;
+            }
+
+            &:focus {
+                background-color: transparent !important;
+                border: none !important;
+                color: $dark-text-primary !important;
+                outline: none !important;
+                box-shadow: none !important;
+            }
+        }
+
+        .o_searchview_icon {
+            color: $dark-text-secondary !important;
+        }
+
+        .o_searchview_input_container {
+            background-color: transparent !important;
+        }
+    }
+
+    // Search dropdown toggler
+    .o_searchview_dropdown_toggler {
+        background-color: $dark-bg-tertiary !important;
+        border: 1px solid $dark-border !important;
+        border-left: none !important;
+        color: $dark-text-secondary !important;
+
+        &:hover {
+            background-color: $dark-bg-primary !important;
+            color: $dark-text-primary !important;
+        }
+
+        &:focus {
+            background-color: $dark-bg-primary !important;
+            color: $dark-text-primary !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+        }
+    }
+
+    // Search autocomplete dropdown
+    .o_searchview_autocomplete {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+
+        .o_menu_item {
+            color: $dark-text-primary !important;
+            background-color: transparent !important;
+
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+
+            a {
+                color: $dark-text-primary !important;
+            }
+        }
+    }
+
+    // Control panel search view
+    .o_cp_searchview {
+        .o_searchview {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+
+            .o_searchview_input {
+                background-color: transparent !important;
+                border: none !important;
+                color: $dark-text-primary !important;
+
+                &::placeholder {
+                    color: $dark-text-muted !important;
+                }
+
+                &:focus {
+                    background-color: transparent !important;
+                    border: none !important;
+                    color: $dark-text-primary !important;
+                    outline: none !important;
+                    box-shadow: none !important;
+                }
+            }
+        }
+    }
+
+    // Kanban view styling for dark mode
+    .o_kanban_renderer {
+        background-color: $dark-bg-primary !important;
+        color: $dark-text-primary !important;
+
+        // Kanban records (cards)
+        .o_kanban_record {
+            background-color: $dark-bg-secondary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            transition: all 0.3s ease !important;
+
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-border-light !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+            }
+
+            &:focus {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                outline: none !important;
+            }
+
+            // Kanban aside (image section)
+            .o_kanban_aside_full {
+                background-color: transparent !important;
+                color: $dark-text-primary !important;
+
+                .o_kanban_image_fill {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+
+                    .o_field_widget.o_field_image {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .d-inline-block {
+                            background-color: transparent !important;
+                            color: $dark-text-primary !important;
+
+                            .img {
+                                background-color: transparent !important;
+                                border-radius: 4px !important;
+                            }
+                        }
+                    }
+                }
+
+                // Direct image field (without image_fill wrapper)
+                .o_field_widget.o_field_image {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+
+                    .d-inline-block {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .img {
+                            background-color: transparent !important;
+                            border-radius: 4px !important;
+                        }
+                    }
+                }
+            }
+
+            // Kanban main content
+            main {
+                background-color: transparent !important;
+                color: $dark-text-primary !important;
+
+                // Name section
+                .mb-1 {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+
+                    // Contact name
+                    .fw-bold.fs-5 {
+                        color: $dark-text-primary !important;
+                        font-weight: 600 !important;
+                    }
+
+                    // Tags section
+                    .o_field_widget.o_field_many2many_tags {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .d-flex.flex-wrap.gap-1 {
+                            background-color: transparent !important;
+                            color: $dark-text-primary !important;
+                        }
+                    }
+                }
+
+                // Email and other text
+                .text-truncate {
+                    color: $dark-text-secondary !important;
+                }
+
+                // Additional info (like country)
+                div {
+                    color: $dark-text-secondary !important;
+
+                    span {
+                        color: $dark-text-secondary !important;
+                    }
+                }
+
+                // Footer section
+                footer {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+
+                    // Activity button
+                    .o_field_widget.o_field_kanban_activity {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .o-mail-ActivityButton {
+                            background-color: transparent !important;
+                            border: none !important;
+                            color: $dark-text-secondary !important;
+                            padding: 4px 8px !important;
+                            border-radius: 4px !important;
+                            transition: all 0.3s ease !important;
+
+                            &:hover {
+                                background-color: $dark-bg-tertiary !important;
+                                color: $dark-text-primary !important;
+                            }
+
+                            &:focus {
+                                background-color: $dark-bg-tertiary !important;
+                                color: $dark-text-primary !important;
+                                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                            }
+
+                            i.fa.fa-fw.fa-lg.fa-clock-o {
+                                color: inherit !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Ghost records (empty placeholders)
+        .o_kanban_record.o_kanban_ghost {
+            background-color: transparent !important;
+            border: 2px dashed $dark-border !important;
+            color: transparent !important;
+
+            &:hover {
+                border-color: $dark-border-light !important;
+            }
+        }
+
+        // Grouped kanban
+        &.o_kanban_grouped {
+            .o_kanban_group {
+                background-color: $dark-bg-secondary !important;
+                border: 1px solid $dark-border !important;
+                color: $dark-text-primary !important;
+
+                .o_kanban_group_header {
+                    background-color: $dark-bg-tertiary !important;
+                    border-bottom: 1px solid $dark-border !important;
+                    color: $dark-text-primary !important;
+
+                    .o_kanban_group_title {
+                        color: $dark-text-primary !important;
+                        font-weight: 600 !important;
+                    }
+
+                    .o_kanban_group_counter {
+                        color: $dark-text-secondary !important;
+                        background-color: $dark-bg-primary !important;
+                    }
+                }
+
+                .o_kanban_group_content {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+                }
+            }
+        }
+
+        // Ungrouped kanban (like contacts)
+        &.o_kanban_ungrouped {
+            background-color: $dark-bg-primary !important;
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Specific styling for contact kanban cards
+    .o_kanban_renderer .o_kanban_record {
+        // Contact name styling
+        .fw-bold.fs-5 {
+            color: $dark-text-primary !important;
+            font-weight: 600 !important;
+        }
+
+        // Email styling
+        .text-truncate {
+            color: $dark-text-secondary !important;
+        }
+
+        // Country/location styling
+        div > span {
+            color: $dark-text-secondary !important;
+        }
+
+        // Activity button styling
+        .o-mail-ActivityButton {
+            i.fa.fa-fw.fa-lg.fa-clock-o.btn-link.text-dark {
+                color: $dark-text-secondary !important;
+            }
+        }
+    }
+
+    // Kanban quick create
+    .o_kanban_quick_create {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+
+        .o_kanban_quick_create_input {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+
+            &::placeholder {
+                color: $dark-text-muted !important;
+            }
+
+            &:focus {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-accent !important;
+                color: $dark-text-primary !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
         }
     }
 }
