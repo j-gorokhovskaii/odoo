@@ -465,8 +465,17 @@ body.dark-mode {
     .o_list_view {
         background-color: $dark-bg-primary !important;
 
+        .o_list_renderer {
+            background-color: $dark-bg-primary !important;
+        }
+        
+        .table-responsive {
+            background-color: $dark-bg-primary !important;
+        }
+
         .o_list_table {
             background-color: $dark-bg-secondary !important;
+            border-color: $dark-border !important;
 
             thead {
                 background-color: $dark-bg-tertiary !important;
@@ -478,6 +487,8 @@ body.dark-mode {
             }
 
             tbody {
+                background-color: $dark-bg-secondary !important;
+                
                 > tr {
                     background-color: $dark-bg-secondary !important;
                     color: $dark-text-primary !important;
@@ -492,6 +503,387 @@ body.dark-mode {
                     }
                 }
             }
+            
+            // Table borders and structure
+            border-collapse: collapse !important;
+            
+            // Ensure all table cells have proper styling
+            td, th {
+                border-color: $dark-border-light !important;
+                color: $dark-text-primary !important;
+            }
+            
+            // Override Bootstrap table classes
+            &.table {
+                background-color: $dark-bg-secondary !important;
+                color: $dark-text-primary !important;
+                
+                &.table-hover {
+                    tbody tr:hover {
+                        background-color: $dark-bg-tertiary !important;
+                        color: $dark-text-primary !important;
+                    }
+                }
+                
+                &.table-striped {
+                    tbody tr:nth-of-type(odd) {
+                        background-color: $dark-bg-secondary !important;
+                        color: $dark-text-primary !important;
+                    }
+                    
+                    tbody tr:nth-of-type(even) {
+                        background-color: $dark-bg-tertiary !important;
+                        color: $dark-text-primary !important;
+                    }
+                }
+            }
+        }
+    }
+
+    // Specific styling for contacts list view
+    .o_list_view {
+        // Ensure tbody has proper dark styling
+        .o_list_table tbody.ui-sortable {
+            background-color: $dark-bg-secondary !important;
+            
+            .o_data_row {
+                background-color: $dark-bg-secondary !important;
+                color: $dark-text-primary !important;
+                border-bottom: 1px solid $dark-border-light !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                // Data cells
+                .o_data_cell {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+                    border-bottom: 1px solid $dark-border-light !important;
+                    
+                    // Cursor pointer cells
+                    &.cursor-pointer {
+                        color: $dark-text-primary !important;
+                        
+                        &:hover {
+                            background-color: $dark-bg-tertiary !important;
+                        }
+                    }
+                    
+                    // Specific cell types
+                    &.o_list_char {
+                        color: $dark-text-primary !important;
+                    }
+                    
+                    &.o_list_many2one {
+                        color: $dark-text-primary !important;
+                    }
+                    
+                    &.o_list_activity_cell {
+                        color: $dark-text-primary !important;
+                        
+                        .o-mail-ActivityButton {
+                            color: $dark-text-primary !important;
+                            background: none !important;
+                            border: none !important;
+                            
+                            &:hover {
+                                background-color: $dark-bg-tertiary !important;
+                            }
+                            
+                            i.fa {
+                                color: $dark-text-primary !important;
+                            }
+                        }
+                    }
+                    
+                    // Field widgets inside cells
+                    .o_field_widget {
+                        color: $dark-text-primary !important;
+                        
+                        &.o_field_many2one_avatar_user {
+                            color: $dark-text-primary !important;
+                            
+                            .o_avatar {
+                                background-color: $dark-bg-tertiary !important;
+                            }
+                            
+                            .o_m2o_avatar {
+                                background-color: $dark-bg-tertiary !important;
+                            }
+                        }
+                        
+                        &.o_field_list_activity {
+                            color: $dark-text-primary !important;
+                        }
+                        
+                        &.o_field_empty {
+                            color: $dark-text-muted !important;
+                        }
+                        
+                        &.o_field_many2one_avatar {
+                            color: $dark-text-primary !important;
+                            
+                            .o_avatar {
+                                background-color: $dark-bg-tertiary !important;
+                            }
+                        }
+                        
+                        &.o_field_many2one_avatar_user {
+                            color: $dark-text-primary !important;
+                            
+                            .o_avatar {
+                                background-color: $dark-bg-tertiary !important;
+                            }
+                            
+                            .o_m2o_avatar {
+                                background-color: $dark-bg-tertiary !important;
+                            }
+                        }
+                        
+                        &.o_field_list_activity {
+                            color: $dark-text-primary !important;
+                        }
+                        
+                        // Avatar styling
+                        .o_avatar {
+                            background-color: $dark-bg-tertiary !important;
+                        }
+                        
+                        .o_m2o_avatar {
+                            background-color: $dark-bg-tertiary !important;
+                        }
+                    }
+                }
+                
+                // Record selector (checkbox column)
+                .o_list_record_selector {
+                    background-color: transparent !important;
+                    
+                    .o-checkbox {
+                        .form-check-input {
+                            background-color: $dark-bg-tertiary !important;
+                            border-color: $dark-border !important;
+                            
+                            &:checked {
+                                background-color: $dark-accent !important;
+                                border-color: $dark-accent !important;
+                            }
+                        }
+                        
+                        .form-check-label {
+                            color: $dark-text-primary !important;
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Additional styling for specific contact list elements
+        .o_data_cell {
+            // Force LTR text direction
+            &.o_force_ltr {
+                color: $dark-text-primary !important;
+            }
+            
+            // Readonly modifier
+            &.o_readonly_modifier {
+                color: $dark-text-primary !important;
+            }
+            
+            // Many2one avatar user cell
+            &.o_many2one_avatar_user_cell {
+                .o_field_many2one_avatar_user {
+                    color: $dark-text-primary !important;
+                    
+                    .o_avatar {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+        }
+        
+        // Activity button styling
+        .o-mail-ActivityButton {
+            &.btn-dark {
+                color: $dark-text-primary !important;
+                background: none !important;
+                border: none !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                i.fa {
+                    color: $dark-text-primary !important;
+                }
+                
+                .o-mail-ListActivity-summary {
+                    color: $dark-text-primary !important;
+                }
+            }
+        }
+        
+        // Mail-related styling
+        .o-mail-ListActivity-summary {
+            color: $dark-text-primary !important;
+        }
+        
+        .o-mail-ActivityButton {
+            color: $dark-text-primary !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+        
+        // Button styling
+        .btn-link {
+            color: $dark-text-primary !important;
+            
+            &:hover {
+                color: $dark-accent !important;
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+        
+        .btn-dark {
+            color: $dark-text-primary !important;
+            background: none !important;
+            border: none !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+        
+        // Form styling
+        .form-check {
+            .form-check-input {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-border !important;
+                
+                &:checked {
+                    background-color: $dark-accent !important;
+                    border-color: $dark-accent !important;
+                }
+            }
+            
+            .form-check-label {
+                color: $dark-text-primary !important;
+            }
+        }
+        
+        // Accessibility and ARIA styling
+        [aria-label] {
+            color: $dark-text-primary !important;
+        }
+        
+        [title] {
+            color: $dark-text-primary !important;
+        }
+        
+        // Role-based styling
+        [role="img"] {
+            color: $dark-text-primary !important;
+        }
+        
+        // Name attribute styling
+        [name] {
+            color: $dark-text-primary !important;
+        }
+        
+        // Data attribute styling
+        [data-id] {
+            color: $dark-text-primary !important;
+        }
+        
+        [data-field-name] {
+            color: $dark-text-primary !important;
+        }
+        
+        // Specific name attributes
+        [name="complete_name"] {
+            color: $dark-text-primary !important;
+        }
+        
+        [name="phone"] {
+            color: $dark-text-primary !important;
+        }
+        
+        [name="email"] {
+            color: $dark-text-primary !important;
+        }
+        
+        [name="user_id"] {
+            color: $dark-text-primary !important;
+        }
+        
+        [name="activity_ids"] {
+            color: $dark-text-primary !important;
+        }
+        
+        [name="city"] {
+            color: $dark-text-primary !important;
+        }
+        
+        [name="country_id"] {
+            color: $dark-text-primary !important;
+        }
+        
+        // Print-specific styling
+        .w-print-0.p-print-0 {
+            background-color: transparent !important;
+        }
+        
+        // Utility classes
+        .user-select-none {
+            color: $dark-text-primary !important;
+        }
+        
+        // Data tooltip styling
+        [data-tooltip-delay] {
+            color: $dark-text-primary !important;
+        }
+        
+        // Tabindex elements
+        [tabindex] {
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                outline: 2px solid $dark-accent !important;
+                outline-offset: 2px !important;
+            }
+        }
+        
+        // D-flex and gap utilities
+        .d-flex {
+            color: $dark-text-primary !important;
+        }
+        
+        .align-items-center {
+            color: $dark-text-primary !important;
+        }
+        
+        .gap-1 {
+            color: $dark-text-primary !important;
+        }
+        
+        // Text utilities
+        .text-start {
+            color: $dark-text-primary !important;
+        }
+        
+        .text-truncate {
+            color: $dark-text-primary !important;
+        }
+        
+        .w-100 {
+            color: $dark-text-primary !important;
+        }
+        
+        .p-0 {
+            color: $dark-text-primary !important;
         }
     }
 
