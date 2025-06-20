@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Company Extended Information Tab View -->
+        <record id="view_partner_form_company_extended_info" model="ir.ui.view">
+            <field name="name">res.partner.form.company.extended.info</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- Add new tab after Internal Notes tab -->
+                <xpath expr="//page[@name='internal_notes']" position="after">
+                    <page string="Company Extended Information" name="company_extended_information" invisible="not is_company">
+                        <!-- Company Registration Information Section -->
+                        <group string="Registration Information" col="2">
+                            <field name="company_registration_number"/>
+                            <field name="company_registration_date"/>
+                            <field name="company_registration_authority"/>
+                            <field name="company_incorporation_date"/>
+                        </group>
+                        
+                        <!-- Tax Information Section -->
+                        <group string="Tax Information" col="2">
+                            <field name="company_tax_id"/>
+                            <field name="company_vat_number"/>
+                            <field name="company_tax_registration_date"/>
+                        </group>
+                        
+                        <!-- Business Classification Section -->
+                        <group string="Business Classification" col="2">
+                            <field name="company_industry"/>
+                            <field name="company_business_type"/>
+                            <field name="company_size"/>
+                            <field name="company_legal_structure"/>
+                        </group>
+                        
+                        <!-- Financial Information Section -->
+                        <group string="Financial Information" col="2">
+                            <field name="company_annual_revenue"/>
+                            <field name="company_employee_count"/>
+                            <field name="company_credit_rating"/>
+                        </group>
+                        
+                        <!-- Legal Information Section -->
+                        <group string="Legal Information" col="2">
+                            <field name="company_legal_representative"/>
+                            <field name="company_legal_representative_title"/>
+                        </group>
+                        
+                        <!-- Compliance Information Section -->
+                        <group string="Compliance Information" col="2">
+                            <field name="company_iso_certifications" widget="many2many_tags"/>
+                            <field name="company_compliance_status"/>
+                            <field name="company_industry_certifications" nolabel="1" colspan="2"/>
+                        </group>
+                        
+                        <!-- Social Media Information Section -->
+                        <group string="Social Media" col="2">
+                            <field name="company_website" widget="url"/>
+                            <field name="company_linkedin" widget="url"/>
+                            <field name="company_facebook" widget="url"/>
+                            <field name="company_twitter"/>
+                            <field name="company_instagram" widget="url"/>
+                        </group>
+                        
+                        <!-- Company Age Information Section -->
+                        <group string="Company Age" col="2">
+                            <field name="company_age_years" readonly="1"/>
+                            <field name="company_age_months" readonly="1"/>
+                            <field name="company_age_days" readonly="1"/>
+                            <field name="company_age_hours" readonly="1"/>
+                            <field name="company_next_anniversary_days" readonly="1"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_res_partner_filter_company_details" model="ir.ui.view">
+            <field name="name">res.partner.select.company.details</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='type_company']" position="after">
+                    <separator/>
+                    <filter string="Company Registration" name="has_registration" domain="[('company_registration_number', '!=', False)]"/>
+                    <filter string="Tax Information" name="has_tax_info" domain="[('company_tax_id', '!=', False)]"/>
+                    <filter string="Large Companies" name="large_companies" domain="[('company_size', 'in', ['large', 'enterprise'])]"/>
+                    <filter string="Small Companies" name="small_companies" domain="[('company_size', 'in', ['micro', 'small'])]"/>
+                    <filter string="Compliant Companies" name="compliant_companies" domain="[('company_compliance_status', '=', 'compliant')]"/>
+                    <filter string="Technology Industry" name="tech_companies" domain="[('company_industry', '=', 'technology')]"/>
+                    <filter string="Manufacturing Industry" name="manufacturing_companies" domain="[('company_industry', '=', 'manufacturing')]"/>
+                    <filter string="Finance Industry" name="finance_companies" domain="[('company_industry', '=', 'finance')]"/>
+                    <filter string="Healthcare Industry" name="healthcare_companies" domain="[('company_industry', '=', 'healthcare')]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Tree View -->
+        <record id="view_partner_tree_company_details" model="ir.ui.view">
+            <field name="name">res.partner.tree.company.details</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='email']" position="after">
+                    <field name="company_industry" optional="show" invisible="not is_company"/>
+                    <field name="company_size" optional="show" invisible="not is_company"/>
+                    <field name="company_employee_count" optional="show" invisible="not is_company"/>
+                    <field name="company_registration_number" optional="hide" invisible="not is_company"/>
+                    <field name="company_compliance_status" optional="hide" invisible="not is_company"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> 
