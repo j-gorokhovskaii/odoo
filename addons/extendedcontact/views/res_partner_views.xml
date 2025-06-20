@@ -58,8 +58,8 @@
                         <field name="passport_country"/>
                     </group>
 
-                    <!-- Employment & Education Section -->
-                    <group string="Employment & Education" invisible="is_company">
+                    <!-- Employment &amp; Education Section -->
+                    <group string="Employment &amp; Education" invisible="is_company">
                         <field name="occupation"/>
                         <field name="employer"/>
                         <field name="education_level"/>
@@ -145,8 +145,8 @@
                         <field name="passport_country"/>
                     </group>
 
-                    <!-- Employment & Education Section -->
-                    <group string="Employment & Education" invisible="is_company">
+                    <!-- Employment &amp; Education Section -->
+                    <group string="Employment &amp; Education" invisible="is_company">
                         <field name="occupation"/>
                         <field name="employer"/>
                         <field name="education_level"/>
