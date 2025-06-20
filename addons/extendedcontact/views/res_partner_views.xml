@@ -10,7 +10,7 @@
                 <!-- Add basic extended fields after the function field for individual contacts -->
                 <xpath expr="//field[@name='function']" position="after">
                     <!-- Basic Information Section - Keep only essential fields in main form -->
-                    <group string="Basic Information" invisible="is_company">
+                    <group string="Basic Information" invisible="is_company" col="2">
                         <field name="birthdate" 
                                widget="date"
                                options="{'format': 'dd/mm/yyyy'}"
@@ -20,6 +20,42 @@
                         <field name="gender"/>
                         <field name="marital_status"/>
                     </group>
+                </xpath>
+                
+                <!-- Update standard fields with proper placeholders and sizing -->
+                <xpath expr="//field[@name='function']" position="attributes">
+                    <attribute name="placeholder">e.g. Sales Director</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='phone']" position="attributes">
+                    <attribute name="widget">phone</attribute>
+                    <attribute name="options">{'enable_sms': false}</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='mobile']" position="attributes">
+                    <attribute name="widget">phone</attribute>
+                    <attribute name="options">{'enable_sms': false}</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='email']" position="attributes">
+                    <attribute name="widget">email</attribute>
+                    <attribute name="context">{'gravatar_image': True}</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='website']" position="attributes">
+                    <attribute name="widget">url</attribute>
+                    <attribute name="placeholder">e.g. https://www.odoo.com</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='title']" position="attributes">
+                    <attribute name="options">{'no_open': True}</attribute>
+                    <attribute name="placeholder">e.g. Mister</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='category_id']" position="attributes">
+                    <attribute name="widget">many2many_tags</attribute>
+                    <attribute name="options">{'color_field': 'color'}</attribute>
+                    <attribute name="placeholder">e.g. "B2B", "VIP", "Consulting", ...</attribute>
                 </xpath>
             </field>
         </record>
@@ -33,7 +69,7 @@
                 <!-- Add basic extended fields after the function field -->
                 <xpath expr="//field[@name='function']" position="after">
                     <!-- Basic Information Section - Keep only essential fields in simple form -->
-                    <group string="Basic Information" invisible="is_company">
+                    <group string="Basic Information" invisible="is_company" col="2">
                         <field name="birthdate" 
                                widget="date"
                                options="{'format': 'dd/mm/yyyy'}"
@@ -43,6 +79,26 @@
                         <field name="gender"/>
                         <field name="marital_status"/>
                     </group>
+                </xpath>
+                
+                <!-- Update standard fields with proper placeholders and sizing -->
+                <xpath expr="//field[@name='function']" position="attributes">
+                    <attribute name="placeholder">e.g. Sales Director</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='phone']" position="attributes">
+                    <attribute name="widget">phone</attribute>
+                    <attribute name="options">{'enable_sms': false}</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='mobile']" position="attributes">
+                    <attribute name="widget">phone</attribute>
+                    <attribute name="options">{'enable_sms': false}</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='email']" position="attributes">
+                    <attribute name="widget">email</attribute>
+                    <attribute name="context">{'gravatar_image': True}</attribute>
                 </xpath>
             </field>
         </record>
@@ -248,7 +304,7 @@
                 <xpath expr="//page[@name='internal_notes']" position="after">
                     <page string="Extended Information" name="extended_information" invisible="is_company">
                         <!-- Basic Information Section -->
-                        <group string="Basic Information">
+                        <group string="Basic Information" col="2">
                             <field name="birthdate" 
                                    widget="date"
                                    options="{'format': 'dd/mm/yyyy'}"
@@ -260,7 +316,7 @@
                         </group>
 
                         <!-- Physical Characteristics Section -->
-                        <group string="Physical Characteristics">
+                        <group string="Physical Characteristics" col="2">
                             <field name="height" 
                                    widget="float"
                                    placeholder="e.g. 175.5"/>
@@ -273,12 +329,17 @@
                             <field name="hair_color"/>
                             <field name="hair_style"/>
                             <field name="blood_type"/>
+                        </group>
+
+                        <!-- Distinguishing Features Section -->
+                        <group string="Distinguishing Features" col="1">
                             <field name="distinguishing_features" 
-                                   placeholder="e.g. Scar on left cheek, tattoo on right arm"/>
+                                   placeholder="e.g. Scar on left cheek, tattoo on right arm"
+                                   nolabel="1"/>
                         </group>
 
                         <!-- Demographics Section -->
-                        <group string="Demographics">
+                        <group string="Demographics" col="2">
                             <field name="ethnicity"/>
                             <field name="race"/>
                             <field name="primary_language"/>
@@ -287,7 +348,7 @@
                         </group>
 
                         <!-- Identification Section -->
-                        <group string="Identification">
+                        <group string="Identification" col="2">
                             <field name="ssn" 
                                    placeholder="XXX-XX-XXXX"/>
                             <field name="driver_license_number"/>
@@ -297,29 +358,33 @@
                         </group>
 
                         <!-- Employment &amp; Education Section -->
-                        <group string="Employment &amp; Education">
-                            <field name="occupation"/>
+                        <group string="Employment &amp; Education" col="2">
+                            <field name="occupation" 
+                                   placeholder="e.g. Sales Director"/>
                             <field name="employer"/>
                             <field name="education_level"/>
                         </group>
 
                         <!-- Military Service Section -->
-                        <group string="Military Service">
+                        <group string="Military Service" col="2">
                             <field name="military_service"/>
                             <field name="military_branch" 
                                    invisible="not military_service"/>
                         </group>
 
                         <!-- Medical Information Section -->
-                        <group string="Medical Information">
+                        <group string="Medical Information" col="1">
                             <field name="medical_conditions" 
-                                   placeholder="e.g. Diabetes, allergies to penicillin"/>
+                                   placeholder="e.g. Diabetes, allergies to penicillin"
+                                   nolabel="1"/>
                         </group>
 
                         <!-- Emergency Contact Section -->
-                        <group string="Emergency Contact">
+                        <group string="Emergency Contact" col="2">
                             <field name="emergency_contact_name"/>
-                            <field name="emergency_contact_phone"/>
+                            <field name="emergency_contact_phone" 
+                                   widget="phone"
+                                   options="{'enable_sms': false}"/>
                             <field name="emergency_contact_relationship"/>
                         </group>
                     </page>
