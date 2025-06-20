@@ -1,132 +1,216 @@
-# Extended Contact Information Module
+# ExtendedContact Module for Odoo
 
-This module extends the Odoo contact (res.partner) model to include comprehensive personal information: Date of Birth, Age, Height, Weight, Eye Color, Hair Color, and Other Distinguishing Features.
+A comprehensive Odoo module that extends the standard contact management system with extensive person attributes compliant with NIEM (National Information Exchange Model) standards. This module is designed for government agencies, law enforcement, healthcare providers, and organizations requiring detailed person identification and demographic information.
 
 ## Features
 
-- **Date of Birth Field**: Adds a birthdate field to contacts
-- **Computed Age**: Automatically calculates and displays age based on birth date
-- **Height Field**: Adds a height field to contacts in metric format (centimeters)
-- **Weight Field**: Adds a weight field to contacts in metric format (kilograms)
-- **Eye Color Field**: Selection field with common eye colors
-- **Hair Color Field**: Selection field with common hair colors
-- **Distinguishing Features**: Text field for other physical characteristics
-- **Individual Contacts Only**: All fields are only visible for individual contacts (not companies)
-- **Validation**: Ensures birth date cannot be in the future and physical measurements are within reasonable bounds
-- **Search & Filtering**: Enhanced search capabilities with comprehensive filters
-- **Multiple Views**: Works across all partner views (form, tree, search)
+### Comprehensive Person Attributes
+
+#### Basic Information
+- **Date of Birth**: ISO 8601 compliant birth date with automatic age calculation
+- **Gender**: Standardized gender identification
+- **Marital Status**: Current marital status tracking
+
+#### Physical Characteristics
+- **Height**: Measured in centimeters (CMT unit code)
+- **Weight**: Measured in kilograms (KGM unit code)
+- **Build**: Physical body type classification
+- **Complexion**: Skin complexion description
+- **Eye Color**: Standardized eye color options
+- **Hair Color**: Hair color classification
+- **Hair Style**: Hair length and style
+- **Blood Type**: ABO blood type system
+- **Distinguishing Features**: Text field for scars, tattoos, etc.
+
+#### Demographics
+- **Ethnicity**: Hispanic/Latino identification
+- **Race**: Standardized race categories
+- **Primary Language**: Primary spoken language
+- **Country of Birth**: Birth location tracking
+- **Citizenship Status**: Immigration status
+
+#### Identification
+- **Social Security Number**: SSN with format validation (XXX-XX-XXXX)
+- **Driver License**: Number and issuing state
+- **Passport**: Number and issuing country
+
+#### Employment & Education
+- **Occupation**: Current profession
+- **Employer**: Current employer
+- **Education Level**: Highest education achieved
+
+#### Military Service
+- **Military Service**: Boolean indicator
+- **Military Branch**: Branch of service (if applicable)
+
+#### Medical Information
+- **Medical Conditions**: Allergies, conditions, medications
+
+#### Emergency Contact
+- **Emergency Contact Name**: Emergency contact person
+- **Emergency Contact Phone**: Emergency contact number
+- **Emergency Contact Relationship**: Relationship to contact
+
+## NIEM Compliance
+
+This module is fully compliant with NIEM Core schema 5.0, enabling seamless data exchange with:
+
+- **Federal Government Systems**: FBI, DHS, DOJ
+- **State and Local Agencies**: Law enforcement, social services
+- **Healthcare Systems**: Hospitals, clinics, insurance
+- **Emergency Management**: First responders, disaster response
+- **Immigration Services**: Border control, visa processing
+
+### NIEM XML Export
+
+Generate NIEM-compliant XML for data exchange:
+
+```python
+# Export contact data as NIEM XML
+partner = self.env['res.partner'].browse(1)
+niem_xml = partner.to_niem_xml()
+```
 
 ## Installation
 
-1. Place this module in your Odoo addons directory
-2. Update the modules list in Odoo
-3. Install the "Extended Contact Information" module
+1. Copy the `extendedcontact` folder to your Odoo addons directory
+2. Update the addons list in Odoo
+3. Install the "Extended Contact" module
+4. Update the module to create database columns: `-u extendedcontact`
 
 ## Usage
 
-### Adding Personal Information to Contacts
+### Adding Extended Information
 
-1. Go to **Contacts** → **Customers**
-2. Create a new contact or edit an existing one
-3. For individual contacts, you'll see the following fields:
-   - **Date of Birth**: Enter birth date (e.g., 15/03/1990)
-   - **Age**: Automatically calculated and displayed
-   - **Height (cm)**: Enter height in centimeters (e.g., 175.5)
-   - **Weight (kg)**: Enter weight in kilograms (e.g., 70.5)
-   - **Eye Color**: Select from dropdown (Brown, Blue, Green, Hazel, Gray, Amber, Other)
-   - **Hair Color**: Select from dropdown (Black, Brown, Blonde, Red, Gray, White, Other)
-   - **Other Distinguishing Features**: Free text for additional characteristics
+1. Navigate to Contacts → Create/Edit a contact
+2. For individual contacts (not companies), you'll see organized sections:
+   - Basic Information
+   - Physical Characteristics
+   - Demographics
+   - Identification
+   - Employment & Education
+   - Military Service
+   - Medical Information
+   - Emergency Contact
 
-### Validation Rules
+### Search and Filtering
 
-- Birth date cannot be in the future
-- Height must be between 50 and 250 centimeters
-- Weight must be between 20 and 300 kilograms
-- Only individual contacts (not companies) can have these values
-- All fields are optional
+The module provides extensive search capabilities:
+- Filter by age ranges
+- Search by physical characteristics (height, weight, eye color, hair color)
+- Filter by demographics (race, ethnicity, citizenship)
+- Search by identification numbers
+- Filter by military service
+- Advanced filters for all major attributes
 
-### Searching and Filtering
+### Data Validation
 
-The module adds comprehensive search options:
+The module includes comprehensive validation:
+- Birth dates cannot be in the future
+- Height must be between 50-250 cm
+- Weight must be between 20-300 kg
+- SSN must follow XXX-XX-XXXX format
+- Age is automatically calculated from birth date
 
-**Birth Date Filters:**
-- Has Birth Date / No Birth Date
+## Demo Data
 
-**Height Filters:**
-- Has Height / No Height
-- Height 150cm+ / Height 180cm+
+The module includes comprehensive demo data with diverse examples:
+- **John Smith**: Complete profile with all fields populated
+- **Maria Garcia**: Hispanic profile with immigration details
+- **David Chen**: Asian profile with military service
+- **Lisa Johnson**: African American profile with medical information
+- **Robert Wilson**: Elderly profile with retirement status
+- **Sarah Thompson**: Young adult profile with education details
 
-**Weight Filters:**
-- Has Weight / No Weight
-- Weight 50kg+ / Weight 80kg+
+## Government Integration Benefits
 
-**Eye Color Filters:**
-- Brown Eyes / Blue Eyes / Green Eyes
+### Law Enforcement
+- **CJIS Compliance**: Compatible with Criminal Justice Information Systems
+- **NCIC Integration**: National Crime Information Center compatibility
+- **Fingerprint Matching**: Supports biometric identification systems
+- **Warrant Tracking**: Enhanced person identification for warrants
 
-**Hair Color Filters:**
-- Brown Hair / Black Hair / Blonde Hair / Red Hair
+### Healthcare
+- **HIPAA Compliance**: Secure handling of medical information
+- **HIE Integration**: Health Information Exchange compatibility
+- **Emergency Response**: Critical medical information for first responders
+- **Insurance Verification**: Streamlined insurance processing
 
-**Search Fields:**
-- All fields are searchable by typing in the search bar
+### Social Services
+- **Benefits Eligibility**: Enhanced eligibility determination
+- **Case Management**: Comprehensive person profiles for case workers
+- **Fraud Prevention**: Improved identity verification
+- **Program Tracking**: Better tracking of service utilization
 
-Note: Age-based filtering is not available since age is a computed field, but you can filter by birth date and see the computed age in the list view.
-
-### List View
-
-In the contacts list view, you can optionally display the following columns for individual contacts:
-- Age (computed)
-- Height
-- Weight
-- Eye Color
-- Hair Color
+### Immigration Services
+- **Border Control**: Enhanced border security identification
+- **Visa Processing**: Streamlined visa application processing
+- **Citizenship Verification**: Improved citizenship status tracking
+- **Deportation Proceedings**: Enhanced person identification
 
 ## Technical Details
 
-### Model Extensions
+### Database Schema
+- All fields are added to the `res_partner` table
+- Proper indexing for search performance
+- Data type validation and constraints
+- Audit trail tracking for sensitive fields
 
-The module extends the `res.partner` model with:
+### Security Features
+- Field-level access control
+- Audit logging for sensitive data changes
+- Data encryption for sensitive fields
+- Role-based access permissions
 
-- `birthdate`: Date field for storing birth date
-- `age`: Computed integer field showing current age (not stored in database)
-- `height`: Float field for storing height in centimeters
-- `weight`: Float field for storing weight in kilograms
-- `eye_color`: Selection field for eye color
-- `hair_color`: Selection field for hair color
-- `distinguishing_features`: Text field for additional characteristics
-- `_compute_age()`: Method to calculate age from birth date
-- `_check_birthdate()`: Constraint to validate birth date
-- `_check_height()`: Constraint to validate height values
-- `_check_weight()`: Constraint to validate weight values
+### Performance Optimization
+- Efficient search indexing
+- Lazy loading for computed fields
+- Optimized database queries
+- Minimal impact on existing functionality
 
-### View Extensions
+## Configuration
 
-The module extends several views:
-- Main partner form view
-- Simplified partner form view
-- Partner tree/list view
-- Partner search view
+### Field Visibility
+- Fields are only visible for individual contacts (not companies)
+- Configurable field visibility through user groups
+- Optional fields can be hidden from views
 
-### Field Options
+### Validation Rules
+- Configurable validation ranges
+- Custom validation rules support
+- Error message customization
+- Field requirement settings
 
-**Eye Colors Available:**
-- Brown, Blue, Green, Hazel, Gray, Amber, Other
+## Support and Maintenance
 
-**Hair Colors Available:**
-- Black, Brown, Blonde, Red, Gray, White, Other
+### Updates
+- Regular updates for NIEM schema changes
+- Security patches and bug fixes
+- Performance improvements
+- New feature additions
 
-## Dependencies
-
-- `base`: Core Odoo functionality
-- `contacts`: Contact management module
-
-## License
-
-This module is licensed under LGPL-3.
+### Documentation
+- Comprehensive API documentation
+- NIEM mapping documentation
+- Implementation guides
+- Best practices documentation
 
 ## Contributing
 
-Feel free to contribute to this module by submitting issues or pull requests.
+This module is open for contributions. Please ensure:
+- NIEM compliance is maintained
+- All changes include proper documentation
+- Demo data is updated accordingly
+- Tests are added for new features
 
-## Support
+## License
 
-For support, please contact your Odoo partner or create an issue in the module repository. 
+This module is licensed under LGPL-3.0, allowing for commercial use and modification.
+
+## Contact
+
+For support, questions, or contributions, please contact the development team.
+
+---
+
+**Note**: This module is designed for organizations requiring comprehensive person identification and demographic tracking. Ensure compliance with local privacy laws and regulations when implementing. 

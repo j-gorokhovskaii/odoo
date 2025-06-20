@@ -9,29 +9,81 @@
             <field name="arch" type="xml">
                 <!-- Add all extended fields after the function field for individual contacts -->
                 <xpath expr="//field[@name='function']" position="after">
-                    <field name="birthdate" 
-                           invisible="is_company" 
-                           widget="date"
-                           options="{'format': 'dd/mm/yyyy'}"
-                           placeholder="e.g. 15/03/1990"/>
-                    <field name="age" 
-                           invisible="is_company or not birthdate" 
-                           readonly="1"/>
-                    <field name="height" 
-                           invisible="is_company" 
-                           widget="float"
-                           placeholder="e.g. 175.5"/>
-                    <field name="weight" 
-                           invisible="is_company" 
-                           widget="float"
-                           placeholder="e.g. 70.5"/>
-                    <field name="eye_color" 
-                           invisible="is_company"/>
-                    <field name="hair_color" 
-                           invisible="is_company"/>
-                    <field name="distinguishing_features" 
-                           invisible="is_company" 
-                           placeholder="e.g. Scar on left cheek, tattoo on right arm"/>
+                    <!-- Basic Information Section -->
+                    <group string="Basic Information" invisible="is_company">
+                        <field name="birthdate" 
+                               widget="date"
+                               options="{'format': 'dd/mm/yyyy'}"
+                               placeholder="e.g. 15/03/1990"/>
+                        <field name="age" 
+                               readonly="1"/>
+                        <field name="gender"/>
+                        <field name="marital_status"/>
+                    </group>
+
+                    <!-- Physical Characteristics Section -->
+                    <group string="Physical Characteristics" invisible="is_company">
+                        <field name="height" 
+                               widget="float"
+                               placeholder="e.g. 175.5"/>
+                        <field name="weight" 
+                               widget="float"
+                               placeholder="e.g. 70.5"/>
+                        <field name="build"/>
+                        <field name="complexion"/>
+                        <field name="eye_color"/>
+                        <field name="hair_color"/>
+                        <field name="hair_style"/>
+                        <field name="blood_type"/>
+                        <field name="distinguishing_features" 
+                               placeholder="e.g. Scar on left cheek, tattoo on right arm"/>
+                    </group>
+
+                    <!-- Demographics Section -->
+                    <group string="Demographics" invisible="is_company">
+                        <field name="ethnicity"/>
+                        <field name="race"/>
+                        <field name="primary_language"/>
+                        <field name="country_of_birth"/>
+                        <field name="citizenship_status"/>
+                    </group>
+
+                    <!-- Identification Section -->
+                    <group string="Identification" invisible="is_company">
+                        <field name="ssn" 
+                               placeholder="XXX-XX-XXXX"/>
+                        <field name="driver_license_number"/>
+                        <field name="driver_license_state"/>
+                        <field name="passport_number"/>
+                        <field name="passport_country"/>
+                    </group>
+
+                    <!-- Employment & Education Section -->
+                    <group string="Employment & Education" invisible="is_company">
+                        <field name="occupation"/>
+                        <field name="employer"/>
+                        <field name="education_level"/>
+                    </group>
+
+                    <!-- Military Service Section -->
+                    <group string="Military Service" invisible="is_company">
+                        <field name="military_service"/>
+                        <field name="military_branch" 
+                               invisible="not military_service"/>
+                    </group>
+
+                    <!-- Medical Information Section -->
+                    <group string="Medical Information" invisible="is_company">
+                        <field name="medical_conditions" 
+                               placeholder="e.g. Diabetes, allergies to penicillin"/>
+                    </group>
+
+                    <!-- Emergency Contact Section -->
+                    <group string="Emergency Contact" invisible="is_company">
+                        <field name="emergency_contact_name"/>
+                        <field name="emergency_contact_phone"/>
+                        <field name="emergency_contact_relationship"/>
+                    </group>
                 </xpath>
             </field>
         </record>
@@ -44,29 +96,81 @@
             <field name="arch" type="xml">
                 <!-- Add all extended fields after the function field -->
                 <xpath expr="//field[@name='function']" position="after">
-                    <field name="birthdate" 
-                           invisible="is_company" 
-                           widget="date"
-                           options="{'format': 'dd/mm/yyyy'}"
-                           placeholder="e.g. 15/03/1990"/>
-                    <field name="age" 
-                           invisible="is_company or not birthdate" 
-                           readonly="1"/>
-                    <field name="height" 
-                           invisible="is_company" 
-                           widget="float"
-                           placeholder="e.g. 175.5"/>
-                    <field name="weight" 
-                           invisible="is_company" 
-                           widget="float"
-                           placeholder="e.g. 70.5"/>
-                    <field name="eye_color" 
-                           invisible="is_company"/>
-                    <field name="hair_color" 
-                           invisible="is_company"/>
-                    <field name="distinguishing_features" 
-                           invisible="is_company" 
-                           placeholder="e.g. Scar on left cheek, tattoo on right arm"/>
+                    <!-- Basic Information Section -->
+                    <group string="Basic Information" invisible="is_company">
+                        <field name="birthdate" 
+                               widget="date"
+                               options="{'format': 'dd/mm/yyyy'}"
+                               placeholder="e.g. 15/03/1990"/>
+                        <field name="age" 
+                               readonly="1"/>
+                        <field name="gender"/>
+                        <field name="marital_status"/>
+                    </group>
+
+                    <!-- Physical Characteristics Section -->
+                    <group string="Physical Characteristics" invisible="is_company">
+                        <field name="height" 
+                               widget="float"
+                               placeholder="e.g. 175.5"/>
+                        <field name="weight" 
+                               widget="float"
+                               placeholder="e.g. 70.5"/>
+                        <field name="build"/>
+                        <field name="complexion"/>
+                        <field name="eye_color"/>
+                        <field name="hair_color"/>
+                        <field name="hair_style"/>
+                        <field name="blood_type"/>
+                        <field name="distinguishing_features" 
+                               placeholder="e.g. Scar on left cheek, tattoo on right arm"/>
+                    </group>
+
+                    <!-- Demographics Section -->
+                    <group string="Demographics" invisible="is_company">
+                        <field name="ethnicity"/>
+                        <field name="race"/>
+                        <field name="primary_language"/>
+                        <field name="country_of_birth"/>
+                        <field name="citizenship_status"/>
+                    </group>
+
+                    <!-- Identification Section -->
+                    <group string="Identification" invisible="is_company">
+                        <field name="ssn" 
+                               placeholder="XXX-XX-XXXX"/>
+                        <field name="driver_license_number"/>
+                        <field name="driver_license_state"/>
+                        <field name="passport_number"/>
+                        <field name="passport_country"/>
+                    </group>
+
+                    <!-- Employment & Education Section -->
+                    <group string="Employment & Education" invisible="is_company">
+                        <field name="occupation"/>
+                        <field name="employer"/>
+                        <field name="education_level"/>
+                    </group>
+
+                    <!-- Military Service Section -->
+                    <group string="Military Service" invisible="is_company">
+                        <field name="military_service"/>
+                        <field name="military_branch" 
+                               invisible="not military_service"/>
+                    </group>
+
+                    <!-- Medical Information Section -->
+                    <group string="Medical Information" invisible="is_company">
+                        <field name="medical_conditions" 
+                               placeholder="e.g. Diabetes, allergies to penicillin"/>
+                    </group>
+
+                    <!-- Emergency Contact Section -->
+                    <group string="Emergency Contact" invisible="is_company">
+                        <field name="emergency_contact_name"/>
+                        <field name="emergency_contact_phone"/>
+                        <field name="emergency_contact_relationship"/>
+                    </group>
                 </xpath>
             </field>
         </record>
@@ -82,6 +186,9 @@
                     <field name="age" 
                            optional="hide" 
                            invisible="is_company"/>
+                    <field name="gender" 
+                           optional="hide" 
+                           invisible="is_company"/>
                     <field name="height" 
                            optional="hide" 
                            invisible="is_company"/>
@@ -92,6 +199,15 @@
                            optional="hide" 
                            invisible="is_company"/>
                     <field name="hair_color" 
+                           optional="hide" 
+                           invisible="is_company"/>
+                    <field name="race" 
+                           optional="hide" 
+                           invisible="is_company"/>
+                    <field name="occupation" 
+                           optional="hide" 
+                           invisible="is_company"/>
+                    <field name="citizenship_status" 
                            optional="hide" 
                            invisible="is_company"/>
                 </xpath>
@@ -108,6 +224,8 @@
                 <xpath expr="//field[@name='category_id']" position="after">
                     <field name="birthdate" 
                            filter_domain="[('birthdate', 'ilike', self)]"/>
+                    <field name="gender" 
+                           filter_domain="[('gender', 'ilike', self)]"/>
                     <field name="height" 
                            filter_domain="[('height', 'ilike', self)]"/>
                     <field name="weight" 
@@ -116,6 +234,14 @@
                            filter_domain="[('eye_color', 'ilike', self)]"/>
                     <field name="hair_color" 
                            filter_domain="[('hair_color', 'ilike', self)]"/>
+                    <field name="race" 
+                           filter_domain="[('race', 'ilike', self)]"/>
+                    <field name="ethnicity" 
+                           filter_domain="[('ethnicity', 'ilike', self)]"/>
+                    <field name="occupation" 
+                           filter_domain="[('occupation', 'ilike', self)]"/>
+                    <field name="citizenship_status" 
+                           filter_domain="[('citizenship_status', 'ilike', self)]"/>
                     <field name="distinguishing_features" 
                            filter_domain="[('distinguishing_features', 'ilike', self)]"/>
                 </xpath>
@@ -165,8 +291,19 @@
                             domain="[('weight', '>=', 80)]"/>
                 </xpath>
 
-                <!-- Add eye color filters -->
+                <!-- Add gender filters -->
                 <xpath expr="//filter[@name='weight_80_plus']" position="after">
+                    <separator/>
+                    <filter string="Male" 
+                            name="male" 
+                            domain="[('gender', '=', 'male')]"/>
+                    <filter string="Female" 
+                            name="female" 
+                            domain="[('gender', '=', 'female')]"/>
+                </xpath>
+
+                <!-- Add eye color filters -->
+                <xpath expr="//filter[@name='female']" position="after">
                     <separator/>
                     <filter string="Brown Eyes" 
                             name="brown_eyes" 
@@ -194,6 +331,37 @@
                     <filter string="Red Hair" 
                             name="red_hair" 
                             domain="[('hair_color', '=', 'red')]"/>
+                </xpath>
+
+                <!-- Add race filters -->
+                <xpath expr="//filter[@name='red_hair']" position="after">
+                    <separator/>
+                    <filter string="White" 
+                            name="white_race" 
+                            domain="[('race', '=', 'white')]"/>
+                    <filter string="Black" 
+                            name="black_race" 
+                            domain="[('race', '=', 'black')]"/>
+                    <filter string="Asian" 
+                            name="asian_race" 
+                            domain="[('race', '=', 'asian')]"/>
+                    <filter string="Hispanic" 
+                            name="hispanic_ethnicity" 
+                            domain="[('ethnicity', '=', 'hispanic')]"/>
+                </xpath>
+
+                <!-- Add citizenship filters -->
+                <xpath expr="//filter[@name='hispanic_ethnicity']" position="after">
+                    <separator/>
+                    <filter string="U.S. Citizen" 
+                            name="us_citizen" 
+                            domain="[('citizenship_status', '=', 'citizen')]"/>
+                    <filter string="Permanent Resident" 
+                            name="permanent_resident" 
+                            domain="[('citizenship_status', '=', 'permanent_resident')]"/>
+                    <filter string="Military Service" 
+                            name="military_service" 
+                            domain="[('military_service', '=', True)]"/>
                 </xpath>
             </field>
         </record>
