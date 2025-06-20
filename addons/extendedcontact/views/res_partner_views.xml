@@ -7,30 +7,19 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <!-- Add basic extended fields after the function field for individual contacts -->
-                <xpath expr="//field[@name='function']" position="after">
-                    <!-- Basic Information Section - Keep only essential fields in main form -->
-                    <group string="Basic Information" invisible="is_company" col="2">
-                        <field name="birthdate" 
-                               widget="date"
-                               options="{'format': 'dd/mm/yyyy'}"
-                               placeholder="e.g. 15/03/1990"/>
-                        <field name="age" 
-                               readonly="1"/>
-                        <field name="gender"/>
-                        <field name="marital_status"/>
-                        <field name="phone" 
-                               widget="phone"
-                               options="{'enable_sms': false}"/>
-                        <field name="mobile" 
-                               widget="phone"
-                               options="{'enable_sms': false}"/>
-                    </group>
-                </xpath>
-                
                 <!-- Update standard fields with proper placeholders and sizing -->
                 <xpath expr="//field[@name='function']" position="attributes">
                     <attribute name="placeholder">e.g. Sales Director</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='phone']" position="attributes">
+                    <attribute name="widget">phone</attribute>
+                    <attribute name="options">{'enable_sms': false}</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='mobile']" position="attributes">
+                    <attribute name="widget">phone</attribute>
+                    <attribute name="options">{'enable_sms': false}</attribute>
                 </xpath>
                 
                 <xpath expr="//field[@name='email']" position="attributes">
@@ -62,30 +51,19 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_simple_form"/>
             <field name="arch" type="xml">
-                <!-- Add basic extended fields after the function field -->
-                <xpath expr="//field[@name='function']" position="after">
-                    <!-- Basic Information Section - Keep only essential fields in simple form -->
-                    <group string="Basic Information" invisible="is_company" col="2">
-                        <field name="birthdate" 
-                               widget="date"
-                               options="{'format': 'dd/mm/yyyy'}"
-                               placeholder="e.g. 15/03/1990"/>
-                        <field name="age" 
-                               readonly="1"/>
-                        <field name="gender"/>
-                        <field name="marital_status"/>
-                        <field name="phone" 
-                               widget="phone"
-                               options="{'enable_sms': false}"/>
-                        <field name="mobile" 
-                               widget="phone"
-                               options="{'enable_sms': false}"/>
-                    </group>
-                </xpath>
-                
                 <!-- Update standard fields with proper placeholders and sizing -->
                 <xpath expr="//field[@name='function']" position="attributes">
                     <attribute name="placeholder">e.g. Sales Director</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='phone']" position="attributes">
+                    <attribute name="widget">phone</attribute>
+                    <attribute name="options">{'enable_sms': false}</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='mobile']" position="attributes">
+                    <attribute name="widget">phone</attribute>
+                    <attribute name="options">{'enable_sms': false}</attribute>
                 </xpath>
                 
                 <xpath expr="//field[@name='email']" position="attributes">
@@ -297,20 +275,26 @@
                     <page string="Extended Information" name="extended_information" invisible="is_company">
                         <!-- Basic Information Section -->
                         <group string="Basic Information" col="2">
-                            <field name="birthdate" 
-                                   widget="date"
-                                   options="{'format': 'dd/mm/yyyy'}"
-                                   placeholder="e.g. 15/03/1990"/>
-                            <field name="age" 
-                                   readonly="1"/>
-                            <field name="gender"/>
-                            <field name="marital_status"/>
                             <field name="phone" 
                                    widget="phone"
                                    options="{'enable_sms': false}"/>
                             <field name="mobile" 
                                    widget="phone"
                                    options="{'enable_sms': false}"/>
+                            <field name="birthdate" 
+                                   widget="date"
+                                   options="{'format': 'dd/mm/yyyy'}"
+                                   placeholder="e.g. 15/03/1990"/>
+                            <field name="age" 
+                                   readonly="1"/>
+                            <field name="age_detailed" 
+                                   readonly="1"
+                                   string="Detailed Age"/>
+                            <field name="birthday_countdown" 
+                                   readonly="1"
+                                   string="Time to Next Birthday"/>
+                            <field name="gender"/>
+                            <field name="marital_status"/>
                         </group>
 
                         <!-- Physical Characteristics Section -->
@@ -382,7 +366,8 @@
                             <field name="emergency_contact_name"/>
                             <field name="emergency_contact_phone" 
                                    widget="phone"
-                                   options="{'enable_sms': false}"/>
+                                   options="{'enable_sms': false}"
+                                   nolabel="1"/>
                             <field name="emergency_contact_relationship"/>
                         </group>
                     </page>
