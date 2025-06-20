@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Extend the main partner form view to add height field -->
+        <record id="view_partner_form_inherit_height" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.height</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- Add height field after the function field for individual contacts -->
+                <xpath expr="//field[@name='function']" position="after">
+                    <field name="height" 
+                           invisible="is_company" 
+                           widget="float"
+                           placeholder="e.g. 175.5"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Extend the simplified partner form view -->
+        <record id="view_partner_simple_form_inherit_height" model="ir.ui.view">
+            <field name="name">res.partner.simple.form.inherit.height</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_simple_form"/>
+            <field name="arch" type="xml">
+                <!-- Add height field after the function field -->
+                <xpath expr="//field[@name='function']" position="after">
+                    <field name="height" 
+                           invisible="is_company" 
+                           widget="float"
+                           placeholder="e.g. 175.5"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Extend the partner tree view to optionally show height -->
+        <record id="view_partner_tree_inherit_height" model="ir.ui.view">
+            <field name="name">res.partner.tree.inherit.height</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <!-- Add height field as optional column -->
+                <xpath expr="//field[@name='email']" position="after">
+                    <field name="height" 
+                           optional="hide" 
+                           invisible="is_company"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Extend the partner search view to add height filters -->
+        <record id="view_res_partner_filter_inherit_height" model="ir.ui.view">
+            <field name="name">res.partner.filter.inherit.height</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <!-- Add height field to search -->
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="height" 
+                           filter_domain="[('height', 'ilike', self)]"/>
+                </xpath>
+                
+                <!-- Add height-based filters -->
+                <xpath expr="//filter[@name='inactive']" position="after">
+                    <separator/>
+                    <filter string="Has Height" 
+                            name="has_height" 
+                            domain="[('height', '!=', False)]"/>
+                    <filter string="No Height" 
+                            name="no_height" 
+                            domain="[('height', '=', False)]"/>
+                    <filter string="Height 150cm+" 
+                            name="height_150_plus" 
+                            domain="[('height', '>=', 150)]"/>
+                    <filter string="Height 180cm+" 
+                            name="height_180_plus" 
+                            domain="[('height', '>=', 180)]"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> 

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Extend the main partner form view to add all extended fields -->
+        <record id="view_partner_form_inherit_extended" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.extended</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- Add all extended fields after the function field for individual contacts -->
+                <xpath expr="//field[@name='function']" position="after">
+                    <field name="birthdate" 
+                           invisible="is_company" 
+                           widget="date"
+                           options="{'format': 'dd/mm/yyyy'}"
+                           placeholder="e.g. 15/03/1990"/>
+                    <field name="age" 
+                           invisible="is_company or not birthdate" 
+                           readonly="1"/>
+                    <field name="height" 
+                           invisible="is_company" 
+                           widget="float"
+                           placeholder="e.g. 175.5"/>
+                    <field name="weight" 
+                           invisible="is_company" 
+                           widget="float"
+                           placeholder="e.g. 70.5"/>
+                    <field name="eye_color" 
+                           invisible="is_company"/>
+                    <field name="hair_color" 
+                           invisible="is_company"/>
+                    <field name="distinguishing_features" 
+                           invisible="is_company" 
+                           placeholder="e.g. Scar on left cheek, tattoo on right arm"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Extend the simplified partner form view -->
+        <record id="view_partner_simple_form_inherit_extended" model="ir.ui.view">
+            <field name="name">res.partner.simple.form.inherit.extended</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_simple_form"/>
+            <field name="arch" type="xml">
+                <!-- Add all extended fields after the function field -->
+                <xpath expr="//field[@name='function']" position="after">
+                    <field name="birthdate" 
+                           invisible="is_company" 
+                           widget="date"
+                           options="{'format': 'dd/mm/yyyy'}"
+                           placeholder="e.g. 15/03/1990"/>
+                    <field name="age" 
+                           invisible="is_company or not birthdate" 
+                           readonly="1"/>
+                    <field name="height" 
+                           invisible="is_company" 
+                           widget="float"
+                           placeholder="e.g. 175.5"/>
+                    <field name="weight" 
+                           invisible="is_company" 
+                           widget="float"
+                           placeholder="e.g. 70.5"/>
+                    <field name="eye_color" 
+                           invisible="is_company"/>
+                    <field name="hair_color" 
+                           invisible="is_company"/>
+                    <field name="distinguishing_features" 
+                           invisible="is_company" 
+                           placeholder="e.g. Scar on left cheek, tattoo on right arm"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Extend the partner tree view to optionally show extended fields -->
+        <record id="view_partner_tree_inherit_extended" model="ir.ui.view">
+            <field name="name">res.partner.tree.inherit.extended</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <!-- Add extended fields as optional columns -->
+                <xpath expr="//field[@name='email']" position="after">
+                    <field name="age" 
+                           optional="hide" 
+                           invisible="is_company"/>
+                    <field name="height" 
+                           optional="hide" 
+                           invisible="is_company"/>
+                    <field name="weight" 
+                           optional="hide" 
+                           invisible="is_company"/>
+                    <field name="eye_color" 
+                           optional="hide" 
+                           invisible="is_company"/>
+                    <field name="hair_color" 
+                           optional="hide" 
+                           invisible="is_company"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Extend the partner search view to add extended field filters -->
+        <record id="view_res_partner_filter_inherit_extended" model="ir.ui.view">
+            <field name="name">res.partner.filter.inherit.extended</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <!-- Add extended fields to search -->
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="birthdate" 
+                           filter_domain="[('birthdate', 'ilike', self)]"/>
+                    <field name="height" 
+                           filter_domain="[('height', 'ilike', self)]"/>
+                    <field name="weight" 
+                           filter_domain="[('weight', 'ilike', self)]"/>
+                    <field name="eye_color" 
+                           filter_domain="[('eye_color', 'ilike', self)]"/>
+                    <field name="hair_color" 
+                           filter_domain="[('hair_color', 'ilike', self)]"/>
+                    <field name="distinguishing_features" 
+                           filter_domain="[('distinguishing_features', 'ilike', self)]"/>
+                </xpath>
+                
+                <!-- Add birthdate-based filters -->
+                <xpath expr="//filter[@name='inactive']" position="after">
+                    <separator/>
+                    <filter string="Has Birth Date" 
+                            name="has_birthdate" 
+                            domain="[('birthdate', '!=', False)]"/>
+                    <filter string="No Birth Date" 
+                            name="no_birthdate" 
+                            domain="[('birthdate', '=', False)]"/>
+                </xpath>
+                
+                <!-- Add height-based filters -->
+                <xpath expr="//filter[@name='no_birthdate']" position="after">
+                    <separator/>
+                    <filter string="Has Height" 
+                            name="has_height" 
+                            domain="[('height', '!=', False)]"/>
+                    <filter string="No Height" 
+                            name="no_height" 
+                            domain="[('height', '=', False)]"/>
+                    <filter string="Height 150cm+" 
+                            name="height_150_plus" 
+                            domain="[('height', '>=', 150)]"/>
+                    <filter string="Height 180cm+" 
+                            name="height_180_plus" 
+                            domain="[('height', '>=', 180)]"/>
+                </xpath>
+
+                <!-- Add weight-based filters -->
+                <xpath expr="//filter[@name='height_180_plus']" position="after">
+                    <separator/>
+                    <filter string="Has Weight" 
+                            name="has_weight" 
+                            domain="[('weight', '!=', False)]"/>
+                    <filter string="No Weight" 
+                            name="no_weight" 
+                            domain="[('weight', '=', False)]"/>
+                    <filter string="Weight 50kg+" 
+                            name="weight_50_plus" 
+                            domain="[('weight', '>=', 50)]"/>
+                    <filter string="Weight 80kg+" 
+                            name="weight_80_plus" 
+                            domain="[('weight', '>=', 80)]"/>
+                </xpath>
+
+                <!-- Add eye color filters -->
+                <xpath expr="//filter[@name='weight_80_plus']" position="after">
+                    <separator/>
+                    <filter string="Brown Eyes" 
+                            name="brown_eyes" 
+                            domain="[('eye_color', '=', 'brown')]"/>
+                    <filter string="Blue Eyes" 
+                            name="blue_eyes" 
+                            domain="[('eye_color', '=', 'blue')]"/>
+                    <filter string="Green Eyes" 
+                            name="green_eyes" 
+                            domain="[('eye_color', '=', 'green')]"/>
+                </xpath>
+
+                <!-- Add hair color filters -->
+                <xpath expr="//filter[@name='green_eyes']" position="after">
+                    <separator/>
+                    <filter string="Brown Hair" 
+                            name="brown_hair" 
+                            domain="[('hair_color', '=', 'brown')]"/>
+                    <filter string="Black Hair" 
+                            name="black_hair" 
+                            domain="[('hair_color', '=', 'black')]"/>
+                    <filter string="Blonde Hair" 
+                            name="blonde_hair" 
+                            domain="[('hair_color', '=', 'blonde')]"/>
+                    <filter string="Red Hair" 
+                            name="red_hair" 
+                            domain="[('hair_color', '=', 'red')]"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> 
