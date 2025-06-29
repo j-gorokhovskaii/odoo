@@ -7,7 +7,6 @@
         <record id="demo_partner_john_smith" model="res.partner">
             <field name="name">John Smith</field>
             <field name="email">john.smith@example.com</field>
-            <field name="phone">+1-555-0101</field>
             <field name="is_company" eval="False"/>
             <field name="birthdate" eval="(DateTime.today() - relativedelta(years=35, months=2, days=15)).strftime('%Y-%m-%d')"/>
             <field name="gender">male</field>
@@ -43,7 +42,6 @@
         <record id="demo_partner_maria_garcia" model="res.partner">
             <field name="name">Maria Garcia</field>
             <field name="email">maria.garcia@example.com</field>
-            <field name="phone">+1-555-0201</field>
             <field name="is_company" eval="False"/>
             <field name="birthdate" eval="(DateTime.today() - relativedelta(years=28, months=8, days=3)).strftime('%Y-%m-%d')"/>
             <field name="gender">female</field>
@@ -77,7 +75,6 @@
         <record id="demo_partner_david_chen" model="res.partner">
             <field name="name">David Chen</field>
             <field name="email">david.chen@example.com</field>
-            <field name="phone">+1-555-0301</field>
             <field name="is_company" eval="False"/>
             <field name="birthdate" eval="(DateTime.today() - relativedelta(years=42, months=1, days=22)).strftime('%Y-%m-%d')"/>
             <field name="gender">male</field>
@@ -114,7 +111,6 @@
         <record id="demo_partner_lisa_johnson" model="res.partner">
             <field name="name">Lisa Johnson</field>
             <field name="email">lisa.johnson@example.com</field>
-            <field name="phone">+1-555-0401</field>
             <field name="is_company" eval="False"/>
             <field name="birthdate" eval="(DateTime.today() - relativedelta(years=31, months=6, days=10)).strftime('%Y-%m-%d')"/>
             <field name="gender">female</field>
@@ -150,7 +146,6 @@
         <record id="demo_partner_robert_wilson" model="res.partner">
             <field name="name">Robert Wilson</field>
             <field name="email">robert.wilson@example.com</field>
-            <field name="phone">+1-555-0501</field>
             <field name="is_company" eval="False"/>
             <field name="birthdate" eval="(DateTime.today() - relativedelta(years=75, months=3, days=5)).strftime('%Y-%m-%d')"/>
             <field name="gender">male</field>
@@ -187,7 +182,6 @@
         <record id="demo_partner_sarah_thompson" model="res.partner">
             <field name="name">Sarah Thompson</field>
             <field name="email">sarah.thompson@example.com</field>
-            <field name="phone">+1-555-0601</field>
             <field name="is_company" eval="False"/>
             <field name="birthdate" eval="(DateTime.today() - relativedelta(years=22, months=11, days=18)).strftime('%Y-%m-%d')"/>
             <field name="gender">female</field>
@@ -206,14 +200,15 @@
             <field name="primary_language">English</field>
             <field name="country_of_birth" ref="base.us"/>
             <field name="citizenship_status">citizen</field>
-            <field name="passport_number">US123456789</field>
-            <field name="passport_country" ref="base.us"/>
+            <field name="ssn">321-54-6789</field>
+            <field name="driver_license_number">DL321546789</field>
+            <field name="driver_license_state" ref="base.state_us_wa"/>
             <field name="occupation">Student</field>
-            <field name="employer">University of State</field>
+            <field name="employer">University of Washington</field>
             <field name="education_level">some_college</field>
             <field name="military_service" eval="False"/>
-            <field name="medical_conditions">Lactose intolerant</field>
-            <field name="emergency_contact_name">Margaret Thompson</field>
+            <field name="medical_conditions">None</field>
+            <field name="emergency_contact_name">Patricia Thompson</field>
             <field name="emergency_contact_phone">+1-555-0602</field>
             <field name="emergency_contact_relationship">Mother</field>
         </record>

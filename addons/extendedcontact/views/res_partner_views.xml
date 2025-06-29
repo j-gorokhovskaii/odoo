@@ -12,16 +12,6 @@
                     <attribute name="placeholder">e.g. Sales Director</attribute>
                 </xpath>
                 
-                <xpath expr="//field[@name='phone']" position="attributes">
-                    <attribute name="widget">phone</attribute>
-                    <attribute name="options">{'enable_sms': false}</attribute>
-                </xpath>
-                
-                <xpath expr="//field[@name='mobile']" position="attributes">
-                    <attribute name="widget">phone</attribute>
-                    <attribute name="options">{'enable_sms': false}</attribute>
-                </xpath>
-                
                 <xpath expr="//field[@name='email']" position="attributes">
                     <attribute name="widget">email</attribute>
                     <attribute name="context">{'gravatar_image': True}</attribute>
@@ -54,16 +44,6 @@
                 <!-- Update standard fields with proper placeholders and sizing -->
                 <xpath expr="//field[@name='function']" position="attributes">
                     <attribute name="placeholder">e.g. Sales Director</attribute>
-                </xpath>
-                
-                <xpath expr="//field[@name='phone']" position="attributes">
-                    <attribute name="widget">phone</attribute>
-                    <attribute name="options">{'enable_sms': false}</attribute>
-                </xpath>
-                
-                <xpath expr="//field[@name='mobile']" position="attributes">
-                    <attribute name="widget">phone</attribute>
-                    <attribute name="options">{'enable_sms': false}</attribute>
                 </xpath>
                 
                 <xpath expr="//field[@name='email']" position="attributes">
@@ -275,12 +255,6 @@
                     <page string="Extended Information" name="extended_information" invisible="is_company">
                         <!-- Basic Information Section -->
                         <group string="Basic Information" col="2">
-                            <field name="phone" 
-                                   widget="phone"
-                                   options="{'enable_sms': false}"/>
-                            <field name="mobile" 
-                                   widget="phone"
-                                   options="{'enable_sms': false}"/>
                             <field name="birthdate" 
                                    widget="date"
                                    options="{'format': 'dd/mm/yyyy'}"
