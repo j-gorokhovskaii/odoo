@@ -319,11 +319,7 @@ class ResPartner(models.Model):
         tracking=True,
     )
 
-    emergency_contact_phone = fields.Char(
-        string='Emergency Contact Phone',
-        help='Phone number of emergency contact (NIEM: nc:PersonEmergencyContact/nc:ContactTelephoneNumber)',
-        tracking=True,
-    )
+
 
     emergency_contact_relationship = fields.Char(
         string='Emergency Contact Relationship',
@@ -545,7 +541,6 @@ class ResPartner(models.Model):
     </nc:PersonBirthLocation>
     <nc:PersonEmergencyContact>
         <nc:PersonName>{emergency_contact_name}</nc:PersonName>
-        <nc:ContactTelephoneNumber>{emergency_contact_phone}</nc:ContactTelephoneNumber>
         <nc:PersonRelationshipText>{emergency_contact_relationship}</nc:PersonRelationshipText>
     </nc:PersonEmergencyContact>
 </nc:Person>"""
@@ -582,6 +577,5 @@ class ResPartner(models.Model):
             military_branch=self.military_branch or '',
             country_of_birth=self.country_of_birth.name if self.country_of_birth else '',
             emergency_contact_name=self.emergency_contact_name or '',
-            emergency_contact_phone=self.emergency_contact_phone or '',
             emergency_contact_relationship=self.emergency_contact_relationship or ''
         ) 

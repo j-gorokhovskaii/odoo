@@ -48,7 +48,6 @@ A comprehensive Odoo module that extends the standard contact management system 
 
 #### Emergency Contact
 - **Emergency Contact Name**: Emergency contact person
-- **Emergency Contact Phone**: Emergency contact number
 - **Emergency Contact Relationship**: Relationship to contact
 
 ## NIEM Compliance

@@ -69,7 +69,7 @@ The ExtendedContact module provides comprehensive person attributes that align w
 | Odoo Field | NIEM Element | Description | Data Type |
 |------------|--------------|-------------|-----------|
 | `emergency_contact_name` | `nc:PersonEmergencyContact/nc:PersonName` | Emergency contact name | Char |
-| `emergency_contact_phone` | `nc:PersonEmergencyContact/nc:ContactTelephoneNumber` | Emergency contact phone | Char |
+
 | `emergency_contact_relationship` | `nc:PersonEmergencyContact/nc:PersonRelationshipText` | Relationship to emergency contact | Char |
 
 ## NIEM XML Export
@@ -132,7 +132,6 @@ niem_xml = partner.to_niem_xml()
     </nc:PersonBirthLocation>
     <nc:PersonEmergencyContact>
         <nc:PersonName>Jane Smith</nc:PersonName>
-        <nc:ContactTelephoneNumber>+1-555-0102</nc:ContactTelephoneNumber>
         <nc:PersonRelationshipText>Spouse</nc:PersonRelationshipText>
     </nc:PersonEmergencyContact>
 </nc:Person>
