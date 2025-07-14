@@ -34,7 +34,6 @@
             <field name="military_service" eval="False"/>
             <field name="medical_conditions">Mild seasonal allergies</field>
             <field name="emergency_contact_name">Jane Smith</field>
-            <field name="emergency_contact_phone">+1-555-0102</field>
             <field name="emergency_contact_relationship">Spouse</field>
         </record>
 
@@ -67,7 +66,6 @@
             <field name="education_level">associates</field>
             <field name="medical_conditions">None</field>
             <field name="emergency_contact_name">Carlos Garcia</field>
-            <field name="emergency_contact_phone">+1-555-0202</field>
             <field name="emergency_contact_relationship">Father</field>
         </record>
 
@@ -103,7 +101,6 @@
             <field name="military_branch">army</field>
             <field name="medical_conditions">Asthma</field>
             <field name="emergency_contact_name">Sarah Chen</field>
-            <field name="emergency_contact_phone">+1-555-0302</field>
             <field name="emergency_contact_relationship">Daughter</field>
         </record>
 
@@ -138,7 +135,6 @@
             <field name="military_service" eval="False"/>
             <field name="medical_conditions">None</field>
             <field name="emergency_contact_name">Michael Johnson</field>
-            <field name="emergency_contact_phone">+1-555-0402</field>
             <field name="emergency_contact_relationship">Husband</field>
         </record>
 
@@ -174,7 +170,6 @@
             <field name="military_branch">navy</field>
             <field name="medical_conditions">Diabetes, hypertension</field>
             <field name="emergency_contact_name">Jennifer Wilson</field>
-            <field name="emergency_contact_phone">+1-555-0502</field>
             <field name="emergency_contact_relationship">Daughter</field>
         </record>
 
@@ -209,7 +204,6 @@
             <field name="military_service" eval="False"/>
             <field name="medical_conditions">None</field>
             <field name="emergency_contact_name">Patricia Thompson</field>
-            <field name="emergency_contact_phone">+1-555-0602</field>
             <field name="emergency_contact_relationship">Mother</field>
         </record>
 

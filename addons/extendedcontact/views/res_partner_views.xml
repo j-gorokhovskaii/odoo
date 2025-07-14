@@ -338,10 +338,6 @@
                         <!-- Emergency Contact Section -->
                         <group string="Emergency Contact" col="2">
                             <field name="emergency_contact_name"/>
-                            <field name="emergency_contact_phone" 
-                                   widget="phone"
-                                   options="{'enable_sms': false}"
-                                   nolabel="1"/>
                             <field name="emergency_contact_relationship"/>
                         </group>
                     </page>
