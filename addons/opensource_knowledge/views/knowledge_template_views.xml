@@ -214,10 +214,10 @@
                                     <div class="o_kanban_record_bottom">
                                         <div class="oe_kanban_bottom_left">
                                             <span t-if="record.is_public.value" class="badge badge-success" title="Public Template">
-                                                <i class="fa fa-globe"/>
+                                                <i class="fa fa-globe" title="Public"/>
                                             </span>
                                             <span t-else="" class="badge badge-warning" title="Private Template">
-                                                <i class="fa fa-lock"/>
+                                                <i class="fa fa-lock" title="Private"/>
                                             </span>
                                         </div>
                                         <div class="oe_kanban_bottom_right">
@@ -228,7 +228,7 @@
                                 
                                 <div class="oe_kanban_footer">
                                     <button name="action_create_article" type="object" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-plus"/> Create Article
+                                        <i class="fa fa-plus" title="Create"/> Create Article
                                     </button>
                                 </div>
                             </div>
