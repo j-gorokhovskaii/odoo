@@ -6,22 +6,12 @@ name: CI (custom modules)
 # module (or this workflow) changes.
 
 on:
+  # Runs on every PR/push to main so it can be a reliable *required* status check.
+  # The job itself only inspects this fork's custom modules (see the steps below).
   push:
     branches: [ main ]
-    paths: &custom_paths
-      - 'addons/opensource_knowledge/**'
-      - 'addons/odoo_documentation/**'
-      - 'addons/partner_dob/**'
-      - 'addons/partner_height/**'
-      - 'addons/company_details/**'
-      - 'addons/extendedcontact/**'
-      - 'addons/web_dark_mode/**'
-      - 'addons/theme_backend_blue/**'
-      - 'custom-addons-19.0/**'
-      - '.github/workflows/ci.yml'
   pull_request:
     branches: [ main ]
-    paths: *custom_paths
 
 permissions:
   contents: read
