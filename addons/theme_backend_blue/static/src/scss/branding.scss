@@ -1,0 +1,18 @@
+// Re-color the few UI bits that hard-code the old brand color in Odoo core,
+// instead of editing those core files. Loaded in web.assets_backend.
+
+// HTML editor: active cell in the table-size picker
+.o-we-tablepicker .o-we-cell.active {
+    background-color: #29abe2;
+}
+
+// Web tour: pointer color (core ties this to $o-enterprise-color)
+.o_tour_pointer {
+    --TourPointer__color: #29abe2;
+    --TourPointer__color-accent: #4bb8e8;
+}
+
+// Web tour: dropzone dashed border (core sets an inline style, hence !important)
+.o_tour_dropzone {
+    border-color: #29abe2 !important;
+}

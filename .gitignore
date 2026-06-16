@@ -65,6 +65,7 @@ odoo.log
 # Machine-specific operational docs (contain master password / DB names)
 /RUNNING_ODOO.md
 /INSTALLED_APPS_CHECKLIST.md
+/ODOO_UPGRADE_PLAYBOOK.md
 # Local launcher scripts (machine paths; .bat references the master password)
 /start-odoo.bat
 /start-odoo-hidden.vbs

@@ -1,0 +1,9 @@
+// Brand color override — loaded via the web._assets_primary_variables bundle and
+// PREPENDED before Odoo core's primary_variables.scss.
+//
+// Core defines:  $o-community-color: #71639e !default;
+//                $o-brand-odoo:    $o-community-color !default;
+//                $o-brand-primary: $o-community-color !default;
+// By setting $o-community-color here FIRST, core's `!default` keeps our value and the
+// whole theme (brand, primary, action colors) recolors to #29abe2 — no core edits.
+$o-community-color: #29abe2;
