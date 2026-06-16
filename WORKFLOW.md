@@ -178,21 +178,20 @@ in `RUNNING_ODOO.md` (local).
 
 ---
 
-## 7. Best-practices pack — one-time setup (Release Manager checklist)
+## 7. Best-practices pack — setup status (Release Manager checklist)
 
-These are the **manual UI/settings steps** to finish the system:
+**Done (automated):**
+- ✅ Default branch = `main`
+- ✅ `main` protected: require PR, required check **`lint`**, 0 approvals (solo), force-push & deletion blocked, admin bypass on
+- ✅ Issues enabled + label set created
+- ✅ Templates + scoped CI + this doc on `main`; first CI run green
 
-1. **Set default branch to `main`** — Settings → Branches → default → `main`.
-   *(Required for the issue/PR templates and CI to take effect.)*
-2. **Protect `main`** — Settings → Branches → Add branch ruleset (or classic protection) for `main`:
-   - Require a pull request before merging
-   - Require status checks to pass → select **CI (custom modules)**
-   - (solo tip) leave "require approvals" at **0** so you can merge your own PRs; turn it on when a teammate joins
-   - Block force-pushes
-3. **Projects board** — New Project (Board) with Triage/Todo/In Progress/In Review/Done; enable built-in *Auto-add to project* and *Item closed → Done*.
-4. **Milestones** — create the next release milestone (e.g. `2026.07`).
+**Remaining (UI / your call):**
+1. **Projects board** — New Project (Board) with Triage/Todo/In Progress/In Review/Done; enable built-in *Auto-add to project* and *Item closed → Done*.
+2. **Milestones** — create the next release milestone (e.g. `2026.07`) when you plan a release.
 
-Already done for you: Issues enabled, label set created, templates + CI + this doc committed to `main`.
+> Note: because `main` is protected, all changes (including to this file) now go through a
+> PR — exactly the flow in §1–§4. This very change was merged that way.
 
 ---
 
