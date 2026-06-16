@@ -185,13 +185,19 @@ in `RUNNING_ODOO.md` (local).
 - ✅ `main` protected: require PR, required check **`lint`**, 0 approvals (solo), force-push & deletion blocked, admin bypass on
 - ✅ Issues enabled + label set created
 - ✅ Templates + scoped CI + this doc on `main`; first CI run green
+- ✅ Milestone **`2026.07`** created
+- ✅ Backlog seeded as issues (#2 board, #3 demo-XML, #4 a11y)
 
-**Remaining (UI / your call):**
-1. **Projects board** — New Project (Board) with Triage/Todo/In Progress/In Review/Done; enable built-in *Auto-add to project* and *Item closed → Done*.
-2. **Milestones** — create the next release milestone (e.g. `2026.07`) when you plan a release.
+**Optional / your call:**
+- **Projects board** (kanban) — *not required.* Issues + labels + milestones already give
+  you tracking (use the **Issues** tab's filters/saved views). A board is cosmetic; setting
+  it up needs the `project` token scope or a few UI clicks. Tracked in **#2** with steps.
 
-> Note: because `main` is protected, all changes (including to this file) now go through a
-> PR — exactly the flow in §1–§4. This very change was merged that way.
+> Tracking = **Issues + labels (type/priority/status) + milestones**. Filter examples:
+> `is:open label:type:bug`, `is:open milestone:2026.07`, `is:open label:status:in-progress`.
+
+> Note: because `main` is protected, all changes (including to this file) go through a PR —
+> exactly the flow in §1–§4.
 
 ---
 
