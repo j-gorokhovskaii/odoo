@@ -147,7 +147,7 @@
                                         <div class="o_kanban_record_headings">
                                             <strong class="o_kanban_record_title">
                                                 <span t-if="record.color.raw_value" t-attf-style="color: {{ kanban_color(record.color.raw_value) }}">
-                                                    <i class="fa fa-circle"/>
+                                                    <i class="fa fa-circle" title="Status"/>
                                                 </span>
                                                 <field name="name"/>
                                             </strong>
@@ -175,13 +175,13 @@
                                     <div class="o_kanban_record_bottom">
                                         <div class="oe_kanban_bottom_left">
                                             <span t-if="record.visibility.value == 'public'" class="badge badge-success" title="Public">
-                                                <i class="fa fa-globe"/>
+                                                <i class="fa fa-globe" title="Public"/>
                                             </span>
                                             <span t-elif="record.visibility.value == 'portal'" class="badge badge-info" title="Portal">
-                                                <i class="fa fa-users"/>
+                                                <i class="fa fa-users" title="Internal"/>
                                             </span>
                                             <span t-elif="record.visibility.value == 'private'" class="badge badge-warning" title="Private">
-                                                <i class="fa fa-lock"/>
+                                                <i class="fa fa-lock" title="Private"/>
                                             </span>
                                         </div>
                                         <div class="oe_kanban_bottom_right">

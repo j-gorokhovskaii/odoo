@@ -229,13 +229,13 @@
                                         <div class="oe_kanban_bottom_left">
                                             <field name="activity_ids" widget="kanban_activity"/>
                                             <span t-if="record.visibility.value == 'public'" class="badge badge-success" title="Public">
-                                                <i class="fa fa-globe"/>
+                                                <i class="fa fa-globe" title="Public"/>
                                             </span>
                                             <span t-elif="record.visibility.value == 'portal'" class="badge badge-info" title="Portal">
-                                                <i class="fa fa-users"/>
+                                                <i class="fa fa-users" title="Internal"/>
                                             </span>
                                             <span t-elif="record.visibility.value == 'private'" class="badge badge-warning" title="Private">
-                                                <i class="fa fa-lock"/>
+                                                <i class="fa fa-lock" title="Private"/>
                                             </span>
                                         </div>
                                         <div class="oe_kanban_bottom_right">
