@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Extend the main partner form view to add birthdate field -->
+        <record id="view_partner_form_inherit_dob" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.dob</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- Add birthdate field after the function field for individual contacts -->
+                <xpath expr="//field[@name='function']" position="after">
+                    <field name="birthdate" 
+                           invisible="is_company" 
+                           widget="date"
+                           placeholder="e.g. 15/03/1990"/>
+                    <field name="age" 
+                           invisible="is_company or not birthdate" 
+                           readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Extend the partner tree view to optionally show age -->
+        <record id="view_partner_tree_inherit_dob" model="ir.ui.view">
+            <field name="name">res.partner.tree.inherit.dob</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <!-- Add age field as optional column -->
+                <xpath expr="//field[@name='email']" position="after">
+                    <field name="age" 
+                           optional="hide" 
+                           invisible="is_company"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> 

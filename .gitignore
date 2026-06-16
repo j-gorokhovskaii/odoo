@@ -76,3 +76,6 @@ odoo.log
 # Generated docs mirror for the odoo_documentation module (regenerate with
 # addons/odoo_documentation/scripts/import_docs.py — don't version build output)
 /addons/odoo_documentation/static/docs/
+
+# Generated docs mirror for the 19.0 odoo_documentation copy
+/custom-addons-19.0/odoo_documentation/static/docs/

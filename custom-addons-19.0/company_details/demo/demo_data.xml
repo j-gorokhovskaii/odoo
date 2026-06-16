@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- ISO Certifications -->
+        <record id="iso_9001" model="company.iso.certification">
+            <field name="name">ISO 9001:2015</field>
+            <field name="code">ISO 9001</field>
+            <field name="description">Quality Management Systems - Requirements</field>
+        </record>
+        
+        <record id="iso_14001" model="company.iso.certification">
+            <field name="name">ISO 14001:2015</field>
+            <field name="code">ISO 14001</field>
+            <field name="description">Environmental Management Systems - Requirements</field>
+        </record>
+        
+        <record id="iso_27001" model="company.iso.certification">
+            <field name="name">ISO 27001:2013</field>
+            <field name="code">ISO 27001</field>
+            <field name="description">Information Security Management Systems - Requirements</field>
+        </record>
+        
+        <record id="iso_45001" model="company.iso.certification">
+            <field name="name">ISO 45001:2018</field>
+            <field name="code">ISO 45001</field>
+            <field name="description">Occupational Health and Safety Management Systems - Requirements</field>
+        </record>
+        
+        <!-- Demo Company Partners -->
+        <record id="demo_company_tech" model="res.partner">
+            <field name="name">TechCorp Solutions Inc.</field>
+            <field name="is_company" eval="True"/>
+            <field name="company_registration_number">TC-2023-001</field>
+            <field name="company_registration_date" eval="(DateTime.today() - relativedelta(years=5)).strftime('%Y-%m-%d')"/>
+            <field name="company_registration_authority">Secretary of State</field>
+            <field name="company_tax_id">12-3456789</field>
+            <field name="company_vat_number">US123456789</field>
+            <field name="company_industry">technology</field>
+            <field name="company_business_type">corporation</field>
+            <field name="company_size">medium</field>
+            <field name="company_annual_revenue">10m_50m</field>
+            <field name="company_employee_count">150</field>
+            <field name="company_credit_rating">a</field>
+            <field name="company_iso_certifications" eval="[(6, 0, [ref('iso_9001'), ref('iso_27001')])]"/>
+            <field name="company_compliance_status">compliant</field>
+            <field name="company_legal_structure">C-Corporation</field>
+            <field name="company_website">https://www.techcorp-solutions.com</field>
+            <field name="company_linkedin">https://linkedin.com/company/techcorp-solutions</field>
+        </record>
+        
+        <record id="demo_company_manufacturing" model="res.partner">
+            <field name="name">Global Manufacturing Ltd.</field>
+            <field name="is_company" eval="True"/>
+            <field name="company_registration_number">GM-2018-045</field>
+            <field name="company_registration_date" eval="(DateTime.today() - relativedelta(years=10)).strftime('%Y-%m-%d')"/>
+            <field name="company_registration_authority">Companies House</field>
+            <field name="company_tax_id">98-7654321</field>
+            <field name="company_vat_number">GB987654321</field>
+            <field name="company_industry">manufacturing</field>
+            <field name="company_business_type">corporation</field>
+            <field name="company_size">large</field>
+            <field name="company_annual_revenue">100m_500m</field>
+            <field name="company_employee_count">800</field>
+            <field name="company_credit_rating">aa</field>
+            <field name="company_iso_certifications" eval="[(6, 0, [ref('iso_9001'), ref('iso_14001'), ref('iso_45001')])]"/>
+            <field name="company_compliance_status">compliant</field>
+            <field name="company_legal_structure">Public Limited Company</field>
+            <field name="company_website">https://www.globalmanufacturing.com</field>
+        </record>
+        
+        <record id="demo_company_finance" model="res.partner">
+            <field name="name">MetroBank Financial Services</field>
+            <field name="is_company" eval="True"/>
+            <field name="company_registration_number">MB-2015-123</field>
+            <field name="company_registration_date" eval="(DateTime.today() - relativedelta(years=15)).strftime('%Y-%m-%d')"/>
+            <field name="company_registration_authority">Financial Conduct Authority</field>
+            <field name="company_tax_id">55-1234567</field>
+            <field name="company_vat_number">GB551234567</field>
+            <field name="company_industry">finance</field>
+            <field name="company_business_type">corporation</field>
+            <field name="company_size">enterprise</field>
+            <field name="company_annual_revenue">over_1b</field>
+            <field name="company_employee_count">2500</field>
+            <field name="company_credit_rating">aaa</field>
+            <field name="company_iso_certifications" eval="[(6, 0, [ref('iso_27001')])]"/>
+            <field name="company_compliance_status">compliant</field>
+            <field name="company_legal_structure">Public Limited Company</field>
+            <field name="company_website">https://www.metrobank.com</field>
+        </record>
+        
+        <record id="demo_company_healthcare" model="res.partner">
+            <field name="name">HealthFirst Medical Group</field>
+            <field name="is_company" eval="True"/>
+            <field name="company_registration_number">HF-2020-078</field>
+            <field name="company_registration_date" eval="(DateTime.today() - relativedelta(years=3)).strftime('%Y-%m-%d')"/>
+            <field name="company_registration_authority">Department of Health</field>
+            <field name="company_tax_id">33-9876543</field>
+            <field name="company_vat_number">US339876543</field>
+            <field name="company_industry">healthcare</field>
+            <field name="company_business_type">llc</field>
+            <field name="company_size">small</field>
+            <field name="company_annual_revenue">1m_10m</field>
+            <field name="company_employee_count">75</field>
+            <field name="company_credit_rating">bbb</field>
+            <field name="company_iso_certifications" eval="[(6, 0, [ref('iso_9001'), ref('iso_14001')])]"/>
+            <field name="company_compliance_status">compliant</field>
+            <field name="company_legal_structure">Limited Liability Company</field>
+            <field name="company_website">https://www.healthfirstmedical.com</field>
+        </record>
+    </data>
+</odoo> 

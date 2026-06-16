@@ -1,0 +1,2468 @@
+// Dark Mode Theme Variables - WCAG AA Compliant Contrast Ratios
+// Primary background: Very dark gray for main content areas
+$dark-bg-primary: #0d1117;
+// Secondary background: Dark gray for cards, panels, navigation
+$dark-bg-secondary: #161b22;
+// Tertiary background: Medium dark gray for hover states, active elements
+$dark-bg-tertiary: #21262d;
+// Primary text: Pure white for maximum contrast on dark backgrounds
+$dark-text-primary: #ffffff;
+// Secondary text: Light gray for less important text (7:1 contrast ratio)
+$dark-text-secondary: #c9d1d9;
+// Muted text: Medium gray for disabled/inactive text (4.5:1 contrast ratio)
+$dark-text-muted: #8b949e;
+// Borders: Dark gray for subtle separators
+$dark-border: #30363d;
+// Light borders: Medium gray for active borders
+$dark-border-light: #484f58;
+// Accent color: Blue with good contrast (4.5:1 ratio)
+$dark-accent: #58a6ff;
+// Accent hover: Darker blue for hover states
+$dark-accent-hover: #1f6feb;
+// Danger: Red with good contrast
+$dark-danger: #f85149;
+// Success: Green with good contrast
+$dark-success: #3fb950;
+// Warning: Yellow with good contrast (adjusted for dark backgrounds)
+$dark-warning: #d29922;
+// Info: Blue with good contrast
+$dark-info: #58a6ff;
+
+// Dark mode toggle button styling - make it visible
+.o_mail_systray_item .dark-mode-toggle {
+    background: none;
+    border: none;
+    color: #8b949e;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    list-style: none;
+    text-decoration: none;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #c9d1d9;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.4);
+    }
+
+    .toggle-icon {
+        font-size: 18px;
+        margin: 0;
+        display: inline-block;
+    }
+
+    .sr-only {
+        display: none;
+    }
+}
+
+// Ensure the list item containing the toggle has no bullets
+.o_mail_systray_item:has(.dark-mode-toggle) {
+    list-style: none;
+    
+    &::before {
+        display: none;
+    }
+    
+    &::after {
+        display: none;
+    }
+}
+
+// Additional fixes for any potential dots or bullets
+.o_mail_systray_item .dark-mode-toggle {
+    &::before,
+    &::after {
+        display: none !important;
+        content: none !important;
+    }
+}
+
+// Target the specific list item structure
+.o_menu_systray .o_mail_systray_item {
+    list-style: none !important;
+    
+    &:has(.dark-mode-toggle) {
+        &::before,
+        &::after {
+            display: none !important;
+            content: none !important;
+        }
+    }
+}
+
+// Dark mode class that gets applied to body
+body.dark-mode {
+    background-color: $dark-bg-primary !important;
+    color: $dark-text-primary !important;
+
+    // Main layout
+    .o_web_client {
+        background-color: $dark-bg-primary !important;
+    }
+
+    // Navigation bar
+    .o_main_navbar {
+        background-color: $dark-bg-secondary !important;
+        border-bottom: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+
+        .o_menu_brand {
+            color: $dark-text-primary !important;
+        }
+
+        .o_menu_sections {
+            > li {
+                > a, > label {
+                    color: $dark-text-primary !important;
+                    &:hover {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+        }
+
+        .o_menu_systray {
+            > li {
+                > a, > button {
+                    color: $dark-text-primary !important;
+                    &:hover {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+        }
+
+        // Apps menu button
+        .o_navbar_apps_menu {
+            .o-dropdown {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+        }
+
+        // Menu brand link
+        .o_menu_brand {
+            color: $dark-text-primary !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+
+        // Menu sections
+        .o_menu_sections {
+            .o_nav_entry {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+
+            .o-dropdown {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+        }
+
+        // Menu sections container with flex classes
+        .o_menu_sections.d-flex.flex-grow-1.flex-shrink-1.w-0 {
+            background-color: transparent !important;
+            color: $dark-text-primary !important;
+            
+            // All direct children
+            > * {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+            
+            // Navigation entries within this container
+            .o_nav_entry {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+            
+            // Dropdown toggles within this container
+            .o-dropdown.dropdown-toggle {
+                color: $dark-text-primary !important;
+                background: none !important;
+                border: none !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                &:focus {
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+                }
+            }
+            
+            // Dropdown items within this container
+            .o-dropdown-item {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+
+            // All buttons within this container
+            button {
+                color: $dark-text-primary !important;
+                background: none !important;
+                border: none !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                &:focus {
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+                }
+            }
+
+            // All links within this container
+            a {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+
+            // All spans within this container
+            span {
+                color: $dark-text-primary !important;
+            }
+
+            // All icons within this container
+            i, .fa, .oi {
+                color: $dark-text-primary !important;
+            }
+        }
+
+        // Menu sections more button
+        .o_menu_sections_more {
+            .o-dropdown {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+        }
+
+        // System tray items
+        .o_menu_systray {
+            .o-dropdown {
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+            }
+
+            .o-mail-DiscussSystray-class {
+                .o-dropdown {
+                    color: $dark-text-primary !important;
+                    
+                    &:hover {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+
+            .o_switch_company_menu {
+                .o-dropdown {
+                    color: $dark-text-primary !important;
+                    
+                    &:hover {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+
+            .o_user_menu {
+                .o-dropdown {
+                    color: $dark-text-primary !important;
+                    
+                    &:hover {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+        }
+
+        // Mobile menu toggle
+        .o_mobile_menu_toggle {
+            color: $dark-text-primary !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+
+        // All dropdown toggles in navbar
+        .o-dropdown.dropdown-toggle {
+            color: $dark-text-primary !important;
+            background: none !important;
+            border: none !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+            
+            &:focus {
+                background-color: $dark-bg-tertiary !important;
+                box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+            }
+        }
+
+        // Navigation entries
+        .o_nav_entry {
+            color: $dark-text-primary !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+
+        // Dropdown items in navbar
+        .o-dropdown-item {
+            color: $dark-text-primary !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+    }
+
+    // Fix dropdown positioning and z-index issues
+    .o-overlay-container {
+        z-index: 1050 !important;
+        
+        .o_popover, .popover {
+            z-index: 1060 !important;
+            position: fixed !important;
+            
+            &.dropdown-menu {
+                background-color: $dark-bg-secondary !important;
+                border: 1px solid $dark-border !important;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5) !important;
+
+                .dropdown-item {
+                    color: $dark-text-primary !important;
+                    
+                    &:hover {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                    
+                    &.o-navigable {
+                        color: $dark-text-primary !important;
+                        
+                        &:hover {
+                            background-color: $dark-bg-tertiary !important;
+                        }
+                    }
+                }
+                
+                .dropdown-divider {
+                    border-top-color: $dark-border !important;
+                }
+            }
+        }
+    }
+
+    // Additional fixes for dropdown positioning
+    .o_popover.popover.mw-100.o-dropdown--menu.dropdown-menu {
+        position: fixed !important;
+        z-index: 1060 !important;
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5) !important;
+        
+        .o-dropdown-item {
+            color: $dark-text-primary !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+        
+        .dropdown-divider {
+            border-top-color: $dark-border !important;
+        }
+    }
+
+    // Content area
+    .o_content {
+        background-color: $dark-bg-primary !important;
+    }
+
+    // Control panel
+    .o_control_panel {
+        background-color: $dark-bg-secondary !important;
+        border-bottom: 1px solid $dark-border !important;
+
+        .o_cp_top {
+            .o_cp_top_left {
+                color: $dark-text-primary !important;
+            }
+        }
+
+        .o_cp_bottom {
+            background-color: $dark-bg-secondary !important;
+        }
+    }
+
+    // Forms
+    .o_form_view {
+        background-color: $dark-bg-primary !important;
+
+        .o_form_sheet {
+            background-color: $dark-bg-secondary !important;
+            border: 1px solid $dark-border !important;
+        }
+
+        .o_form_statusbar {
+            background-color: $dark-bg-tertiary !important;
+            border-bottom: 1px solid $dark-border !important;
+        }
+
+        .o_form_field {
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // List views
+    .o_list_view {
+        background-color: $dark-bg-primary !important;
+
+        .o_list_renderer {
+            background-color: $dark-bg-primary !important;
+        }
+        
+        .table-responsive {
+            background-color: $dark-bg-primary !important;
+        }
+
+        .o_list_table {
+            background-color: $dark-bg-secondary !important;
+            border-color: $dark-border !important;
+
+            thead {
+                background-color: $dark-bg-tertiary !important;
+                > tr > th {
+                    background-color: $dark-bg-tertiary !important;
+                    color: $dark-text-primary !important;
+                    border-bottom: 1px solid $dark-border !important;
+                }
+            }
+
+            tbody {
+                background-color: $dark-bg-secondary !important;
+                
+                > tr {
+                    background-color: $dark-bg-secondary !important;
+                    color: $dark-text-primary !important;
+
+                    &:hover {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+
+                    > td {
+                        border-bottom: 1px solid $dark-border-light !important;
+                        color: $dark-text-primary !important;
+                    }
+                }
+            }
+            
+            // Table borders and structure
+            border-collapse: collapse !important;
+            
+            // Ensure all table cells have proper styling
+            td, th {
+                border-color: $dark-border-light !important;
+                color: $dark-text-primary !important;
+            }
+            
+            // Override Bootstrap table classes
+            &.table {
+                background-color: $dark-bg-secondary !important;
+                color: $dark-text-primary !important;
+                
+                &.table-hover {
+                    tbody tr:hover {
+                        background-color: $dark-bg-tertiary !important;
+                        color: $dark-text-primary !important;
+                    }
+                }
+                
+                &.table-striped {
+                    tbody tr:nth-of-type(odd) {
+                        background-color: $dark-bg-secondary !important;
+                        color: $dark-text-primary !important;
+                    }
+                    
+                    tbody tr:nth-of-type(even) {
+                        background-color: $dark-bg-tertiary !important;
+                        color: $dark-text-primary !important;
+                    }
+                }
+            }
+        }
+    }
+
+    // Specific styling for contacts list view
+    .o_list_view {
+        // Ensure tbody has proper dark styling
+        .o_list_table tbody.ui-sortable {
+            background-color: $dark-bg-secondary !important;
+            
+            .o_data_row {
+                background-color: $dark-bg-secondary !important;
+                color: $dark-text-primary !important;
+                border-bottom: 1px solid $dark-border-light !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                // Data cells
+                .o_data_cell {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+                    border-bottom: 1px solid $dark-border-light !important;
+                    
+                    // Cursor pointer cells
+                    &.cursor-pointer {
+                        color: $dark-text-primary !important;
+                        
+                        &:hover {
+                            background-color: $dark-bg-tertiary !important;
+                        }
+                    }
+                    
+                    // Specific cell types
+                    &.o_list_char {
+                        color: $dark-text-primary !important;
+                    }
+                    
+                    &.o_list_many2one {
+                        color: $dark-text-primary !important;
+                    }
+                    
+                    &.o_list_activity_cell {
+                        color: $dark-text-primary !important;
+                        
+                        .o-mail-ActivityButton {
+                            color: $dark-text-primary !important;
+                            background: none !important;
+                            border: none !important;
+                            
+                            &:hover {
+                                background-color: $dark-bg-tertiary !important;
+                            }
+                            
+                            i.fa {
+                                color: $dark-text-primary !important;
+                            }
+                        }
+                    }
+                    
+                    // Field widgets inside cells
+                    .o_field_widget {
+                        color: $dark-text-primary !important;
+                        
+                        &.o_field_many2one_avatar_user {
+                            color: $dark-text-primary !important;
+                            
+                            .o_avatar {
+                                background-color: $dark-bg-tertiary !important;
+                            }
+                            
+                            .o_m2o_avatar {
+                                background-color: $dark-bg-tertiary !important;
+                            }
+                        }
+                        
+                        &.o_field_list_activity {
+                            color: $dark-text-primary !important;
+                        }
+                        
+                        &.o_field_empty {
+                            color: $dark-text-muted !important;
+                        }
+                        
+                        &.o_field_many2one_avatar {
+                            color: $dark-text-primary !important;
+                            
+                            .o_avatar {
+                                background-color: $dark-bg-tertiary !important;
+                            }
+                        }
+                        
+                        &.o_field_many2one_avatar_user {
+                            color: $dark-text-primary !important;
+                            
+                            .o_avatar {
+                                background-color: $dark-bg-tertiary !important;
+                            }
+                            
+                            .o_m2o_avatar {
+                                background-color: $dark-bg-tertiary !important;
+                            }
+                        }
+                        
+                        &.o_field_list_activity {
+                            color: $dark-text-primary !important;
+                        }
+                        
+                        // Avatar styling
+                        .o_avatar {
+                            background-color: $dark-bg-tertiary !important;
+                        }
+                        
+                        .o_m2o_avatar {
+                            background-color: $dark-bg-tertiary !important;
+                        }
+                    }
+                }
+                
+                // Record selector (checkbox column)
+                .o_list_record_selector {
+                    background-color: transparent !important;
+                    
+                    .o-checkbox {
+                        .form-check-input {
+                            background-color: $dark-bg-tertiary !important;
+                            border-color: $dark-border !important;
+                            
+                            &:checked {
+                                background-color: $dark-accent !important;
+                                border-color: $dark-accent !important;
+                            }
+                        }
+                        
+                        .form-check-label {
+                            color: $dark-text-primary !important;
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Additional styling for specific contact list elements
+        .o_data_cell {
+            // Force LTR text direction
+            &.o_force_ltr {
+                color: $dark-text-primary !important;
+            }
+            
+            // Readonly modifier
+            &.o_readonly_modifier {
+                color: $dark-text-primary !important;
+            }
+            
+            // Many2one avatar user cell
+            &.o_many2one_avatar_user_cell {
+                .o_field_many2one_avatar_user {
+                    color: $dark-text-primary !important;
+                    
+                    .o_avatar {
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+        }
+        
+        // Activity button styling
+        .o-mail-ActivityButton {
+            &.btn-dark {
+                color: $dark-text-primary !important;
+                background: none !important;
+                border: none !important;
+                
+                &:hover {
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                i.fa {
+                    color: $dark-text-primary !important;
+                }
+                
+                .o-mail-ListActivity-summary {
+                    color: $dark-text-primary !important;
+                }
+            }
+        }
+        
+        // Mail-related styling
+        .o-mail-ListActivity-summary {
+            color: $dark-text-primary !important;
+        }
+        
+        .o-mail-ActivityButton {
+            color: $dark-text-primary !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+        
+        // Button styling
+        .btn-link {
+            color: $dark-text-primary !important;
+            
+            &:hover {
+                color: $dark-accent !important;
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+        
+        .btn-dark {
+            color: $dark-text-primary !important;
+            background: none !important;
+            border: none !important;
+            
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+        
+        // Form styling
+        .form-check {
+            .form-check-input {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-border !important;
+                
+                &:checked {
+                    background-color: $dark-accent !important;
+                    border-color: $dark-accent !important;
+                }
+            }
+            
+            .form-check-label {
+                color: $dark-text-primary !important;
+            }
+        }
+        
+        // Accessibility and ARIA styling
+        [aria-label] {
+            color: $dark-text-primary !important;
+        }
+        
+        [title] {
+            color: $dark-text-primary !important;
+        }
+        
+        // Role-based styling
+        [role="img"] {
+            color: $dark-text-primary !important;
+        }
+        
+        // Name attribute styling
+        [name] {
+            color: $dark-text-primary !important;
+        }
+        
+        // Data attribute styling
+        [data-id] {
+            color: $dark-text-primary !important;
+        }
+        
+        [data-field-name] {
+            color: $dark-text-primary !important;
+        }
+        
+        // Specific name attributes
+        [name="complete_name"] {
+            color: $dark-text-primary !important;
+        }
+        
+        [name="phone"] {
+            color: $dark-text-primary !important;
+        }
+        
+        [name="email"] {
+            color: $dark-text-primary !important;
+        }
+        
+        [name="user_id"] {
+            color: $dark-text-primary !important;
+        }
+        
+        [name="activity_ids"] {
+            color: $dark-text-primary !important;
+        }
+        
+        [name="city"] {
+            color: $dark-text-primary !important;
+        }
+        
+        [name="country_id"] {
+            color: $dark-text-primary !important;
+        }
+        
+        // Print-specific styling
+        .w-print-0.p-print-0 {
+            background-color: transparent !important;
+        }
+        
+        // Utility classes
+        .user-select-none {
+            color: $dark-text-primary !important;
+        }
+        
+        // Data tooltip styling
+        [data-tooltip-delay] {
+            color: $dark-text-primary !important;
+        }
+        
+        // Tabindex elements
+        [tabindex] {
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                outline: 2px solid $dark-accent !important;
+                outline-offset: 2px !important;
+            }
+        }
+        
+        // D-flex and gap utilities
+        .d-flex {
+            color: $dark-text-primary !important;
+        }
+        
+        .align-items-center {
+            color: $dark-text-primary !important;
+        }
+        
+        .gap-1 {
+            color: $dark-text-primary !important;
+        }
+        
+        // Text utilities
+        .text-start {
+            color: $dark-text-primary !important;
+        }
+        
+        .text-truncate {
+            color: $dark-text-primary !important;
+        }
+        
+        .w-100 {
+            color: $dark-text-primary !important;
+        }
+        
+        .p-0 {
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Kanban views
+    .o_kanban_view {
+        background-color: $dark-bg-primary !important;
+
+        .o_kanban_record {
+            background-color: $dark-bg-secondary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+
+        .o_kanban_group {
+            background-color: $dark-bg-secondary !important;
+            border: 1px solid $dark-border !important;
+        }
+    }
+
+    // Calendar views
+    .o_calendar_view {
+        background-color: $dark-bg-primary !important;
+
+        .o_calendar_widget {
+            background-color: $dark-bg-secondary !important;
+        }
+
+        .o_calendar_sidebar {
+            background-color: $dark-bg-secondary !important;
+            border-left: 1px solid $dark-border !important;
+        }
+    }
+
+    // Form inputs
+    .form-control {
+        background-color: $dark-bg-tertiary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+
+        &:focus {
+            background-color: $dark-bg-tertiary !important;
+            border-color: $dark-accent !important;
+            color: $dark-text-primary !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+        }
+
+        &::placeholder {
+            color: $dark-text-muted !important;
+        }
+    }
+
+    // Form labels and field labels
+    .o_form_label, .o_required_modifier, label {
+        color: $dark-text-primary !important;
+        font-weight: 500 !important;
+        
+        &.o_required_modifier::after {
+            color: $dark-danger !important;
+        }
+    }
+
+    // Form field containers
+    .o_field_widget {
+        color: $dark-text-primary !important;
+        
+        .o_input {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+    }
+
+    // Specific form fields for contact information
+    .o_form_view {
+        // Job Position field
+        .o_field_char[name="function"], 
+        .o_field_char[data-field-name="function"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+
+        // Phone field
+        .o_field_phone[name="phone"], 
+        .o_field_phone[data-field-name="phone"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+
+        // Mobile field
+        .o_field_phone[name="mobile"], 
+        .o_field_phone[data-field-name="mobile"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+
+        // Email field
+        .o_field_email[name="email"], 
+        .o_field_email[data-field-name="email"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+
+        // Website field
+        .o_field_url[name="website"], 
+        .o_field_url[data-field-name="website"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+
+        // Title field (e.g., Mister)
+        .o_field_selection[name="title"], 
+        .o_field_selection[data-field-name="title"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+
+        // Tags field
+        .o_field_many2many_tags[name="category_id"], 
+        .o_field_many2many_tags[data-field-name="category_id"] {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+    }
+
+    // Form sheet styling
+    .o_form_sheet {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+        
+        .o_form_sheet_bg {
+            background-color: $dark-bg-secondary !important;
+        }
+    }
+
+    // Form groups and rows
+    .o_form_group, .o_row {
+        .o_form_label {
+            color: $dark-text-primary !important;
+            font-weight: 500 !important;
+        }
+    }
+
+    // Required field indicators
+    .o_required_modifier::after {
+        color: $dark-danger !important;
+        content: " *" !important;
+    }
+
+    // Form field help text
+    .o_form_text {
+        color: $dark-text-secondary !important;
+    }
+
+    // Form field descriptions
+    .o_form_text_help {
+        color: $dark-text-muted !important;
+        font-size: 0.875em !important;
+    }
+
+    // Dropdown and select fields
+    select, .o_field_selection {
+        background-color: $dark-bg-tertiary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+        
+        &:focus {
+            border-color: $dark-accent !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+        }
+        
+        option {
+            background-color: $dark-bg-secondary !important;
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Many2one fields (dropdown with search)
+    .o_field_many2one {
+        .o_input_dropdown {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+        
+        .o_dropdown_button {
+            color: $dark-text-primary !important;
+            background-color: transparent !important;
+            border-left: 1px solid $dark-border !important;
+        }
+    }
+
+    // Many2many tags fields
+    .o_field_many2many_tags {
+        .o_field_many2many_tags_selection {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+        
+        .o_tag {
+            background-color: $dark-accent !important;
+            color: white !important;
+            border: 1px solid $dark-accent !important;
+            
+            .o_tag_badge_text {
+                color: white !important;
+            }
+        }
+    }
+
+    // Textarea fields
+    textarea, .o_field_text {
+        background-color: $dark-bg-tertiary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+        
+        &:focus {
+            border-color: $dark-accent !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+        }
+    }
+
+    // Checkbox and radio fields
+    input[type="checkbox"], input[type="radio"] {
+        accent-color: $dark-accent !important;
+    }
+
+    // Date and datetime fields
+    .o_field_date, .o_field_datetime {
+        .o_input {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            
+            &:focus {
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+    }
+
+    // Form field groups and sections
+    .o_form_group, .o_row {
+        .o_form_label {
+            color: $dark-text-primary !important;
+            font-weight: 500 !important;
+        }
+        
+        .o_form_text {
+            color: $dark-text-secondary !important;
+        }
+    }
+
+    // Form field validation states
+    .o_field_widget.o_invalid_modifier {
+        .o_input {
+            border-color: $dark-danger !important;
+            box-shadow: 0 0 0 0.2rem rgba(248, 81, 73, 0.25) !important;
+        }
+    }
+
+    .o_field_widget.o_valid_modifier {
+        .o_input {
+            border-color: $dark-success !important;
+            box-shadow: 0 0 0 0.2rem rgba(63, 185, 80, 0.25) !important;
+        }
+    }
+
+    // Buttons
+    .btn {
+        &.btn-primary {
+            background-color: $dark-accent !important;
+            border-color: $dark-accent !important;
+            color: white !important;
+
+            &:hover {
+                background-color: $dark-accent-hover !important;
+                border-color: $dark-accent-hover !important;
+            }
+        }
+
+        &.btn-secondary {
+            background-color: $dark-bg-tertiary !important;
+            border-color: $dark-border !important;
+            color: $dark-text-primary !important;
+
+            &:hover {
+                background-color: $dark-bg-primary !important;
+            }
+        }
+
+        &.btn-success {
+            background-color: $dark-success !important;
+            border-color: $dark-success !important;
+        }
+
+        &.btn-danger {
+            background-color: $dark-danger !important;
+            border-color: $dark-danger !important;
+        }
+
+        &.btn-warning {
+            background-color: $dark-warning !important;
+            border-color: $dark-warning !important;
+            color: #212529 !important;
+        }
+
+        &.btn-info {
+            background-color: $dark-info !important;
+            border-color: $dark-info !important;
+        }
+    }
+
+    // General dropdowns (not in overlay)
+    .dropdown-menu {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+
+        .dropdown-item {
+            color: $dark-text-primary !important;
+
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+        }
+    }
+
+    // Modals
+    .modal-content {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+
+        .modal-header {
+            background-color: $dark-bg-secondary !important;
+            border-bottom: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+
+            .modal-title {
+                color: $dark-text-primary !important;
+            }
+
+            .btn-close {
+                background-color: transparent !important;
+                border: none !important;
+                color: $dark-text-secondary !important;
+                filter: invert(1) grayscale(100%) brightness(200%) !important;
+
+                &:hover {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                }
+
+                &:focus {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+            }
+        }
+
+        .modal-body {
+            background-color: $dark-bg-secondary !important;
+            color: $dark-text-primary !important;
+
+            // Form view within modal
+            .o_form_view {
+                background-color: $dark-bg-secondary !important;
+                color: $dark-text-primary !important;
+
+                .o_form_renderer {
+                    background-color: $dark-bg-secondary !important;
+                    color: $dark-text-primary !important;
+                }
+
+                // Title section
+                .oe_title {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+
+                    .o_form_label {
+                        color: $dark-text-primary !important;
+                        font-weight: 500 !important;
+                    }
+
+                    h1 {
+                        color: $dark-text-primary !important;
+                    }
+
+                    // Project name input
+                    .o_field_widget.o_field_char.o_project_name {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .o_input {
+                            background-color: $dark-bg-tertiary !important;
+                            border: 1px solid $dark-border !important;
+                            color: $dark-text-primary !important;
+
+                            &::placeholder {
+                                color: $dark-text-muted !important;
+                            }
+
+                            &:focus {
+                                background-color: $dark-bg-tertiary !important;
+                                border-color: $dark-accent !important;
+                                color: $dark-text-primary !important;
+                                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                            }
+                        }
+                    }
+                }
+
+                // Settings container
+                .o_settings_container {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+                }
+
+                // Alias section
+                [name="alias_def"] {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+
+                    .o_form_label {
+                        color: $dark-text-primary !important;
+                        font-weight: 500 !important;
+                    }
+
+                    // Alias name input
+                    .o_field_widget.o_field_char {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .o_input {
+                            background-color: $dark-bg-tertiary !important;
+                            border: 1px solid $dark-border !important;
+                            color: $dark-text-primary !important;
+
+                            &::placeholder {
+                                color: $dark-text-muted !important;
+                            }
+
+                            &:focus {
+                                background-color: $dark-bg-tertiary !important;
+                                border-color: $dark-accent !important;
+                                color: $dark-text-primary !important;
+                                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                            }
+                        }
+                    }
+
+                    // Many2one field (domain selection)
+                    .o_field_widget.o_field_many2one {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .o_field_many2one_selection {
+                            background-color: transparent !important;
+                            color: $dark-text-primary !important;
+
+                            .o_input_dropdown {
+                                background-color: transparent !important;
+                                color: $dark-text-primary !important;
+
+                                .o-autocomplete {
+                                    background-color: transparent !important;
+                                    color: $dark-text-primary !important;
+
+                                    .o-autocomplete--input {
+                                        background-color: $dark-bg-tertiary !important;
+                                        border: 1px solid $dark-border !important;
+                                        color: $dark-text-primary !important;
+
+                                        &::placeholder {
+                                            color: $dark-text-muted !important;
+                                        }
+
+                                        &:focus {
+                                            background-color: $dark-bg-tertiary !important;
+                                            border-color: $dark-accent !important;
+                                            color: $dark-text-primary !important;
+                                            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                                        }
+                                    }
+                                }
+
+                                .o_dropdown_button {
+                                    background-color: $dark-bg-tertiary !important;
+                                    border: 1px solid $dark-border !important;
+                                    color: $dark-text-secondary !important;
+
+                                    &:hover {
+                                        background-color: $dark-bg-primary !important;
+                                        color: $dark-text-primary !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // Text info tooltip
+                    .text-info {
+                        color: $dark-info !important;
+                        background-color: transparent !important;
+                    }
+                }
+            }
+        }
+
+        .modal-footer {
+            background-color: $dark-bg-secondary !important;
+            border-top: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+
+            // Primary buttons
+            .btn-primary {
+                background-color: $dark-accent !important;
+                border-color: $dark-accent !important;
+                color: white !important;
+
+                &:hover {
+                    background-color: $dark-accent-hover !important;
+                    border-color: $dark-accent-hover !important;
+                }
+
+                &:focus {
+                    background-color: $dark-accent-hover !important;
+                    border-color: $dark-accent-hover !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+
+                span {
+                    color: white !important;
+                }
+            }
+
+            // Secondary buttons
+            .btn-secondary {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-border !important;
+                color: $dark-text-primary !important;
+
+                &:hover {
+                    background-color: $dark-bg-primary !important;
+                    border-color: $dark-border-light !important;
+                }
+
+                &:focus {
+                    background-color: $dark-bg-primary !important;
+                    border-color: $dark-accent !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+
+                span {
+                    color: $dark-text-primary !important;
+                }
+            }
+        }
+    }
+
+    // Modal backdrop
+    .modal-backdrop {
+        background-color: rgba(0, 0, 0, 0.5) !important;
+    }
+
+    // Dropdown menus in modals
+    .modal-content .dropdown-menu {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+
+        .dropdown-item {
+            color: $dark-text-primary !important;
+            background-color: transparent !important;
+
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+
+            &:focus {
+                background-color: $dark-bg-tertiary !important;
+                color: $dark-text-primary !important;
+            }
+        }
+    }
+
+    // Sidebar
+    .o_sidebar {
+        background-color: $dark-bg-secondary !important;
+        border-right: 1px solid $dark-border !important;
+    }
+
+    // Search panel
+    .o_search_panel {
+        background-color: $dark-bg-secondary !important;
+        border-right: 1px solid $dark-border !important;
+
+        .o_search_panel_section {
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Breadcrumbs
+    .o_control_panel .breadcrumb {
+        background-color: transparent !important;
+        color: $dark-text-secondary !important;
+
+        .breadcrumb-item {
+            color: $dark-text-secondary !important;
+
+            &.active {
+                color: $dark-text-primary !important;
+            }
+        }
+    }
+
+    // Tabs
+    .nav-tabs {
+        border-bottom: 1px solid $dark-border !important;
+        background-color: $dark-bg-secondary !important;
+
+        .nav-item {
+            background-color: transparent !important;
+            
+            .nav-link {
+                color: $dark-text-secondary !important;
+                background-color: transparent !important;
+                border: 1px solid transparent !important;
+                border-bottom: 2px solid transparent !important;
+                padding: 0.75rem 1rem !important;
+                transition: all 0.3s ease !important;
+
+                &:hover {
+                    color: $dark-text-primary !important;
+                    border-color: $dark-border !important;
+                    background-color: $dark-bg-tertiary !important;
+                }
+
+                &:focus {
+                    color: $dark-text-primary !important;
+                    border-color: $dark-accent !important;
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+
+                &.active {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-secondary !important;
+                    border-color: $dark-accent $dark-border transparent !important;
+                    border-bottom: 2px solid $dark-accent !important;
+                    font-weight: 500 !important;
+                }
+            }
+
+            &.flex-nowrap {
+                .nav-link {
+                    white-space: nowrap !important;
+                }
+            }
+
+            &.cursor-pointer {
+                cursor: pointer !important;
+            }
+        }
+    }
+
+    // Specific tab styling for contact forms
+    .nav-tabs.flex-row.flex-nowrap {
+        background-color: $dark-bg-secondary !important;
+        border-bottom: 1px solid $dark-border !important;
+        
+        .nav-item {
+            .nav-link {
+                color: $dark-text-secondary !important;
+                background-color: transparent !important;
+                border: 1px solid transparent !important;
+                border-bottom: 2px solid transparent !important;
+                
+                &:hover {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                    border-color: $dark-border !important;
+                }
+                
+                &:focus {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                    border-color: $dark-accent !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+                
+                &.active {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-secondary !important;
+                    border-color: $dark-accent $dark-border transparent !important;
+                    border-bottom: 2px solid $dark-accent !important;
+                    font-weight: 500 !important;
+                }
+            }
+        }
+    }
+
+    // Tab content areas
+    .tab-content {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+        border-top: none !important;
+        
+        .tab-pane {
+            background-color: $dark-bg-secondary !important;
+            color: $dark-text-primary !important;
+            padding: 1rem !important;
+        }
+    }
+
+    // Tab navigation containers
+    .o_form_view {
+        .nav-tabs {
+            background-color: $dark-bg-secondary !important;
+            border-bottom: 1px solid $dark-border !important;
+            
+            .nav-item {
+                .nav-link {
+                    color: $dark-text-secondary !important;
+                    background-color: transparent !important;
+                    border: 1px solid transparent !important;
+                    border-bottom: 2px solid transparent !important;
+                    
+                    &:hover {
+                        color: $dark-text-primary !important;
+                        background-color: $dark-bg-tertiary !important;
+                        border-color: $dark-border !important;
+                    }
+                    
+                    &:focus {
+                        color: $dark-text-primary !important;
+                        background-color: $dark-bg-tertiary !important;
+                        border-color: $dark-accent !important;
+                        box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                    }
+                    
+                    &.active {
+                        color: $dark-text-primary !important;
+                        background-color: $dark-bg-secondary !important;
+                        border-color: $dark-accent $dark-border transparent !important;
+                        border-bottom: 2px solid $dark-accent !important;
+                        font-weight: 500 !important;
+                    }
+                }
+            }
+        }
+    }
+
+    // Tab content within forms
+    .o_form_view {
+        .tab-content {
+            background-color: $dark-bg-secondary !important;
+            border: 1px solid $dark-border !important;
+            border-top: none !important;
+            
+            .tab-pane {
+                background-color: $dark-bg-secondary !important;
+                color: $dark-text-primary !important;
+                
+                .o_form_sheet {
+                    background-color: $dark-bg-secondary !important;
+                    border: none !important;
+                }
+            }
+        }
+    }
+
+    // Specific tab names styling
+    .nav-link[name="contact_addresses"],
+    .nav-link[name="sales_purchases"],
+    .nav-link[name="internal_notes"] {
+        color: $dark-text-secondary !important;
+        
+        &:hover {
+            color: $dark-text-primary !important;
+            background-color: $dark-bg-tertiary !important;
+        }
+        
+        &:focus {
+            color: $dark-text-primary !important;
+            background-color: $dark-bg-tertiary !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+        }
+        
+        &.active {
+            color: $dark-text-primary !important;
+            background-color: $dark-bg-secondary !important;
+            border-bottom: 2px solid $dark-accent !important;
+            font-weight: 500 !important;
+        }
+    }
+
+    // Alerts
+    .alert {
+        &.alert-info {
+            background-color: rgba(88, 166, 255, 0.15) !important;
+            border-color: $dark-info !important;
+            color: $dark-text-primary !important;
+        }
+
+        &.alert-success {
+            background-color: rgba(63, 185, 80, 0.15) !important;
+            border-color: $dark-success !important;
+            color: $dark-text-primary !important;
+        }
+
+        &.alert-warning {
+            background-color: rgba(210, 153, 34, 0.15) !important;
+            border-color: $dark-warning !important;
+            color: $dark-text-primary !important;
+        }
+
+        &.alert-danger {
+            background-color: rgba(248, 81, 73, 0.15) !important;
+            border-color: $dark-danger !important;
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Cards
+    .card {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+
+        .card-header {
+            background-color: $dark-bg-tertiary !important;
+            border-bottom: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+        }
+
+        .card-body {
+            background-color: $dark-bg-secondary !important;
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Tables
+    .table {
+        color: $dark-text-primary !important;
+
+        thead th {
+            background-color: $dark-bg-tertiary !important;
+            border-bottom: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+        }
+
+        tbody tr {
+            background-color: $dark-bg-secondary !important;
+
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+
+            td {
+                border-top: 1px solid $dark-border-light !important;
+                color: $dark-text-primary !important;
+            }
+        }
+    }
+
+    // Progress bars
+    .progress {
+        background-color: $dark-bg-tertiary !important;
+    }
+
+    // Badges
+    .badge {
+        &.badge-primary {
+            background-color: $dark-accent !important;
+        }
+
+        &.badge-secondary {
+            background-color: $dark-bg-tertiary !important;
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Links
+    a {
+        color: $dark-accent !important;
+
+        &:hover {
+            color: $dark-accent-hover !important;
+        }
+    }
+
+    // Scrollbars (Webkit browsers)
+    ::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: $dark-bg-primary;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $dark-bg-tertiary;
+        border-radius: 6px;
+
+        &:hover {
+            background: $dark-border;
+        }
+    }
+
+    // Dark mode toggle button styling in dark mode
+    .o_mail_systray_item .dark-mode-toggle {
+        color: $dark-text-primary !important;
+
+        &:hover {
+            background-color: $dark-bg-tertiary !important;
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Login page specific styling
+    .o_web_client:not(.o_logged_in) {
+        background-color: $dark-bg-primary !important;
+
+        .o_login_container {
+            .o_login_box {
+                background-color: $dark-bg-secondary !important;
+                border: 1px solid $dark-border !important;
+
+                .o_login_header {
+                    .o_login_logo {
+                        color: $dark-text-primary !important;
+                    }
+                }
+
+                .o_login_form {
+                    .form-control {
+                        background-color: $dark-bg-tertiary !important;
+                        border: 1px solid $dark-border !important;
+                        color: $dark-text-primary !important;
+
+                        &:focus {
+                            border-color: $dark-accent !important;
+                        }
+                    }
+
+                    .btn-primary {
+                        background-color: $dark-accent !important;
+                        border-color: $dark-accent !important;
+                    }
+                }
+            }
+        }
+    }
+
+    // Chatter (Communication) Section Styling
+    .o-mail-Chatter-top {
+        background-color: $dark-bg-secondary !important;
+        border-bottom: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+        
+        .o-mail-Chatter-topbar {
+            background-color: $dark-bg-secondary !important;
+            border-bottom: 1px solid $dark-border !important;
+            
+            // Send Message Button
+            .o-mail-Chatter-sendMessage {
+                background-color: $dark-accent !important;
+                border-color: $dark-accent !important;
+                color: white !important;
+                
+                &:hover {
+                    background-color: $dark-accent-hover !important;
+                    border-color: $dark-accent-hover !important;
+                }
+                
+                &:focus {
+                    background-color: $dark-accent-hover !important;
+                    border-color: $dark-accent-hover !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+            }
+            
+            // Log Note Button
+            .o-mail-Chatter-logNote {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-border !important;
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-primary !important;
+                    border-color: $dark-border-light !important;
+                }
+                
+                &:focus {
+                    background-color: $dark-bg-primary !important;
+                    border-color: $dark-accent !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+            }
+            
+            // Activities Button
+            .o-mail-Chatter-activity {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-border !important;
+                color: $dark-text-primary !important;
+                
+                &:hover {
+                    background-color: $dark-bg-primary !important;
+                    border-color: $dark-border-light !important;
+                }
+                
+                &:focus {
+                    background-color: $dark-bg-primary !important;
+                    border-color: $dark-accent !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+                
+                span {
+                    color: $dark-text-primary !important;
+                }
+            }
+            
+            // Search Button
+            .btn.btn-link.text-action {
+                color: $dark-text-secondary !important;
+                background: none !important;
+                border: none !important;
+                
+                &:hover {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                &:focus {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+                
+                i.oi.oi-search {
+                    color: $dark-text-secondary !important;
+                }
+            }
+            
+            // Attach Files Button
+            .o-mail-Chatter-attachFiles {
+                color: $dark-text-secondary !important;
+                background: none !important;
+                border: none !important;
+                
+                &:hover {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                &:focus {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+                
+                i.fa.fa-paperclip {
+                    color: $dark-text-secondary !important;
+                }
+            }
+            
+            // File Upload Input
+            .o-mail-Chatter-fileUploader {
+                background-color: $dark-bg-tertiary !important;
+                border: 1px solid $dark-border !important;
+                color: $dark-text-primary !important;
+                
+                &:focus {
+                    border-color: $dark-accent !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+            }
+            
+            // Followers Section
+            .o-mail-Followers {
+                .o-mail-Followers-button {
+                    color: $dark-text-secondary !important;
+                    background: none !important;
+                    border: none !important;
+                    
+                    &:hover {
+                        color: $dark-text-primary !important;
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                    
+                    &:focus {
+                        color: $dark-text-primary !important;
+                        background-color: $dark-bg-tertiary !important;
+                        box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                    }
+                    
+                    i.fa.fa-user-o {
+                        color: $dark-text-secondary !important;
+                    }
+                    
+                    .o-mail-Followers-counter {
+                        color: $dark-text-secondary !important;
+                        background-color: $dark-bg-tertiary !important;
+                    }
+                }
+            }
+            
+            // Follow Button
+            .o-mail-Chatter-follow {
+                color: $dark-text-secondary !important;
+                background: none !important;
+                border: none !important;
+                
+                &:hover {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                }
+                
+                &:focus {
+                    color: $dark-text-primary !important;
+                    background-color: $dark-bg-tertiary !important;
+                    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                }
+                
+                .position-relative {
+                    .d-flex.invisible {
+                        color: $dark-text-secondary !important;
+                    }
+                    
+                    .position-absolute {
+                        color: $dark-text-secondary !important;
+                    }
+                }
+            }
+            
+            // Grow spacer
+            .o-mail-Chatter-topbarGrow {
+                background-color: transparent !important;
+            }
+        }
+    }
+
+    // Chatter content area
+    .o-mail-Chatter {
+        background-color: $dark-bg-secondary !important;
+        color: $dark-text-primary !important;
+        
+        .o-mail-Chatter-content {
+            background-color: $dark-bg-secondary !important;
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Search view styling for dark mode
+    .o_searchview {
+        background-color: $dark-bg-tertiary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+
+        &:focus-within {
+            border-color: $dark-accent !important;
+            color: $dark-text-primary !important;
+
+            + .o_searchview_dropdown_toggler {
+                border-top-color: $dark-accent !important;
+                border-right-color: $dark-accent !important;
+                border-bottom-color: $dark-accent !important;
+            }
+        }
+
+        .o_searchview_input {
+            background-color: transparent !important;
+            border: none !important;
+            color: $dark-text-primary !important;
+            appearance: none !important;
+
+            &::placeholder {
+                color: $dark-text-muted !important;
+            }
+
+            &:focus {
+                background-color: transparent !important;
+                border: none !important;
+                color: $dark-text-primary !important;
+                outline: none !important;
+                box-shadow: none !important;
+            }
+        }
+
+        .o_searchview_icon {
+            color: $dark-text-secondary !important;
+        }
+
+        .o_searchview_input_container {
+            background-color: transparent !important;
+        }
+    }
+
+    // Search dropdown toggler
+    .o_searchview_dropdown_toggler {
+        background-color: $dark-bg-tertiary !important;
+        border: 1px solid $dark-border !important;
+        border-left: none !important;
+        color: $dark-text-secondary !important;
+
+        &:hover {
+            background-color: $dark-bg-primary !important;
+            color: $dark-text-primary !important;
+        }
+
+        &:focus {
+            background-color: $dark-bg-primary !important;
+            color: $dark-text-primary !important;
+            box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+        }
+    }
+
+    // Search autocomplete dropdown
+    .o_searchview_autocomplete {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+
+        .o_menu_item {
+            color: $dark-text-primary !important;
+            background-color: transparent !important;
+
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+            }
+
+            a {
+                color: $dark-text-primary !important;
+            }
+        }
+    }
+
+    // Control panel search view
+    .o_cp_searchview {
+        .o_searchview {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+
+            .o_searchview_input {
+                background-color: transparent !important;
+                border: none !important;
+                color: $dark-text-primary !important;
+
+                &::placeholder {
+                    color: $dark-text-muted !important;
+                }
+
+                &:focus {
+                    background-color: transparent !important;
+                    border: none !important;
+                    color: $dark-text-primary !important;
+                    outline: none !important;
+                    box-shadow: none !important;
+                }
+            }
+        }
+    }
+
+    // Kanban view styling for dark mode
+    .o_kanban_renderer {
+        background-color: $dark-bg-primary !important;
+        color: $dark-text-primary !important;
+
+        // Kanban records (cards)
+        .o_kanban_record {
+            background-color: $dark-bg-secondary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+            transition: all 0.3s ease !important;
+
+            &:hover {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-border-light !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+            }
+
+            &:focus {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-accent !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                outline: none !important;
+            }
+
+            // Kanban aside (image section)
+            .o_kanban_aside_full {
+                background-color: transparent !important;
+                color: $dark-text-primary !important;
+
+                .o_kanban_image_fill {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+
+                    .o_field_widget.o_field_image {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .d-inline-block {
+                            background-color: transparent !important;
+                            color: $dark-text-primary !important;
+
+                            .img {
+                                background-color: transparent !important;
+                                border-radius: 4px !important;
+                            }
+                        }
+                    }
+                }
+
+                // Direct image field (without image_fill wrapper)
+                .o_field_widget.o_field_image {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+
+                    .d-inline-block {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .img {
+                            background-color: transparent !important;
+                            border-radius: 4px !important;
+                        }
+                    }
+                }
+            }
+
+            // Kanban main content
+            main {
+                background-color: transparent !important;
+                color: $dark-text-primary !important;
+
+                // Name section
+                .mb-1 {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+
+                    // Contact name
+                    .fw-bold.fs-5 {
+                        color: $dark-text-primary !important;
+                        font-weight: 600 !important;
+                    }
+
+                    // Tags section
+                    .o_field_widget.o_field_many2many_tags {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .d-flex.flex-wrap.gap-1 {
+                            background-color: transparent !important;
+                            color: $dark-text-primary !important;
+                        }
+                    }
+                }
+
+                // Email and other text
+                .text-truncate {
+                    color: $dark-text-secondary !important;
+                }
+
+                // Additional info (like country)
+                div {
+                    color: $dark-text-secondary !important;
+
+                    span {
+                        color: $dark-text-secondary !important;
+                    }
+                }
+
+                // Footer section
+                footer {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+
+                    // Activity button
+                    .o_field_widget.o_field_kanban_activity {
+                        background-color: transparent !important;
+                        color: $dark-text-primary !important;
+
+                        .o-mail-ActivityButton {
+                            background-color: transparent !important;
+                            border: none !important;
+                            color: $dark-text-secondary !important;
+                            padding: 4px 8px !important;
+                            border-radius: 4px !important;
+                            transition: all 0.3s ease !important;
+
+                            &:hover {
+                                background-color: $dark-bg-tertiary !important;
+                                color: $dark-text-primary !important;
+                            }
+
+                            &:focus {
+                                background-color: $dark-bg-tertiary !important;
+                                color: $dark-text-primary !important;
+                                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+                            }
+
+                            i.fa.fa-fw.fa-lg.fa-clock-o {
+                                color: inherit !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Ghost records (empty placeholders)
+        .o_kanban_record.o_kanban_ghost {
+            background-color: transparent !important;
+            border: 2px dashed $dark-border !important;
+            color: transparent !important;
+
+            &:hover {
+                border-color: $dark-border-light !important;
+            }
+        }
+
+        // Grouped kanban
+        &.o_kanban_grouped {
+            .o_kanban_group {
+                background-color: $dark-bg-secondary !important;
+                border: 1px solid $dark-border !important;
+                color: $dark-text-primary !important;
+
+                .o_kanban_group_header {
+                    background-color: $dark-bg-tertiary !important;
+                    border-bottom: 1px solid $dark-border !important;
+                    color: $dark-text-primary !important;
+
+                    .o_kanban_group_title {
+                        color: $dark-text-primary !important;
+                        font-weight: 600 !important;
+                    }
+
+                    .o_kanban_group_counter {
+                        color: $dark-text-secondary !important;
+                        background-color: $dark-bg-primary !important;
+                    }
+                }
+
+                .o_kanban_group_content {
+                    background-color: transparent !important;
+                    color: $dark-text-primary !important;
+                }
+            }
+        }
+
+        // Ungrouped kanban (like contacts)
+        &.o_kanban_ungrouped {
+            background-color: $dark-bg-primary !important;
+            color: $dark-text-primary !important;
+        }
+    }
+
+    // Specific styling for contact kanban cards
+    .o_kanban_renderer .o_kanban_record {
+        // Contact name styling
+        .fw-bold.fs-5 {
+            color: $dark-text-primary !important;
+            font-weight: 600 !important;
+        }
+
+        // Email styling
+        .text-truncate {
+            color: $dark-text-secondary !important;
+        }
+
+        // Country/location styling
+        div > span {
+            color: $dark-text-secondary !important;
+        }
+
+        // Activity button styling
+        .o-mail-ActivityButton {
+            i.fa.fa-fw.fa-lg.fa-clock-o.btn-link.text-dark {
+                color: $dark-text-secondary !important;
+            }
+        }
+    }
+
+    // Kanban quick create
+    .o_kanban_quick_create {
+        background-color: $dark-bg-secondary !important;
+        border: 1px solid $dark-border !important;
+        color: $dark-text-primary !important;
+
+        .o_kanban_quick_create_input {
+            background-color: $dark-bg-tertiary !important;
+            border: 1px solid $dark-border !important;
+            color: $dark-text-primary !important;
+
+            &::placeholder {
+                color: $dark-text-muted !important;
+            }
+
+            &:focus {
+                background-color: $dark-bg-tertiary !important;
+                border-color: $dark-accent !important;
+                color: $dark-text-primary !important;
+                box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+            }
+        }
+    }
+}
+
+// Smooth transition for theme switching
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+} 

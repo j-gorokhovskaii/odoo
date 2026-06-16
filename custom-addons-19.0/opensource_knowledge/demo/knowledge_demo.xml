@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo Categories -->
+        <record id="category_general" model="knowledge.category">
+            <field name="name">General</field>
+            <field name="description">General knowledge and information</field>
+            <field name="color">1</field>
+            <field name="sequence">10</field>
+            <field name="visibility">internal</field>
+        </record>
+
+        <record id="category_procedures" model="knowledge.category">
+            <field name="name">Procedures</field>
+            <field name="description">Standard operating procedures and workflows</field>
+            <field name="color">2</field>
+            <field name="sequence">20</field>
+            <field name="visibility">internal</field>
+        </record>
+
+        <record id="category_hr" model="knowledge.category">
+            <field name="name">Human Resources</field>
+            <field name="description">HR policies, procedures, and information</field>
+            <field name="color">3</field>
+            <field name="sequence">30</field>
+            <field name="visibility">internal</field>
+            <field name="parent_id" ref="category_procedures"/>
+        </record>
+
+        <record id="category_it" model="knowledge.category">
+            <field name="name">Information Technology</field>
+            <field name="description">IT documentation, guides, and troubleshooting</field>
+            <field name="color">4</field>
+            <field name="sequence">40</field>
+            <field name="visibility">internal</field>
+        </record>
+
+        <record id="category_faq" model="knowledge.category">
+            <field name="name">FAQ</field>
+            <field name="description">Frequently Asked Questions</field>
+            <field name="color">5</field>
+            <field name="sequence">50</field>
+            <field name="visibility">public</field>
+        </record>
+
+        <!-- Demo Tags -->
+        <record id="tag_important" model="knowledge.tag">
+            <field name="name">Important</field>
+            <field name="color">0</field>
+            <field name="description">Important information that requires attention</field>
+        </record>
+
+        <record id="tag_policy" model="knowledge.tag">
+            <field name="name">Policy</field>
+            <field name="color">1</field>
+            <field name="description">Company policies and regulations</field>
+        </record>
+
+        <record id="tag_tutorial" model="knowledge.tag">
+            <field name="name">Tutorial</field>
+            <field name="color">2</field>
+            <field name="description">Step-by-step guides and tutorials</field>
+        </record>
+
+        <record id="tag_troubleshooting" model="knowledge.tag">
+            <field name="name">Troubleshooting</field>
+            <field name="color">3</field>
+            <field name="description">Problem-solving and troubleshooting guides</field>
+        </record>
+
+        <record id="tag_reference" model="knowledge.tag">
+            <field name="name">Reference</field>
+            <field name="color">4</field>
+            <field name="description">Reference materials and documentation</field>
+        </record>
+
+        <!-- Demo Templates -->
+        <record id="template_procedure" model="knowledge.template">
+            <field name="name">Standard Operating Procedure</field>
+            <field name="description">Template for creating standard operating procedures</field>
+            <field name="template_type">standard</field>
+            <field name="article_type">procedure</field>
+            <field name="category_id" ref="category_procedures"/>
+            <field name="is_public">1</field>
+            <field name="body"><![CDATA[
+                <h1>Procedure Title</h1>
+                
+                <h2>Purpose</h2>
+                <p>Describe the purpose and scope of this procedure.</p>
+                
+                <h2>Responsibilities</h2>
+                <ul>
+                    <li>Role 1: Description of responsibilities</li>
+                    <li>Role 2: Description of responsibilities</li>
+                </ul>
+                
+                <h2>Procedure Steps</h2>
+                <ol>
+                    <li>Step 1: Description</li>
+                    <li>Step 2: Description</li>
+                    <li>Step 3: Description</li>
+                </ol>
+                
+                <h2>Related Documents</h2>
+                <p>List any related documents or procedures.</p>
+                
+                <h2>Revision History</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Version</th>
+                            <th>Changes</th>
+                            <th>Author</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>YYYY-MM-DD</td>
+                            <td>1.0</td>
+                            <td>Initial version</td>
+                            <td>Author Name</td>
+                        </tr>
+                    </tbody>
+                </table>
+            ]]></field>
+            <field name="tag_ids" eval="[(6, 0, [ref('tag_policy'), ref('tag_reference')])]"/>
+        </record>
+
+        <record id="template_faq" model="knowledge.template">
+            <field name="name">FAQ Article</field>
+            <field name="description">Template for creating FAQ articles</field>
+            <field name="template_type">standard</field>
+            <field name="article_type">faq</field>
+            <field name="category_id" ref="category_faq"/>
+            <field name="is_public">1</field>
+            <field name="body"><![CDATA[
+                <h1>FAQ: Topic Name</h1>
+                
+                <h2>Question 1</h2>
+                <p><strong>Answer:</strong> Provide a clear and concise answer to the question.</p>
+                
+                <h2>Question 2</h2>
+                <p><strong>Answer:</strong> Provide a clear and concise answer to the question.</p>
+                
+                <h2>Question 3</h2>
+                <p><strong>Answer:</strong> Provide a clear and concise answer to the question.</p>
+                
+                <h2>Still Have Questions?</h2>
+                <p>If you have additional questions not covered here, please contact [Contact Information].</p>
+            ]]></field>
+            <field name="tag_ids" eval="[(6, 0, [ref('tag_reference')])]"/>
+        </record>
+
+        <record id="template_tutorial" model="knowledge.template">
+            <field name="name">Tutorial Guide</field>
+            <field name="description">Template for creating tutorial articles</field>
+            <field name="template_type">standard</field>
+            <field name="article_type">tutorial</field>
+            <field name="category_id" ref="category_general"/>
+            <field name="is_public">1</field>
+            <field name="body"><![CDATA[
+                <h1>Tutorial: Topic Name</h1>
+                
+                <h2>Overview</h2>
+                <p>Brief description of what this tutorial covers and what users will learn.</p>
+                
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Prerequisite 1</li>
+                    <li>Prerequisite 2</li>
+                </ul>
+                
+                <h2>Step-by-Step Instructions</h2>
+                
+                <h3>Step 1: [Action]</h3>
+                <p>Detailed explanation of the first step.</p>
+                
+                <h3>Step 2: [Action]</h3>
+                <p>Detailed explanation of the second step.</p>
+                
+                <h3>Step 3: [Action]</h3>
+                <p>Detailed explanation of the third step.</p>
+                
+                <h2>Troubleshooting</h2>
+                <p>Common issues and their solutions.</p>
+                
+                <h2>Next Steps</h2>
+                <p>What to do after completing this tutorial.</p>
+            ]]></field>
+            <field name="tag_ids" eval="[(6, 0, [ref('tag_tutorial')])]"/>
+        </record>
+
+        <!-- Demo Articles -->
+        <record id="article_welcome" model="knowledge.article">
+            <field name="name">Welcome to Knowledge Management</field>
+            <field name="summary">Introduction to the knowledge management system</field>
+            <field name="category_id" ref="category_general"/>
+            <field name="article_type">article</field>
+            <field name="stage">published</field>
+            <field name="visibility">public</field>
+            <field name="publish_date" eval="datetime.now()"/>
+            <field name="body"><![CDATA[
+                <h1>Welcome to Knowledge Management</h1>
+                
+                <p>Welcome to our comprehensive knowledge management system! This platform is designed to help you create, organize, and share knowledge effectively within your organization.</p>
+                
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>Rich Text Editor:</strong> Create beautiful, formatted articles with ease</li>
+                    <li><strong>Categories & Tags:</strong> Organize content for easy discovery</li>
+                    <li><strong>Templates:</strong> Maintain consistency with pre-defined article templates</li>
+                    <li><strong>Collaboration:</strong> Share articles and collaborate with team members</li>
+                    <li><strong>Version Control:</strong> Track changes and maintain article history</li>
+                    <li><strong>Advanced Search:</strong> Find information quickly with powerful search capabilities</li>
+                </ul>
+                
+                <h2>Getting Started</h2>
+                <p>To get started with the knowledge management system:</p>
+                <ol>
+                    <li>Explore the existing articles and categories</li>
+                    <li>Create your first article using one of our templates</li>
+                    <li>Organize your content with categories and tags</li>
+                    <li>Share your knowledge with colleagues</li>
+                </ol>
+                
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Use clear, descriptive titles for your articles</li>
+                    <li>Include relevant tags to improve discoverability</li>
+                    <li>Write concise summaries for each article</li>
+                    <li>Keep content up-to-date and review regularly</li>
+                    <li>Use templates to maintain consistency</li>
+                </ul>
+                
+                <p>Happy knowledge sharing!</p>
+            ]]></field>
+            <field name="tag_ids" eval="[(6, 0, [ref('tag_important'), ref('tag_reference')])]"/>
+        </record>
+
+        <record id="article_user_guide" model="knowledge.article">
+            <field name="name">User Guide: Creating Your First Article</field>
+            <field name="summary">Step-by-step guide for creating articles in the knowledge base</field>
+            <field name="category_id" ref="category_general"/>
+            <field name="article_type">tutorial</field>
+            <field name="stage">published</field>
+            <field name="visibility">internal</field>
+            <field name="publish_date" eval="datetime.now()"/>
+            <field name="body"><![CDATA[
+                <h1>Creating Your First Article</h1>
+                
+                <p>This guide will walk you through creating your first knowledge article.</p>
+                
+                <h2>Step 1: Navigate to Articles</h2>
+                <p>From the Knowledge menu, select "Articles" to view all existing articles.</p>
+                
+                <h2>Step 2: Create New Article</h2>
+                <p>Click the "Create" button to start creating a new article.</p>
+                
+                <h2>Step 3: Fill in Basic Information</h2>
+                <ul>
+                    <li><strong>Title:</strong> Enter a clear, descriptive title</li>
+                    <li><strong>Category:</strong> Select an appropriate category</li>
+                    <li><strong>Tags:</strong> Add relevant tags for better discoverability</li>
+                    <li><strong>Summary:</strong> Write a brief summary of the article</li>
+                </ul>
+                
+                <h2>Step 4: Write Your Content</h2>
+                <p>Use the rich text editor to write your article content. You can:</p>
+                <ul>
+                    <li>Format text with bold, italic, and other styles</li>
+                    <li>Insert images and links</li>
+                    <li>Create lists and tables</li>
+                    <li>Use headings to structure your content</li>
+                </ul>
+                
+                <h2>Step 5: Set Permissions</h2>
+                <p>Choose who can view your article by setting the appropriate visibility level.</p>
+                
+                <h2>Step 6: Save and Publish</h2>
+                <p>Save your article as a draft first, then publish it when ready.</p>
+                
+                <h2>Tips for Success</h2>
+                <ul>
+                    <li>Use headings to organize your content</li>
+                    <li>Include relevant links to other articles</li>
+                    <li>Add images to make content more engaging</li>
+                    <li>Review and update content regularly</li>
+                </ul>
+            ]]></field>
+            <field name="tag_ids" eval="[(6, 0, [ref('tag_tutorial')])]"/>
+        </record>
+
+        <record id="article_security_policy" model="knowledge.article">
+            <field name="name">Information Security Policy</field>
+            <field name="summary">Company policy regarding information security and data protection</field>
+            <field name="category_id" ref="category_it"/>
+            <field name="article_type">policy</field>
+            <field name="stage">published</field>
+            <field name="visibility">internal</field>
+            <field name="publish_date" eval="datetime.now()"/>
+            <field name="body"><![CDATA[
+                <h1>Information Security Policy</h1>
+                
+                <h2>Purpose</h2>
+                <p>This policy establishes guidelines for protecting company information and systems from unauthorized access, use, disclosure, disruption, modification, or destruction.</p>
+                
+                <h2>Scope</h2>
+                <p>This policy applies to all employees, contractors, and third parties who have access to company information systems.</p>
+                
+                <h2>Password Requirements</h2>
+                <ul>
+                    <li>Passwords must be at least 8 characters long</li>
+                    <li>Include uppercase and lowercase letters</li>
+                    <li>Include at least one number and special character</li>
+                    <li>Change passwords every 90 days</li>
+                    <li>Do not reuse the last 12 passwords</li>
+                </ul>
+                
+                <h2>Data Classification</h2>
+                <ul>
+                    <li><strong>Public:</strong> Information that can be freely shared</li>
+                    <li><strong>Internal:</strong> Information for internal use only</li>
+                    <li><strong>Confidential:</strong> Sensitive information requiring protection</li>
+                    <li><strong>Restricted:</strong> Highly sensitive information with strict access controls</li>
+                </ul>
+                
+                <h2>Incident Reporting</h2>
+                <p>All security incidents must be reported immediately to the IT Security team.</p>
+                
+                <h2>Compliance</h2>
+                <p>Failure to comply with this policy may result in disciplinary action.</p>
+                
+                <p><em>Last updated: [Current Date]</em></p>
+            ]]></field>
+            <field name="tag_ids" eval="[(6, 0, [ref('tag_important'), ref('tag_policy')])]"/>
+        </record>
+
+        <record id="article_onboarding_faq" model="knowledge.article">
+            <field name="name">New Employee Onboarding FAQ</field>
+            <field name="summary">Frequently asked questions about the onboarding process</field>
+            <field name="category_id" ref="category_faq"/>
+            <field name="article_type">faq</field>
+            <field name="stage">published</field>
+            <field name="visibility">public</field>
+            <field name="publish_date" eval="datetime.now()"/>
+            <field name="body"><![CDATA[
+                <h1>New Employee Onboarding FAQ</h1>
+                
+                <h2>What should I expect on my first day?</h2>
+                <p><strong>Answer:</strong> You will receive a welcome packet, meet your team, receive your equipment, and begin the orientation process. Your manager will provide a detailed schedule for your first week.</p>
+                
+                <h2>How do I access company systems?</h2>
+                <p><strong>Answer:</strong> IT will provide you with login credentials and help you set up access to all necessary systems during your first day. You will also receive training on our security policies.</p>
+                
+                <h2>What benefits am I eligible for?</h2>
+                <p><strong>Answer:</strong> You will receive detailed information about health insurance, retirement plans, paid time off, and other benefits during your HR orientation. Benefits typically begin on your first day or after a short waiting period.</p>
+                
+                <h2>Who is my main point of contact?</h2>
+                <p><strong>Answer:</strong> Your direct manager is your primary point of contact, but HR is also available to answer questions about policies, benefits, and administrative matters.</p>
+                
+                <h2>What is the dress code?</h2>
+                <p><strong>Answer:</strong> Our dress code is business casual. Specific guidelines are provided in the employee handbook, which you will receive during orientation.</p>
+                
+                <h2>How do I request time off?</h2>
+                <p><strong>Answer:</strong> Time off requests should be submitted through our HR system. Your manager will show you how to access and use the system during your first week.</p>
+                
+                <h2>Still Have Questions?</h2>
+                <p>If you have additional questions not covered here, please contact HR at hr@company.com or your direct manager.</p>
+            ]]></field>
+            <field name="tag_ids" eval="[(6, 0, [ref('tag_reference')])]"/>
+        </record>
+
+        <!-- Demo Template Fields for Form Template -->
+        <record id="template_form_incident" model="knowledge.template">
+            <field name="name">Incident Report Form</field>
+            <field name="description">Template for creating incident reports</field>
+            <field name="template_type">form</field>
+            <field name="article_type">procedure</field>
+            <field name="category_id" ref="category_procedures"/>
+            <field name="is_public">1</field>
+            <field name="body"><![CDATA[
+                <h1>Incident Report</h1>
+                <p>Please fill out this form to report any incidents.</p>
+                
+                <h2>Incident Details</h2>
+                <p>[This will be populated by form fields]</p>
+                
+                <h2>Follow-up Actions</h2>
+                <p>List any immediate actions taken and recommended follow-up steps.</p>
+            ]]></field>
+        </record>
+
+        <record id="template_field_date" model="knowledge.template.field">
+            <field name="template_id" ref="template_form_incident"/>
+            <field name="sequence">10</field>
+            <field name="name">incident_date</field>
+            <field name="label">Incident Date</field>
+            <field name="field_type">date</field>
+            <field name="required">1</field>
+            <field name="help_text">Date when the incident occurred</field>
+        </record>
+
+        <record id="template_field_description" model="knowledge.template.field">
+            <field name="template_id" ref="template_form_incident"/>
+            <field name="sequence">20</field>
+            <field name="name">description</field>
+            <field name="label">Description</field>
+            <field name="field_type">textarea</field>
+            <field name="required">1</field>
+            <field name="help_text">Detailed description of the incident</field>
+            <field name="placeholder">Describe what happened...</field>
+        </record>
+
+        <record id="template_field_severity" model="knowledge.template.field">
+            <field name="template_id" ref="template_form_incident"/>
+            <field name="sequence">30</field>
+            <field name="name">severity</field>
+            <field name="label">Severity Level</field>
+            <field name="field_type">selection</field>
+            <field name="required">1</field>
+            <field name="selection_options">Low
+Medium
+High
+Critical</field>
+            <field name="help_text">Select the severity level of the incident</field>
+        </record>
+
+    </data>
+</odoo>

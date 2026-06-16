@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Extend the main partner form view to add birthdate field -->
+        <record id="view_partner_form_inherit_dob" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.dob</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- Add birthdate field after the function field for individual contacts -->
+                <xpath expr="//field[@name='function']" position="after">
+                    <field name="birthdate" 
+                           invisible="is_company" 
+                           widget="date"
+                           options="{'format': 'dd/mm/yyyy'}"
+                           placeholder="e.g. 15/03/1990"/>
+                    <field name="age" 
+                           invisible="is_company or not birthdate" 
+                           readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Extend the simplified partner form view -->
+        <record id="view_partner_simple_form_inherit_dob" model="ir.ui.view">
+            <field name="name">res.partner.simple.form.inherit.dob</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_simple_form"/>
+            <field name="arch" type="xml">
+                <!-- Add birthdate field after the function field -->
+                <xpath expr="//field[@name='function']" position="after">
+                    <field name="birthdate" 
+                           invisible="is_company" 
+                           widget="date"
+                           options="{'format': 'dd/mm/yyyy'}"
+                           placeholder="e.g. 15/03/1990"/>
+                    <field name="age" 
+                           invisible="is_company or not birthdate" 
+                           readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Extend the partner tree view to optionally show age -->
+        <record id="view_partner_tree_inherit_dob" model="ir.ui.view">
+            <field name="name">res.partner.tree.inherit.dob</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <!-- Add age field as optional column -->
+                <xpath expr="//field[@name='email']" position="after">
+                    <field name="age" 
+                           optional="hide" 
+                           invisible="is_company"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Extend the partner search view to add birthdate filters -->
+        <record id="view_res_partner_filter_inherit_dob" model="ir.ui.view">
+            <field name="name">res.partner.filter.inherit.dob</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <!-- Add birthdate field to search -->
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="birthdate" 
+                           filter_domain="[('birthdate', 'ilike', self)]"/>
+                </xpath>
+                
+                <!-- Add birthdate-based filters -->
+                <xpath expr="//filter[@name='inactive']" position="after">
+                    <separator/>
+                    <filter string="Has Birth Date" 
+                            name="has_birthdate" 
+                            domain="[('birthdate', '!=', False)]"/>
+                    <filter string="No Birth Date" 
+                            name="no_birthdate" 
+                            domain="[('birthdate', '=', False)]"/>
+                    <separator/>
+                    <filter string="Born in 1990s" 
+                            name="born_1990s" 
+                            domain="[('birthdate', '>=', '1990-01-01'), ('birthdate', '&lt;', '2000-01-01')]"/>
+                    <filter string="Born in 1980s" 
+                            name="born_1980s" 
+                            domain="[('birthdate', '>=', '1980-01-01'), ('birthdate', '&lt;', '1990-01-01')]"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> 

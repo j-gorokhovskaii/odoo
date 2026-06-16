@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo contacts with birth dates -->
+        <record id="demo_contact_1" model="res.partner">
+            <field name="name">John Smith</field>
+            <field name="email">john.smith@example.com</field>
+            <field name="phone">+1-555-0123</field>
+            <field name="is_company" eval="False"/>
+            <field name="function">Software Developer</field>
+            <field name="birthdate" eval="(1985, 6, 15, 0, 0, 0)"/>
+        </record>
+
+        <record id="demo_contact_2" model="res.partner">
+            <field name="name">Sarah Johnson</field>
+            <field name="email">sarah.johnson@example.com</field>
+            <field name="phone">+1-555-0124</field>
+            <field name="is_company" eval="False"/>
+            <field name="function">Marketing Manager</field>
+            <field name="birthdate" eval="(1990, 3, 22, 0, 0, 0)"/>
+        </record>
+
+        <record id="demo_contact_3" model="res.partner">
+            <field name="name">Michael Brown</field>
+            <field name="email">michael.brown@example.com</field>
+            <field name="phone">+1-555-0125</field>
+            <field name="is_company" eval="False"/>
+            <field name="function">Sales Representative</field>
+            <field name="birthdate" eval="(1978, 11, 8, 0, 0, 0)"/>
+        </record>
+
+        <record id="demo_contact_4" model="res.partner">
+            <field name="name">Emily Davis</field>
+            <field name="email">emily.davis@example.com</field>
+            <field name="phone">+1-555-0126</field>
+            <field name="is_company" eval="False"/>
+            <field name="function">Customer Support</field>
+            <!-- No birth date set to demonstrate the "No Birth Date" filter -->
+        </record>
+
+        <record id="demo_contact_5" model="res.partner">
+            <field name="name">Robert Wilson</field>
+            <field name="email">robert.wilson@example.com</field>
+            <field name="phone">+1-555-0127</field>
+            <field name="is_company" eval="False"/>
+            <field name="function">Retired</field>
+            <field name="birthdate" eval="(1955, 9, 12, 0, 0, 0)"/>
+        </record>
+
+        <!-- Demo company (should not show birth date fields) -->
+        <record id="demo_company_1" model="res.partner">
+            <field name="name">Tech Solutions Inc.</field>
+            <field name="email">info@techsolutions.com</field>
+            <field name="phone">+1-555-0200</field>
+            <field name="is_company" eval="True"/>
+            <field name="street">123 Business Ave</field>
+            <field name="city">New York</field>
+            <field name="zip">10001</field>
+        </record>
+    </data>
+</odoo> 

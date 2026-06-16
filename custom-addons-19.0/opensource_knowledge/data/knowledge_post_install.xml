@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Server Actions -->
+        <record id="action_server_increment_view" model="ir.actions.server">
+            <field name="name">Increment Article View Count</field>
+            <field name="model_id" ref="model_knowledge_article"/>
+            <field name="state">code</field>
+            <field name="code">
+                for record in records:
+                    record.increment_view_count()
+            </field>
+        </record>
+
+        <!-- NOTE (19.0 port): the "Article Published" base.automation record was removed.
+             19.0 restructured base.automation (no inline state/code; uses linked server
+             actions + new trigger values) and it requires the base_automation module.
+             Re-implement via base_automation if the publish notification is needed. -->
+
+    </data>
+</odoo>

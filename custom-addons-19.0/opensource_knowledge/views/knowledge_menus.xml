@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tag Action (defined before menus that reference it) -->
+        <record id="action_knowledge_tag" model="ir.actions.act_window">
+            <field name="name">Tags</field>
+            <field name="res_model">knowledge.tag</field>
+            <field name="view_mode">list,form</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first knowledge tag!
+                </p>
+                <p>
+                    Tags help organize and categorize your knowledge articles, making them easier to find and browse.
+                </p>
+            </field>
+        </record>
+
+        <!-- Root Menu -->
+        <menuitem id="menu_knowledge_root"
+                  name="Knowledge" 
+                  web_icon="fa-book"
+                  sequence="30"
+                  groups="opensource_knowledge.group_knowledge_user"/>
+
+        <!-- Main Menus -->
+        <menuitem id="menu_knowledge_main" 
+                  name="Knowledge Base" 
+                  parent="menu_knowledge_root" 
+                  sequence="10"/>
+
+        <menuitem id="menu_knowledge_management" 
+                  name="Management" 
+                  parent="menu_knowledge_root" 
+                  sequence="20"
+                  groups="opensource_knowledge.group_knowledge_manager"/>
+
+        <menuitem id="menu_knowledge_configuration" 
+                  name="Configuration" 
+                  parent="menu_knowledge_root" 
+                  sequence="30"
+                  groups="opensource_knowledge.group_knowledge_admin"/>
+
+        <!-- Knowledge Base Menu Items -->
+        <menuitem id="menu_knowledge_article" 
+                  name="Articles" 
+                  parent="menu_knowledge_main" 
+                  action="action_knowledge_article" 
+                  sequence="10"/>
+
+        <menuitem id="menu_knowledge_article_my" 
+                  name="My Articles" 
+                  parent="menu_knowledge_main" 
+                  action="action_knowledge_article_my" 
+                  sequence="15"/>
+
+        <menuitem id="menu_knowledge_article_review" 
+                  name="To Review" 
+                  parent="menu_knowledge_main" 
+                  action="action_knowledge_article_review" 
+                  sequence="20"/>
+
+        <menuitem id="menu_knowledge_category" 
+                  name="Categories" 
+                  parent="menu_knowledge_main" 
+                  action="action_knowledge_category" 
+                  sequence="30"/>
+
+        <menuitem id="menu_knowledge_template" 
+                  name="Templates" 
+                  parent="menu_knowledge_main" 
+                  action="action_knowledge_template" 
+                  sequence="40"/>
+
+        <!-- Management Menu Items -->
+        <menuitem id="menu_knowledge_permission" 
+                  name="Permissions" 
+                  parent="menu_knowledge_management" 
+                  action="action_knowledge_permission" 
+                  sequence="10"/>
+
+        <menuitem id="menu_knowledge_share" 
+                  name="Shares" 
+                  parent="menu_knowledge_management" 
+                  action="action_knowledge_share" 
+                  sequence="20"/>
+
+        <menuitem id="menu_knowledge_analytics" 
+                  name="Analytics" 
+                  parent="menu_knowledge_management" 
+                  sequence="30"/>
+
+        <!-- Configuration Menu Items -->
+        <menuitem id="menu_knowledge_settings" 
+                  name="Settings" 
+                  parent="menu_knowledge_configuration" 
+                  sequence="10"/>
+
+        <menuitem id="menu_knowledge_tag" 
+                  name="Tags" 
+                  parent="menu_knowledge_configuration" 
+                  action="action_knowledge_tag" 
+                  sequence="20"/>
+
+        <!-- Dashboard Action -->
+        <record id="action_knowledge_dashboard" model="ir.actions.client">
+            <field name="name">Knowledge Dashboard</field>
+            <field name="tag">knowledge_dashboard</field>
+            <field name="target">current</field>
+        </record>
+
+        <menuitem id="menu_knowledge_dashboard" 
+                  name="Dashboard" 
+                  parent="menu_knowledge_main" 
+                  action="action_knowledge_dashboard" 
+                  sequence="5"/>
+
+
+        <!-- Quick Create Actions -->
+        <record id="action_knowledge_quick_create_article" model="ir.actions.act_window">
+            <field name="name">Quick Create Article</field>
+            <field name="res_model">knowledge.article</field>
+            <field name="view_mode">form</field>
+            <field name="target">current</field>
+            <field name="context">{
+                'default_stage': 'draft',
+                'default_author_id': uid,
+                'form_view_initial_mode': 'edit',
+            }</field>
+        </record>
+
+        <record id="action_knowledge_quick_create_template" model="ir.actions.act_window">
+            <field name="name">Quick Create Template</field>
+            <field name="res_model">knowledge.template</field>
+            <field name="view_mode">form</field>
+            <field name="target">current</field>
+            <field name="context">{
+                'default_author_id': uid,
+                'default_is_public': True,
+                'form_view_initial_mode': 'edit',
+            }</field>
+        </record>
+
+        <!-- Shortcuts -->
+        <menuitem id="menu_knowledge_quick_create" 
+                  name="Quick Create" 
+                  parent="menu_knowledge_main" 
+                  sequence="1"/>
+
+        <menuitem id="menu_knowledge_quick_create_article" 
+                  name="New Article" 
+                  parent="menu_knowledge_quick_create" 
+                  action="action_knowledge_quick_create_article" 
+                  sequence="10"/>
+
+        <menuitem id="menu_knowledge_quick_create_template" 
+                  name="New Template" 
+                  parent="menu_knowledge_quick_create" 
+                  action="action_knowledge_quick_create_template" 
+                  sequence="20"/>
+
+    </data>
+</odoo>
