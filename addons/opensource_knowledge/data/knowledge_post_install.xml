@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Server Actions -->
+        <record id="action_server_increment_view" model="ir.actions.server">
+            <field name="name">Increment Article View Count</field>
+            <field name="model_id" ref="model_knowledge_article"/>
+            <field name="state">code</field>
+            <field name="code">
+                for record in records:
+                    record.increment_view_count()
+            </field>
+        </record>
+
+        <!-- Automated Actions -->
+        <record id="auto_action_article_published" model="base.automation">
+            <field name="name">Article Published Notification</field>
+            <field name="model_id" ref="model_knowledge_article"/>
+            <field name="trigger">on_write</field>
+            <field name="filter_domain">[('stage', '=', 'published')]</field>
+            <field name="state">code</field>
+            <field name="code">
+                for record in records:
+                    if record.stage == 'published':
+                        record.message_post(
+                            body="Article has been published and is now available to users.",
+                            subject="Article Published",
+                            subtype_xmlid="mail.mt_comment"
+                        )
+            </field>
+        </record>
+
+    </data>
+</odoo>

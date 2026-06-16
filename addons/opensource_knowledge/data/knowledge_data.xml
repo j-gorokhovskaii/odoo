@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default Categories -->
+        <record id="category_root" model="knowledge.category">
+            <field name="name">Knowledge Base</field>
+            <field name="description">Root category for all knowledge articles</field>
+            <field name="color">0</field>
+            <field name="sequence">1</field>
+            <field name="visibility">public</field>
+            <field name="manager_id" ref="base.user_admin"/>
+        </record>
+
+        <!-- Default Tags -->
+        <record id="tag_draft" model="knowledge.tag">
+            <field name="name">Draft</field>
+            <field name="color">6</field>
+            <field name="description">Articles in draft status</field>
+        </record>
+
+        <record id="tag_review" model="knowledge.tag">
+            <field name="name">Under Review</field>
+            <field name="color">7</field>
+            <field name="description">Articles under review</field>
+        </record>
+
+        <record id="tag_published" model="knowledge.tag">
+            <field name="name">Published</field>
+            <field name="color">2</field>
+            <field name="description">Published articles</field>
+        </record>
+
+        <!-- System Templates -->
+        <record id="template_blank" model="knowledge.template">
+            <field name="name">Blank Article</field>
+            <field name="description">Start with a blank article</field>
+            <field name="template_type">standard</field>
+            <field name="article_type">article</field>
+            <field name="is_public">1</field>
+            <field name="body"><![CDATA[
+                <h1>Article Title</h1>
+                <p>Start writing your article here...</p>
+            ]]></field>
+        </record>
+
+        <record id="template_meeting_notes" model="knowledge.template">
+            <field name="name">Meeting Notes</field>
+            <field name="description">Template for meeting notes</field>
+            <field name="template_type">standard</field>
+            <field name="article_type">reference</field>
+            <field name="is_public">1</field>
+            <field name="body"><![CDATA[
+                <h1>Meeting Notes: [Meeting Title]</h1>
+                
+                <h2>Meeting Details</h2>
+                <ul>
+                    <li><strong>Date:</strong> [Date]</li>
+                    <li><strong>Time:</strong> [Time]</li>
+                    <li><strong>Location:</strong> [Location]</li>
+                    <li><strong>Attendees:</strong> [List of attendees]</li>
+                </ul>
+                
+                <h2>Agenda</h2>
+                <ol>
+                    <li>Agenda item 1</li>
+                    <li>Agenda item 2</li>
+                    <li>Agenda item 3</li>
+                </ol>
+                
+                <h2>Discussion Points</h2>
+                <p>Key discussion points and decisions made during the meeting.</p>
+                
+                <h2>Action Items</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Action Item</th>
+                            <th>Assigned To</th>
+                            <th>Due Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Action 1</td>
+                            <td>Person</td>
+                            <td>Date</td>
+                            <td>Pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h2>Next Meeting</h2>
+                <p>Information about the next meeting, if applicable.</p>
+            ]]></field>
+        </record>
+
+        <!-- Email Templates -->
+        <record id="knowledge_digest_email_template" model="mail.template">
+            <field name="name">Knowledge Digest</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="subject">Your Knowledge Digest - {{ ctx.get('date', '') }}</field>
+            <field name="body_html" type="html">
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                    <h1 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
+                        Knowledge Digest
+                    </h1>
+                    
+                    <p>Hello {{ object.name }},</p>
+                    
+                    <p>Here's your personalized knowledge digest with the latest updates from our knowledge base.</p>
+                    
+                    <h2 style="color: #007bff;">Recent Articles</h2>
+                    {% for article in ctx.get('recent_articles', []) %}
+                    <div style="border: 1px solid #e9ecef; padding: 15px; margin-bottom: 10px; border-radius: 5px;">
+                        <h3 style="margin: 0 0 10px 0;">
+                            <a href="{{ ctx.get('base_url', '') }}/web#id={{ article.id }}&amp;model=knowledge.article&amp;view_type=form" style="color: #333; text-decoration: none;">
+                                {{ article.name }}
+                            </a>
+                        </h3>
+                        <p style="margin: 0 0 5px 0; color: #666;">
+                            By {{ article.author_id.name }} • {{ article.publish_date.strftime('%B %d, %Y') }}
+                        </p>
+                        <p style="margin: 0; color: #666;">{{ article.summary[:200] }}...</p>
+                    </div>
+                    {% endfor %}
+                    
+                    <h2 style="color: #007bff;">Your Statistics</h2>
+                    <ul>
+                        <li>Articles authored: {{ object.knowledge_article_count }}</li>
+                        <li>Total views: {{ object.knowledge_article_views }}</li>
+                        <li>Contribution score: {{ object.knowledge_contribution_score }}</li>
+                    </ul>
+                    
+                    <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e9ecef; color: #666; font-size: 12px;">
+                        You are receiving this digest because you have knowledge notifications enabled. 
+                        You can change your preferences in your user settings.
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <!-- Cron Jobs -->
+        <record id="cron_knowledge_digest" model="ir.cron">
+            <field name="name">Send Knowledge Digests</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="type">ir.cron</field>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="code">model.send_all_knowledge_digests()</field>
+            <field name="active">True</field>
+        </record>
+
+
+    </data>
+</odoo>
