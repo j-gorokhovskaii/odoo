@@ -1,0 +1,104 @@
+name: CI (custom modules)
+
+# Scoped to THIS fork's custom Odoo modules only — the full Odoo test suite is not run.
+# Fast, no database: error-level Python lint + byte-compile + XML well-formedness +
+# manifest sanity. Runs on PRs into main and on pushes to main, only when a custom
+# module (or this workflow) changes.
+
+on:
+  push:
+    branches: [ main ]
+    paths: &custom_paths
+      - 'addons/opensource_knowledge/**'
+      - 'addons/odoo_documentation/**'
+      - 'addons/partner_dob/**'
+      - 'addons/partner_height/**'
+      - 'addons/company_details/**'
+      - 'addons/extendedcontact/**'
+      - 'addons/web_dark_mode/**'
+      - 'addons/theme_backend_blue/**'
+      - 'custom-addons-19.0/**'
+      - '.github/workflows/ci.yml'
+  pull_request:
+    branches: [ main ]
+    paths: *custom_paths
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install tools
+        run: pip install --quiet flake8 lxml
+
+      - name: Collect custom module paths that exist
+        id: paths
+        run: |
+          PATHS=""
+          for d in addons/opensource_knowledge addons/odoo_documentation \
+                   addons/partner_dob addons/partner_height addons/company_details \
+                   addons/extendedcontact addons/web_dark_mode addons/theme_backend_blue \
+                   custom-addons-19.0; do
+            [ -d "$d" ] && PATHS="$PATHS $d"
+          done
+          echo "paths=$PATHS" >> "$GITHUB_OUTPUT"
+          echo "Checking:$PATHS"
+
+      - name: Python error-level lint (flake8)
+        if: steps.paths.outputs.paths != ''
+        run: |
+          flake8 --select=E9,F63,F7,F82 --show-source \
+                 --exclude='*/static/docs/*,*/__pycache__/*' \
+                 ${{ steps.paths.outputs.paths }}
+
+      - name: Byte-compile Python
+        if: steps.paths.outputs.paths != ''
+        run: python -m compileall -q ${{ steps.paths.outputs.paths }}
+
+      - name: Validate XML well-formedness
+        if: steps.paths.outputs.paths != ''
+        run: |
+          python - "${{ steps.paths.outputs.paths }}" <<'PY'
+          import sys, glob, os
+          from lxml import etree
+          bad = 0
+          for base in sys.argv[1].split():
+              for f in glob.glob(os.path.join(base, "**", "*.xml"), recursive=True):
+                  if "/static/docs/" in f.replace("\\", "/"):
+                      continue
+                  try:
+                      etree.parse(f)
+                  except Exception as e:
+                      print(f"XML ERROR: {f}: {e}"); bad += 1
+          print("XML OK" if not bad else f"{bad} bad XML file(s)")
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: Validate manifests
+        if: steps.paths.outputs.paths != ''
+        run: |
+          python - "${{ steps.paths.outputs.paths }}" <<'PY'
+          import ast, glob, os, sys
+          bad = 0
+          for base in sys.argv[1].split():
+              for f in glob.glob(os.path.join(base, "**", "__manifest__.py"), recursive=True):
+                  try:
+                      d = ast.literal_eval(open(f, encoding="utf-8").read())
+                      assert isinstance(d, dict) and d.get("name"), "missing 'name'"
+                  except Exception as e:
+                      print(f"MANIFEST ERROR: {f}: {e}"); bad += 1
+          print("Manifests OK" if not bad else f"{bad} bad manifest(s)")
+          sys.exit(1 if bad else 0)
+          PY

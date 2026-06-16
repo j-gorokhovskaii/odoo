@@ -1,0 +1,54 @@
+name: "🐞 Bug report"
+description: Report a problem in one of the custom modules
+title: "bug: <short summary>"
+labels: ["type:bug", "status:triage"]
+body:
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      description: Which custom module is affected?
+      options:
+        - opensource_knowledge
+        - odoo_documentation
+        - partner_dob
+        - partner_height
+        - company_details
+        - extendedcontact
+        - web_dark_mode
+        - theme_backend_blue
+        - other / not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Odoo version
+      options: ["18.0", "19.0", "both"]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What went wrong, and what did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log / traceback
+      description: Paste the server log lines or browser console error (no secrets/passwords).
+      render: shell
+    validations:
+      required: false

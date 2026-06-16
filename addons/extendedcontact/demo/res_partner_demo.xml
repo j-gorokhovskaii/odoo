@@ -95,7 +95,7 @@
             <field name="driver_license_number">DL987654321</field>
             <field name="driver_license_state" ref="base.state_us_ny"/>
             <field name="occupation">Accountant</field>
-            <field name="employer">Chen & Associates</field>
+            <field name="employer">Chen &amp; Associates</field>
             <field name="education_level">masters</field>
             <field name="military_service" eval="True"/>
             <field name="military_branch">army</field>

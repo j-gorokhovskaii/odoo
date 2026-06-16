@@ -1,11 +1,25 @@
-Description of the issue/feature this PR addresses:
+<!-- Keep PRs small (< ~400 lines changed). Open as Draft until ready for review. -->
 
-Current behavior before PR:
+## What & why
+<!-- One or two sentences. Link the issue so merge auto-closes it. -->
+Closes #
 
-Desired behavior after PR is merged:
+## Changes
+-
 
+## Type
+- [ ] feat
+- [ ] fix
+- [ ] refactor / chore
+- [ ] docs
 
+## QA checklist
+- [ ] CI is green
+- [ ] Tested locally (state which Odoo version: 18.0 / 19.0)
+- [ ] No secrets, DB dumps, or local-only files committed
+- [ ] Conventional Commit title (e.g. `fix(extendedcontact): ...`)
+- [ ] `CHANGELOG.md` updated (for user-facing changes)
+- [ ] For a bugfix: added/covered the case that regresses
 
-
----
-I confirm I have signed the CLA and read the PR guidelines at www.odoo.com/submit-pr
+## Notes for reviewer (me)
+<!-- Anything tricky, screenshots, or follow-ups. -->
