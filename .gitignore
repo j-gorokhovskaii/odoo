@@ -56,8 +56,12 @@ odoo.log
 # ---------------------------------------------------------------------------
 # Local / sensitive files — keep OUT of this public repo
 # ---------------------------------------------------------------------------
-# Database backups (real business data)
+# Database backups (real business data) — GFS rotation lives under database_backups/gfs/
 /database_backups/
+# Defense-in-depth: never commit backup artifacts or backup config, wherever they land
+*.dump
+*.filestore.zip
+backup.config.psd1
 # Local clone of Odoo's documentation site (not our work, large, own .git)
 /documentation/
 # Local brand/asset working folder
