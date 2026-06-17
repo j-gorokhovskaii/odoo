@@ -1,40 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Main menu item -->
+    <!-- Opens the live, version-matched official Odoo documentation in a new browser tab.
+         (No local copy is stored; always current.) -->
+    <record id="action_documentation_url" model="ir.actions.act_url">
+        <field name="name">Odoo Documentation</field>
+        <field name="url">https://www.odoo.com/documentation/18.0/</field>
+        <field name="target">new</field>
+    </record>
+
     <menuitem id="menu_documentation_root"
               name="Documentation"
-              web_icon="odoo_documentation,static/description/icon.svg"
+              web_icon="odoo_documentation,static/description/icon.png"
+              action="action_documentation_url"
               sequence="100"/>
-    
-    <!-- Documentation viewer action -->
-    <record id="action_documentation_url" model="ir.actions.act_url">
-        <field name="name">View Documentation</field>
-        <field name="url">/documentation</field>
-        <field name="target">self</field>
-    </record>
-    
-    <!-- Sub-menus -->
-    <menuitem id="menu_documentation_view"
-              name="View Documentation"
-              parent="menu_documentation_root"
-              action="action_documentation_url"
-              sequence="10"/>
-    
-    <menuitem id="menu_documentation_applications"
-              name="Applications"
-              parent="menu_documentation_root"
-              action="action_documentation_url"
-              sequence="20"/>
-    
-    <menuitem id="menu_documentation_developer"
-              name="Developer Guide"
-              parent="menu_documentation_root"
-              action="action_documentation_url"
-              sequence="30"/>
-    
-    <menuitem id="menu_documentation_administration"
-              name="Administration"
-              parent="menu_documentation_root"
-              action="action_documentation_url"
-              sequence="40"/>
 </odoo>
