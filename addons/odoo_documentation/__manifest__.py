@@ -1,40 +1,25 @@
 {
     'name': 'Odoo Documentation',
-    'version': '18.0.1.0.0',
+    'version': '18.0.2.0.0',
     'category': 'Documentation',
-    'summary': 'Integrated Odoo official documentation viewer',
+    'summary': 'Adds a Documentation menu linking to the live official Odoo docs',
     'description': """
-Odoo Documentation Module
-=========================
+Odoo Documentation Link
+=======================
 
-This module integrates the official Odoo documentation directly into your Odoo instance.
+Adds a **Documentation** menu to Odoo that opens the official online Odoo
+documentation (https://www.odoo.com/documentation/) in a new browser tab.
 
-Features:
----------
-* Access Odoo documentation without leaving your instance
-* Organized by categories (Applications, Administration, Developer, Contributing)
-* Fast local access
-* Search functionality
-* Responsive design
-
-Setup:
-------
-1. Clone the Odoo documentation: git clone https://github.com/odoo/documentation.git
-2. Run the import script: python addons/odoo_documentation/scripts/import_docs.py
-3. Install this module in Odoo
+Always current, no local copy, no maintenance. (Previous versions of this module
+served a local static snapshot built from a clone of the docs repo; that approach
+was removed in favour of linking the live docs.)
     """,
-    'author': 'Your Company',
-    'website': 'https://www.yourcompany.com',
+    'author': 'j-gorokhovskaii',
+    'website': 'https://github.com/j-gorokhovskaii/odoo',
     'depends': ['base', 'web'],
     'data': [
         'views/documentation_menu.xml',
-        'views/documentation_templates.xml',
     ],
-    'assets': {
-        'web.assets_backend': [
-            'odoo_documentation/static/src/css/documentation.css',
-        ],
-    },
     'installable': True,
     'application': True,
     'license': 'LGPL-3',

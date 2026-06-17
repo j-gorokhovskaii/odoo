@@ -1,1 +1,0 @@
-# Models init file - no models needed for static documentation
